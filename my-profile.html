@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Profile | Indian Vivah Matrimony</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(145deg,#fffaf7,#fff1f4);color:#332027;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 5%;background:linear-gradient(135deg,#650019,#8d1538,#70001d);color:#fff;box-shadow:0 6px 24px rgba(85,0,25,.18)}
+.brand{font-size:22px;font-weight:900}.brand span{color:#f2d36f}.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.10);color:#fff;text-decoration:none;font-weight:800;cursor:pointer}
+.btn.gold{background:linear-gradient(135deg,#f2d77d,#d4ae43);color:#4b0015;border:0}
+main{max-width:1050px;margin:auto;padding:38px 20px 60px}.title{text-align:center;margin-bottom:26px}.title h1{color:#770020;font-size:clamp(30px,4vw,42px);margin-bottom:6px}
+.card,.state{background:#fff;border:1px solid rgba(120,0,35,.10);border-radius:26px;box-shadow:0 22px 65px rgba(88,0,27,.12)}.state{max-width:650px;margin:60px auto;padding:32px;text-align:center}
+.profile{display:none;overflow:hidden}.top{display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:center;padding:30px;background:linear-gradient(135deg,#fff6f8,#fffdf7)}
+.photo{width:175px;height:210px;border-radius:20px;overflow:hidden;background:#f3e8eb;display:grid;place-items:center;font-size:52px;box-shadow:0 9px 28px rgba(90,0,30,.13)}.photo img{width:100%;height:100%;object-fit:cover}
+.name{color:#760020;font-size:31px;font-weight:900}.loc{margin-top:7px;color:#7c646e}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.badge{padding:7px 12px;border:1px solid #ead7dd;border-radius:999px;background:#fff;font-size:12px;font-weight:800}
+.details{padding:30px}.section{margin-top:28px}.section:first-child{margin-top:0}.section h3{color:#780021;border-bottom:1px solid #eee0e5;padding-bottom:10px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px}.item{padding:13px 14px;border-radius:13px;background:#fffafa;border:1px solid #f0e3e7}.item span{display:block;color:#927780;font-size:11px;font-weight:800;text-transform:uppercase;margin-bottom:4px}.item strong{font-size:14px;word-break:break-word}
+.empty-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}.empty-actions a{text-decoration:none;padding:12px 18px;border-radius:13px;font-weight:900}.primary{background:linear-gradient(135deg,#71001d,#b11f50);color:#fff}.secondary{border:1px solid #dccbd1;color:#770020;background:#fff}
+@media(max-width:700px){header{padding:10px 12px}.brand{font-size:16px}.btn{font-size:11px;padding:0 10px}main{padding:26px 10px 45px}.top{grid-template-columns:1fr;text-align:center;padding:22px 15px}.photo{margin:auto;width:155px;height:185px}.badges{justify-content:center}.details{padding:20px 13px}.grid{grid-template-columns:1fr}}
+
+/* ===== Premium My Profile polish ===== */
+body{
+  background:
+    radial-gradient(circle at 92% 8%,rgba(214,178,75,.14),transparent 24%),
+    radial-gradient(circle at 8% 92%,rgba(181,40,88,.08),transparent 26%),
+    linear-gradient(145deg,#fffaf7,#fff1f4);
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(14px);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.brand::before{
+  content:"♥";
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff7d7,#d9ac3d);
+  color:#790021;
+  box-shadow:0 5px 16px rgba(0,0,0,.16);
+}
+.title::after{
+  content:"";
+  display:block;
+  width:72px;
+  height:3px;
+  margin:14px auto 0;
+  border-radius:999px;
+  background:linear-gradient(90deg,#7a0022,#d6b24b);
+}
+.profile.card{
+  overflow:visible;
+  border-radius:28px;
+}
+.top{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px 28px 0 0;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(214,178,75,.18),transparent 28%),
+    linear-gradient(135deg,#fff6f8,#fffdf7);
+}
+.top::after{
+  content:"";
+  position:absolute;
+  right:-60px;
+  top:-60px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(181,40,88,.05);
+}
+.photo{
+  position:relative;
+  border:5px solid #fff;
+  box-shadow:
+    0 18px 40px rgba(90,0,30,.16),
+    0 0 0 1px rgba(116,0,32,.08);
+}
+.name{letter-spacing:-.6px}
+.badge{box-shadow:0 5px 14px rgba(70,0,22,.05)}
+#status{
+  color:#8b5c00;
+  background:#fff8e8;
+  border-color:#ecd79b;
+}
+.details{
+  background:#fff;
+  border-radius:0 0 28px 28px;
+}
+.section{
+  padding:20px;
+  border:1px solid #f0e3e7;
+  border-radius:18px;
+  background:linear-gradient(180deg,#fff,#fffafb);
+  box-shadow:0 8px 22px rgba(70,0,22,.045);
+}
+.section h3{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border-bottom:0;
+  padding-bottom:0;
+}
+.section h3::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7a0022,#d6b24b);
+  box-shadow:0 0 0 5px rgba(116,0,32,.06);
+}
+.item{
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.item:hover{
+  transform:translateY(-2px);
+  border-color:#e2cfd6;
+  box-shadow:0 8px 18px rgba(70,0,22,.055);
+}
+.actions .btn.gold{box-shadow:0 8px 18px rgba(214,178,75,.22)}
+.actions .btn:hover{transform:translateY(-1px)}
+@media(max-width:700px){
+  .brand::before{width:32px;height:32px;font-size:14px}
+  .actions{gap:6px}
+  .title{margin-bottom:22px}
+  .title h1{font-size:31px}
+  .profile.card{border-radius:22px}
+  .top{border-radius:22px 22px 0 0;padding-top:26px}
+  .photo{width:150px;height:180px}
+  .name{font-size:28px}
+  .details{border-radius:0 0 22px 22px}
+  .section{padding:16px 13px;border-radius:16px}
+  .item{padding:12px}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Indian Vivah <span>Matrimony</span></div>
+  <div class="actions">
+    <a class="btn" href="index.html">Home</a>
+    <a class="btn gold" href="edit-profile.html" id="editBtn">Edit Profile</a>
+  </div>
+</header>
+<main>
+  <div class="title"><h1>My Profile</h1><p>आपकी Indian Vivah matrimonial profile</p></div>
+  <div id="loading" class="state">Profile loading...</div>
+  <div id="empty" class="state" style="display:none"></div>
+  <div id="profile" class="card profile">
+    <div class="top">
+      <div id="photo" class="photo">👤</div>
+      <div>
+        <div id="name" class="name">-</div>
+        <div id="location" class="loc">-</div>
+        <div class="badges"><span id="gender" class="badge">-</span><span id="maritalStatus" class="badge">-</span><span id="status" class="badge">-</span></div>
+      </div>
+    </div>
+    <div class="details">
+      <section class="section"><h3>Personal Details</h3><div class="grid">
+        <div class="item"><span>Profile For</span><strong id="profileFor">-</strong></div>
+        <div class="item"><span>Date of Birth</span><strong id="dateOfBirth">-</strong></div>
+        <div class="item"><span>Religion</span><strong id="religion">-</strong></div>
+        <div class="item"><span>Mother Tongue</span><strong id="motherTongue">-</strong></div>
+        <div class="item"><span>Mobile Number</span><strong id="mobileNumber">-</strong></div>
+        <div class="item"><span>Email</span><strong id="email">-</strong></div>
+      </div></section>
+      <section class="section"><h3>Location</h3><div class="grid">
+        <div class="item"><span>State</span><strong id="state">-</strong></div><div class="item"><span>District</span><strong id="district">-</strong></div>
+        <div class="item"><span>City</span><strong id="city">-</strong></div><div class="item"><span>PIN Code</span><strong id="pinCode">-</strong></div>
+        <div class="item" style="grid-column:1/-1"><span>Current Address</span><strong id="currentAddress">-</strong></div>
+      </div></section>
+      <section class="section"><h3>Education & Career</h3><div class="grid">
+        <div class="item"><span>Height</span><strong id="height">-</strong></div><div class="item"><span>Education</span><strong id="education">-</strong></div>
+        <div class="item"><span>Occupation</span><strong id="occupationType">-</strong></div><div class="item"><span>Annual Income</span><strong id="annualIncome">-</strong></div>
+        <div class="item" style="grid-column:1/-1"><span>Work Details</span><strong id="workDetails">-</strong></div>
+      </div></section>
+      <section class="section"><h3>Lifestyle</h3><div class="grid">
+        <div class="item"><span>Diet</span><strong id="diet">-</strong></div><div class="item"><span>Smoking</span><strong id="smoking">-</strong></div>
+        <div class="item"><span>Drinking</span><strong id="drinking">-</strong></div><div class="item"><span>Photo Privacy</span><strong id="photoPrivacy">-</strong></div>
+      </div></section>
+    </div>
+  </div>
+</main>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import {getFirestore,doc,getDoc} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw",
+  authDomain: "indian-vivah-app-2026.firebaseapp.com",
+  projectId: "indian-vivah-app-2026",
+  storageBucket: "indian-vivah-app-2026.firebasestorage.app",
+  messagingSenderId: "807227064930",
+  appId: "1:807227064930:web:c6cbc77cbc15c52ff0073b",
+  measurementId: "G-E4EC5RDHVM"
+};
+
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const ids=["profileFor","dateOfBirth","religion","motherTongue","mobileNumber","email","state","district","city","pinCode","currentAddress","height","education","occupationType","annualIncome","workDetails","diet","smoking","drinking","photoPrivacy"];
+const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=(v??"").toString().trim()||"-";};
+function showEmpty(msg){
+ document.getElementById("loading").style.display="none";
+ document.getElementById("profile").style.display="none";
+ const box=document.getElementById("empty");box.style.display="block";
+ box.innerHTML=`<h3 style="color:#770020;margin-bottom:8px">Profile Not Found</h3><p>${msg}</p><div class="empty-actions"><a class="primary" href="edit-profile.html">Complete Your Profile</a><a class="secondary" href="index.html">Back Home</a></div>`;
+}
+async function load(user){
+ try{
+   let data=null;
+
+   // 1) पहले private profile पढ़ने की कोशिश
+   try {
+     const privateSnap = await getDoc(doc(db,"profiles",user.uid));
+     if (privateSnap.exists()) {
+       data = privateSnap.data();
+     }
+   } catch (privateError) {
+     console.warn("Private profile read blocked/unavailable:", privateError);
+   }
+
+   // 2) private profile न मिले या rules से blocked हो तो public profile देखें
+   if (!data) {
+     try {
+       const publicSnap = await getDoc(doc(db,"public_profiles",user.uid));
+       if (publicSnap.exists()) {
+         data = publicSnap.data();
+       }
+     } catch (publicError) {
+       console.warn("Public profile read blocked/unavailable:", publicError);
+     }
+   }
+
+   if(!data) return showEmpty("इस account की profile अभी उपलब्ध नहीं मिली। Edit/Complete Profile से profile details जोड़ें।");
+   set("name",data.fullName); set("gender",data.gender); set("maritalStatus",data.maritalStatus); set("status",data.profileStatus||data.status||"approved");
+   ids.forEach(id=>set(id,id==="email"?(data.email||user.email):data[id]));
+   const loc=[data.city,data.district,data.state].filter(Boolean).join(", ");set("location",loc);
+   const photos=Array.isArray(data.photoUrls)?data.photoUrls:[];
+   if(photos[0]) document.getElementById("photo").innerHTML=`<img src="${photos[0]}" alt="Profile Photo">`;
+   document.getElementById("loading").style.display="none";document.getElementById("profile").style.display="block";
+ }catch(e){console.error(e);showEmpty("Profile load नहीं हो सकी। Console में Firebase error देखें।");}
+}
+onAuthStateChanged(auth,u=>{if(!u)location.href="login.html";else load(u);});
+</script>
+</body></html>

@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Free Matrimonial Registration | Indian Vivah Matrimony
+    </title>
+
+    <meta
+        name="description"
+        content="Indian Vivah Matrimony par apni matrimonial profile free register karein."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="theme-color"
+        content="#790021"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #2c1820;
+            background:
+                radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.17), transparent 25%),
+                radial-gradient(circle at 5% 85%, rgba(183, 26, 78, 0.12), transparent 30%),
+                linear-gradient(145deg, #fffaf7, #fff1f4);
+        }
+
+        body::before {
+            content: "♥";
+            position: fixed;
+            top: 100px;
+            right: 5%;
+            font-size: 150px;
+            color: rgba(128, 0, 32, 0.025);
+            transform: rotate(-12deg);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .register-header {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+            min-height: 72px;
+            padding: 12px max(24px, calc((100vw - 1200px) / 2));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: white;
+            background: linear-gradient(135deg, #640019, #8d1538, #71001e);
+            border-bottom: 1px solid rgba(255,255,255,.12);
+            box-shadow: 0 6px 24px rgba(88,0,25,.18);
+        }
+
+        .brand-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            color: #77001f;
+            background: linear-gradient(145deg, #fff8db, #d9ac3a);
+            border: 2px solid rgba(255,255,255,.55);
+            box-shadow: 0 4px 15px rgba(0,0,0,.18);
+        }
+
+        .brand-text h2 {
+            font-size: 23px;
+            line-height: 1;
+        }
+
+        .brand-text h2 span {
+            color: #f4d675;
+        }
+
+        .brand-text p {
+            margin-top: 5px;
+            font-size: 11px;
+            color: rgba(255,255,255,.75);
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.35);
+            transition: .25s;
+        }
+
+        .home-button:hover {
+            background: rgba(255,255,255,.20);
+            transform: translateY(-1px);
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 42px 24px 70px;
+        }
+
+        .intro-section {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 30px;
+        }
+
+        .mini-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 7px 15px;
+            border-radius: 30px;
+            color: #78102e;
+            background: #fff;
+            border: 1px solid #ead5dc;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 5px 18px rgba(80,0,25,.06);
+        }
+
+        .intro-section h1 {
+            font-size: clamp(30px, 4vw, 48px);
+            color: #750020;
+            letter-spacing: -.5px;
+            line-height: 1.15;
+        }
+
+        .intro-section h1 span {
+            color: #b38724;
+        }
+
+        .intro-section p {
+            max-width: 700px;
+            margin: 12px auto 0;
+            line-height: 1.7;
+            color: #705d64;
+            font-size: 15px;
+        }
+
+        .progress-row {
+            max-width: 850px;
+            margin: 25px auto 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .progress-item {
+            text-align: center;
+            padding: 13px;
+            background: rgba(255,255,255,.80);
+            border: 1px solid #eedde2;
+            border-radius: 16px;
+            color: #674e58;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .progress-item strong {
+            display: block;
+            color: #800020;
+            margin-bottom: 3px;
+            font-size: 15px;
+        }
+
+        .registration-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 34px;
+            background: rgba(255,255,255,.96);
+            border: 1px solid rgba(129, 16, 51, .10);
+            border-radius: 28px;
+            box-shadow: 0 24px 70px rgba(91, 5, 33, .13);
+            backdrop-filter: blur(8px);
+        }
+
+        .form-section {
+            margin-top: 32px;
+        }
+
+        .form-section:first-child {
+            margin-top: 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 11px;
+            border-bottom: 1px solid #f0dde3;
+        }
+
+        .section-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff1f4;
+            color: #800020;
+            font-size: 17px;
+        }
+
+        .section-heading h2 {
+            font-size: 20px;
+            color: #750020;
+        }
+
+        .section-heading p {
+            margin-top: 3px;
+            color: #876e77;
+            font-size: 12px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 17px;
+        }
+
+        .field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            display: block;
+            margin: 0 0 7px 3px;
+            color: #604851;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .required {
+            color: #b40032;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 14px;
+            color: #2c1c22;
+            background: #fff;
+            border: 1px solid #ddcbd1;
+            border-radius: 13px;
+            outline: none;
+            font-size: 15px;
+            transition: border .2s, box-shadow .2s, transform .2s;
+        }
+
+        textarea {
+            min-height: 95px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #a21843;
+            box-shadow: 0 0 0 4px rgba(162, 24, 67, .09);
+        }
+
+        .photo-upload-card {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 25px;
+            align-items: center;
+            padding: 20px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #fff8f8, #fffdf6);
+            border: 1px dashed #d9a7b5;
+        }
+
+        .photo-preview-area {
+            width: 170px;
+            height: 205px;
+            margin: auto;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #9a7c86;
+            background: #fff;
+            border: 2px solid #f0dde2;
+            box-shadow: 0 8px 25px rgba(90, 10, 35, .08);
+        }
+
+        .photo-preview-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .photo-placeholder {
+            padding: 15px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .photo-placeholder span {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 35px;
+        }
+
+        .photo-details h3 {
+            color: #750020;
+            margin-bottom: 7px;
+        }
+
+        .photo-details p {
+            color: #755f68;
+            line-height: 1.6;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .photo-details input {
+            padding: 10px;
+        }
+
+        .field-note {
+            margin-top: 6px;
+            color: #8b747d;
+            font-size: 11px;
+            line-height: 1.45;
+        }
+
+        .security-box {
+            margin-top: 26px;
+            padding: 17px 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #fff8e8, #fffdf7);
+            border: 1px solid #ead6a1;
+            color: #57472e;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .security-box .security-icon {
+            flex: 0 0 auto;
+            font-size: 25px;
+        }
+
+        .consent-box {
+            margin-top: 18px;
+            padding: 15px;
+            border-radius: 15px;
+            background: #fafafa;
+            border: 1px solid #e8e1e3;
+        }
+
+        .consent-box label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #59474e;
+            line-height: 1.55;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .consent-box input {
+            width: 18px;
+            min-height: auto;
+            height: 18px;
+            margin-top: 2px;
+            flex: 0 0 auto;
+        }
+
+        .submit-button {
+            width: 100%;
+            margin-top: 23px;
+            min-height: 56px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: .3px;
+            background: linear-gradient(135deg, #71001d, #a81743, #c1285a);
+            box-shadow: 0 12px 30px rgba(145, 16, 54, .25);
+            transition: .25s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 35px rgba(145, 16, 54, .31);
+        }
+
+        .submit-button:disabled {
+            opacity: .65;
+            cursor: wait;
+            transform: none;
+        }
+
+        .form-message {
+            display: none;
+            margin-top: 18px;
+            padding: 15px 17px;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .form-message.success {
+            display: block;
+            color: #176735;
+            background: #edf9f1;
+            border: 1px solid #bce5c9;
+        }
+
+        .form-message.error {
+            display: block;
+            color: #961d32;
+            background: #fff1f3;
+            border: 1px solid #efc5cd;
+        }
+
+        .bottom-note {
+            max-width: 760px;
+            margin: 20px auto 0;
+            text-align: center;
+            color: #826e76;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            body {
+                background: linear-gradient(180deg, #fff7f8, #fffdf8);
+            }
+
+            body::before {
+                display: none;
+            }
+
+            .register-header {
+                min-height: 60px;
+                padding: 9px 12px;
+                gap: 8px;
+            }
+
+            .brand-area {
+                gap: 8px;
+            }
+
+            .brand-icon {
+                width: 39px;
+                height: 39px;
+                font-size: 19px;
+            }
+
+            .brand-text h2 {
+                font-size: 17px;
+            }
+
+            .brand-text p {
+                display: none;
+            }
+
+            .home-button {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .page-container {
+                padding: 24px 11px 45px;
+            }
+
+            .intro-section {
+                margin-bottom: 20px;
+            }
+
+            .intro-section h1 {
+                font-size: 29px;
+            }
+
+            .intro-section p {
+                padding: 0 7px;
+                font-size: 13px;
+            }
+
+            .mini-label {
+                font-size: 11px;
+            }
+
+            .progress-row {
+                grid-template-columns: 1fr;
+                gap: 7px;
+                margin: 17px 0 20px;
+            }
+
+            .progress-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                padding: 9px;
+                border-radius: 12px;
+                font-size: 11px;
+            }
+
+            .progress-item strong {
+                display: inline;
+                margin: 0;
+                font-size: 12px;
+            }
+
+            .registration-card {
+                padding: 20px 13px;
+                border-radius: 21px;
+                box-shadow: 0 14px 40px rgba(91, 5, 33, .10);
+            }
+
+            .form-section {
+                margin-top: 27px;
+            }
+
+            .section-heading {
+                margin-bottom: 14px;
+            }
+
+            .section-heading h2 {
+                font-size: 17px;
+            }
+
+            .section-heading p {
+                font-size: 11px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 13px;
+            }
+
+            .field.full-width {
+                grid-column: auto;
+            }
+
+            input,
+            select,
+            textarea {
+                min-height: 47px;
+                font-size: 14px;
+                border-radius: 12px;
+            }
+
+            .photo-upload-card {
+                grid-template-columns: 1fr;
+                gap: 17px;
+                text-align: center;
+                padding: 16px 12px;
+            }
+
+            .photo-preview-area {
+                width: 155px;
+                height: 185px;
+            }
+
+            .photo-details p {
+                font-size: 12px;
+            }
+
+            .security-box {
+                font-size: 12px;
+                padding: 14px;
+                border-radius: 13px;
+            }
+
+            .consent-box {
+                padding: 13px;
+            }
+
+            .consent-box label {
+                font-size: 12px;
+            }
+
+            .submit-button {
+                min-height: 54px;
+                border-radius: 14px;
+                font-size: 15px;
+            }
+        }
+
+        @media screen and (max-width: 390px) {
+            .brand-text h2 {
+                font-size: 15px;
+            }
+
+            .home-button {
+                padding: 7px 9px;
+            }
+
+            .intro-section h1 {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header class="register-header">
+
+        <div class="brand-area">
+
+            <div class="brand-icon">♥</div>
+
+            <div class="brand-text">
+                <h2>Indian Vivah <span>Matrimony</span></h2>
+                <p>Sahi Rishta • Sachha Bandhan</p>
+            </div>
+
+        </div>
+
+        <a href="index.html" class="home-button">← Home</a>
+
+    </header>
+
+    <main class="page-container">
+
+        <section class="intro-section">
+
+            <div class="mini-label">♥ FREE PROFILE REGISTRATION</div>
+
+            <h1>Apni <span>Matrimonial Profile</span> Banayein</h1>
+
+            <p>
+                Apni sahi aur poori details bhar kar Indian Vivah Matrimony par
+                free profile create karein. Verification ke baad aapki profile
+                active ki jayegi.
+            </p>
+
+        </section>
+
+        <div class="progress-row">
+            <div class="progress-item"><strong>1.</strong> Account Banayein</div>
+            <div class="progress-item"><strong>2.</strong> Details + Photo</div>
+            <div class="progress-item"><strong>3.</strong> Verification</div>
+        </div>
+
+        <form id="profileForm" class="registration-card">
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">🔐</div>
+                    <div>
+                        <h2>Account Details</h2>
+                        <p>Login ke liye Email aur Password</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="email">Email ID <span class="required">*</span></label>
+                        <input
+                            id="email"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="example@gmail.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Create Password <span class="required">*</span></label>
+                        <input
+                            id="password"
+                            type="password"
+                            minlength="6"
+                            autocomplete="new-password"
+                            placeholder="Minimum 6 characters"
+                            required
+                        >
+                        <div class="field-note">
+                            Password profile document में save नहीं होगा।
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">👤</div>
+                    <div>
+                        <h2>Basic Profile</h2>
+                        <p>Profile kis ke liye bana rahe hain</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="profileFor">Profile For <span class="required">*</span></label>
+                        <select id="profileFor" required>
+                            <option value="">Select</option>
+                            <option value="Self">Self</option>
+                            <option value="Son">Son</option>
+                            <option value="Daughter">Daughter</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Relative">Relative</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" required>
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">♥</div>
+                    <div>
+                        <h2>Personal Details</h2>
+                        <p>Candidate ki basic matrimonial details</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input id="fullName" type="text" placeholder="पूरा नाम" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="mobileNumber">Mobile Number <span class="required">*</span></label>
+                        <input
+                            id="mobileNumber"
+                            type="tel"
+                            inputmode="numeric"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            placeholder="10 digit mobile number"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                        <input id="dateOfBirth" type="date" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="religion">Religion <span class="required">*</span></label>
+                        <select id="religion" required>
+                            <option value="">Select</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Sikh">Sikh</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Buddhist">Buddhist</option>
+                            <option value="Jain">Jain</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="motherTongue">Mother Tongue <span class="required">*</span></label>
+                        <input
+                            id="motherTongue"
+                            type="text"
+                            placeholder="Hindi / Marathi / Gujarati..."
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="maritalStatus">Marital Status <span class="required">*</span></label>
+                        <select id="maritalStatus" required>
+                            <option value="">Select</option>
+                            <option value="Never Married">Never Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                            <option value="Separated">Separated</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">📍</div>
+                    <div>
+                        <h2>Address Details</h2>
+                        <p>Current location ki jankari</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="state">State <span class="required">*</span></label>
+                        <input id="state" type="text" placeholder="Madhya Pradesh" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="district">District <span class="required">*</span></label>
+                        <input id="district" type="text" placeholder="Indore" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input id="city" type="text" placeholder="City" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="pinCode">PIN Code <span class="required">*</span></label>
+                        <input
+                            id="pinCode"
+                            type="text"
+                            inputmode="numeric"
+                            maxlength="6"
+                            pattern="[0-9]{6}"
+                            placeholder="6 digit PIN"
+                            required
+                        >
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="currentAddress">Current Address <span class="required">*</span></label>
+                        <textarea
+                            id="currentAddress"
+                            placeholder="पूरा वर्तमान पता"
+                            required
+                        ></textarea>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">🎓</div>
+                    <div>
+                        <h2>Education & Career</h2>
+                        <p>Padhai aur profession ki jankari</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="height">Height</label>
+                        <input id="height" type="text" placeholder="Example: 5'7">
+                    </div>
+
+                    <div class="field">
+                        <label for="education">Education <span class="required">*</span></label>
+                        <input
+                            id="education"
+                            type="text"
+                            placeholder="B.Com / B.Tech / 12th..."
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="occupationType">Occupation Type <span class="required">*</span></label>
+                        <select id="occupationType" required>
+                            <option value="">Select</option>
+                            <option value="Job">Job</option>
+                            <option value="Business">Business</option>
+                            <option value="Self Employed">Self Employed</option>
+                            <option value="Student">Student</option>
+                            <option value="Not Working">Not Working</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="annualIncome">Annual Income</label>
+                        <input id="annualIncome" type="text" placeholder="Example: ₹5 Lakh">
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="workDetails">Work Details</label>
+                        <textarea
+                            id="workDetails"
+                            placeholder="Job / Business / Company / Designation की जानकारी"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">🌿</div>
+                    <div>
+                        <h2>Lifestyle</h2>
+                        <p>Basic lifestyle information</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="diet">Diet</label>
+                        <select id="diet">
+                            <option value="">Select</option>
+                            <option value="Vegetarian">Vegetarian</option>
+                            <option value="Non Vegetarian">Non Vegetarian</option>
+                            <option value="Eggetarian">Eggetarian</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="smoking">Smoking</label>
+                        <select id="smoking">
+                            <option value="">Select</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="Occasionally">Occasionally</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="drinking">Drinking</label>
+                        <select id="drinking">
+                            <option value="">Select</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="Occasionally">Occasionally</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="photoPrivacy">Photo Privacy</label>
+                        <select id="photoPrivacy">
+                            <option value="everyone">Everyone</option>
+                            <option value="members">Members Only</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <div class="section-icon">📷</div>
+                    <div>
+                        <h2>Profile Photo</h2>
+                        <p>Clear aur recent photo upload karein</p>
+                    </div>
+                </div>
+
+                <div class="photo-upload-card">
+
+                    <div class="photo-preview-area">
+                        <div id="photoPlaceholder" class="photo-placeholder">
+                            <span>👤</span>
+                            Photo Preview
+                        </div>
+
+                        <img id="photoPreview" alt="Profile Photo Preview">
+                    </div>
+
+                    <div class="photo-details">
+                        <h3>Add Your Profile Photo</h3>
+                        <p>
+                            JPG, PNG या WebP format की साफ photo चुनें।
+                            Maximum file size 5 MB रखी गई है।
+                        </p>
+
+                        <input
+                            id="profilePhoto"
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+            </section>
+
+         <div class="security-box">
+    <div class="security-icon">🔒</div>
+    <div>
+        आपकी जानकारी सुरक्षित रूप से दर्ज की जाएगी।
+        Contact details केवल लागू membership और privacy rules के अनुसार उपलब्ध होंगी।
+    </div>
+</div>
+
+            <div class="consent-box">
+                <label>
+                    <input id="consent" type="checkbox" required>
+                    <span>
+                        मैं पुष्टि करता/करती हूँ कि मेरे द्वारा दी गई जानकारी
+                        मेरी जानकारी के अनुसार सही है और matrimonial profile
+                        बनाने के उद्देश्य से Indian Vivah को यह जानकारी
+                        उपलब्ध करा रहा/रही हूँ।
+                    </span>
+                </label>
+            </div>
+
+            <button type="submit" id="submitBtn" class="submit-button">
+                ♥ CREATE FREE PROFILE
+            </button>
+
+            <div id="formMessage" class="form-message"></div>
+
+        </form>
+
+        <div class="bottom-note">
+            Registration free है। Membership या अन्य paid services अलग हो सकती हैं।
+            Profile approval Indian Vivah Admin द्वारा किया जा सकता है।
+        </div>
+
+    </main>
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            deleteUser
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+        import {
+            getFirestore,
+            doc,
+            setDoc
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw",
+            authDomain: "indian-vivah-app-2026.firebaseapp.com",
+            projectId: "indian-vivah-app-2026",
+            storageBucket: "indian-vivah-app-2026.firebasestorage.app",
+            messagingSenderId: "807227064930",
+            appId: "1:807227064930:web:c6cbc77cbc15c52ff0073b",
+            measurementId: "G-E4EC5RDHVM"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const CLOUDINARY_CLOUD_NAME = "lzqwacv4";
+        const CLOUDINARY_UPLOAD_PRESET = "indian_vivah_profiles";
+
+        const form = document.getElementById("profileForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const messageBox = document.getElementById("formMessage");
+        const photoInput = document.getElementById("profilePhoto");
+        const photoPreview = document.getElementById("photoPreview");
+        const photoPlaceholder = document.getElementById("photoPlaceholder");
+
+        function value(id) {
+            return document.getElementById(id).value.trim();
+        }
+
+        function showMessage(type, text) {
+            messageBox.className = "form-message " + type;
+            messageBox.textContent = text;
+
+            messageBox.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+        photoInput.addEventListener("change", function () {
+
+            const file = photoInput.files[0];
+
+            if (!file) {
+                photoPreview.style.display = "none";
+                photoPlaceholder.style.display = "block";
+                return;
+            }
+
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            if (!allowedTypes.includes(file.type)) {
+                alert("कृपया JPG, PNG या WebP photo चुनें।");
+                photoInput.value = "";
+                photoPreview.style.display = "none";
+                photoPlaceholder.style.display = "block";
+                return;
+            }
+
+            const maxSize = 5 * 1024 * 1024;
+
+            if (file.size > maxSize) {
+                alert("Photo 5 MB से कम होना चाहिए।");
+                photoInput.value = "";
+                photoPreview.style.display = "none";
+                photoPlaceholder.style.display = "block";
+                return;
+            }
+
+            const previewURL = URL.createObjectURL(file);
+            photoPreview.src = previewURL;
+            photoPreview.style.display = "block";
+            photoPlaceholder.style.display = "none";
+        });
+
+        async function uploadPhotoToCloudinary(file) {
+
+            const formData = new FormData();
+
+            formData.append("file", file);
+            formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+            formData.append("tags", "indian_vivah,profile_photo,website_upload");
+
+            const response = await fetch(
+                `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.error?.message || "Cloudinary upload failed."
+                );
+            }
+
+            if (!data.secure_url) {
+                throw new Error("Cloudinary photo URL नहीं मिली।");
+            }
+
+            return data.secure_url;
+        }
+
+        form.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            messageBox.className = "form-message";
+            messageBox.textContent = "";
+
+            const photoFile = photoInput.files[0];
+
+            if (!photoFile) {
+                showMessage("error", "❌ कृपया Profile Photo चुनें।");
+                return;
+            }
+
+            const email = value("email");
+            const password = document.getElementById("password").value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "PLEASE WAIT...";
+
+            let createdUser = null;
+
+            try {
+                submitBtn.textContent = "CREATING ACCOUNT...";
+
+                const credential = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+                createdUser = credential.user;
+
+                submitBtn.textContent = "UPLOADING PHOTO...";
+
+                const photoDownloadUrl = await uploadPhotoToCloudinary(photoFile);
+
+                submitBtn.textContent = "SAVING PROFILE...";
+
+                const now = new Date().toISOString();
+
+                const profileData = {
+                    uid: createdUser.uid,
+                    email: createdUser.email,
+
+                    profileFor: value("profileFor"),
+                    gender: value("gender"),
+
+                    fullName: value("fullName"),
+                    mobileNumber: value("mobileNumber"),
+                    dateOfBirth: value("dateOfBirth"),
+                    religion: value("religion"),
+                    motherTongue: value("motherTongue"),
+                    maritalStatus: value("maritalStatus"),
+
+                    state: value("state"),
+                    district: value("district"),
+                    city: value("city"),
+                    pinCode: value("pinCode"),
+                    currentAddress: value("currentAddress"),
+
+                    height: value("height"),
+                    education: value("education"),
+                    occupationType: value("occupationType"),
+                    workDetails: value("workDetails"),
+                    annualIncome: value("annualIncome"),
+
+                    diet: value("diet"),
+                    smoking: value("smoking"),
+                    drinking: value("drinking"),
+
+                    photoPrivacy: document.getElementById("photoPrivacy").value,
+                    photoUrls: [photoDownloadUrl],
+                    profileStatus: "approved",
+
+                    createdAt: now,
+                    updatedAt: now
+                };
+
+                await setDoc(
+                    doc(db, "profiles", createdUser.uid),
+                    profileData,
+                    { merge: true }
+                );
+                // =====================================================
+// PUBLIC PROFILE
+// App ke Matches ke liye same public_profiles collection
+// =====================================================
+
+let managedBy = "Self";
+
+if (
+    profileData.profileFor &&
+    profileData.profileFor !== "Self"
+) {
+    managedBy = profileData.profileFor;
+}
+
+const publicProfileData = {
+
+    id: createdUser.uid,
+    ownerUid: createdUser.uid,
+
+    source: "user",
+    managedBy: managedBy,
+
+    // Website profile seedhe Matches me active rahegi
+    status: "approved",
+
+    profileFor: profileData.profileFor,
+    gender: profileData.gender,
+
+    fullName: profileData.fullName,
+    dateOfBirth: profileData.dateOfBirth,
+    religion: profileData.religion,
+    motherTongue: profileData.motherTongue,
+    maritalStatus: profileData.maritalStatus,
+
+    state: profileData.state,
+    district: profileData.district,
+    city: profileData.city,
+
+    height: profileData.height,
+    education: profileData.education,
+    occupationType: profileData.occupationType,
+    workDetails: profileData.workDetails,
+    annualIncome: profileData.annualIncome,
+
+    community: null,
+
+    photoPrivacy: profileData.photoPrivacy,
+
+    photoUrls: profileData.photoUrls,
+
+    createdAt: profileData.createdAt,
+    updatedAt: profileData.updatedAt
+};
+
+await setDoc(
+    doc(
+        db,
+        "public_profiles",
+        createdUser.uid
+    ),
+    publicProfileData,
+    {
+        merge: true
+    }
+);
+
+               showMessage(
+    "success",
+    "✅ आपकी Indian Vivah profile सफलतापूर्वक बन गई है। Photo भी save हो गई है। आपकी profile अब Matches में active है।"
+);
+
+                form.reset();
+                photoPreview.src = "";
+                photoPreview.style.display = "none";
+                photoPlaceholder.style.display = "block";
+
+                submitBtn.textContent = "✓ PROFILE CREATED";
+
+            } catch (error) {
+
+                console.error("Registration Error:", error);
+
+                if (createdUser) {
+                    try {
+                        await deleteUser(createdUser);
+                    } catch (cleanupError) {
+                        console.error("User cleanup failed:", cleanupError);
+                    }
+                }
+
+                let errorText =
+                    "❌ Profile create नहीं हो सकी। कृपया दोबारा प्रयास करें।";
+
+                if (error.code === "auth/email-already-in-use") {
+                    errorText =
+                        "यह Email पहले से Indian Vivah पर registered है। कृपया Login करें।";
+                } else if (error.code === "auth/invalid-email") {
+                    errorText = "कृपया सही Email ID दर्ज करें।";
+                } else if (error.code === "auth/weak-password") {
+                    errorText = "Password कम से कम 6 characters का रखें।";
+                } else if (error.code === "auth/operation-not-allowed") {
+                    errorText =
+                        "Firebase Authentication में Email/Password Sign-In enable नहीं है।";
+                } else if (
+                    error.code === "permission-denied" ||
+                    error.code === "firestore/permission-denied"
+                ) {
+                    errorText =
+                        "Profile save नहीं हो सकी क्योंकि Firestore Rules block कर रही हैं।";
+                } else if (
+                    error.message &&
+                    error.message.toLowerCase().includes("cloudinary")
+                ) {
+                    errorText =
+                        "Photo upload में दिक्कत आई। कृपया दूसरी photo के साथ दोबारा प्रयास करें।";
+                }
+
+                showMessage("error", errorText);
+
+                submitBtn.disabled = false;
+                submitBtn.textContent = "♥ CREATE FREE PROFILE";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

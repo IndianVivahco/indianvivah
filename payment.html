@@ -1,108 +1,209 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Payment Terminal - Indian Vivah</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #fff8f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .pay-page-card { background: white; width: 100%; max-width: 480px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid #800020; padding: 30px 25px; text-align: center; }
-        h2 { color: #800020; font-size: 24px; margin-bottom: 5px; font-weight: bold; }
-        .subtitle { font-size: 14px; color: #666; margin-bottom: 25px; }
-        .section-title { font-size: 12px; font-weight: bold; color: #888; text-transform: uppercase; letter-spacing: 0.5px; display: block; text-align: left; margin: 20px 0 10px 0; }
-        
-        /* Premium QR Code Box */
-        .qr-display-box { background: #fff8f8; border: 2px dashed #800020; padding: 20px; border-radius: 10px; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .qr-placeholder { width: 160px; height: 160px; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #333; border: 1px solid #ccc; font-weight: bold; border-radius: 4px; text-align: center; }
-        
-        /* UPI Apps Row Grid */
-        .upi-apps-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .upi-app-btn { border: 1px solid #ddd; padding: 12px; border-radius: 8px; text-align: center; background: #fff; cursor: pointer; transition: 0.2s; text-decoration: none; display: block; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .upi-app-btn:hover { border-color: #800020; background: #fff5f5; }
-        .app-emoji { font-size: 22px; display: block; margin-bottom: 4px; }
-        .app-name { font-size: 12px; color: #333; font-weight: 600; display: block; }
-        
-        /* Other Methods List */
-        .pay-row { display: flex; align-items: center; justify-content: space-between; border: 1px solid #eee; padding: 14px 15px; border-radius: 8px; background: #fafafa; margin-bottom: 12px; cursor: pointer; }
-        .pay-row:hover { border-color: #800020; background: #fff5f5; }
-        .pay-left { display: flex; align-items: center; gap: 12px; text-align: left; }
-        .pay-title { font-size: 14px; color: #333; font-weight: bold; display: block; }
-        .pay-desc { font-size: 11px; color: #777; }
-        
-        /* WhatsApp Green Button */
-        .btn-send-wa { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: linear-gradient(135deg, #25d366, #075e54); color: white; border: none; padding: 14px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.2); margin-top: 15px; }
-        .btn-send-wa:hover { background: #128c7e; }
-        .back-link { display: inline-block; margin-top: 20px; color: #666; font-size: 13px; text-decoration: none; }
-        .back-link:hover { color: #800020; text-decoration: underline; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Secure Payment | Indian Vivah Matrimony</title>
+  <style>
+    :root{
+      --wine:#7a0022;
+      --wine2:#a00032;
+      --gold:#d6b24b;
+      --cream:#fffaf6;
+      --ink:#2c2024;
+      --muted:#7c6970;
+      --line:#eadde1;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 90% 8%,rgba(214,178,75,.15),transparent 24%),
+        linear-gradient(145deg,#fffaf7,#fff1f4);
+      min-height:100vh;
+    }
+    .wrap{max-width:520px;margin:0 auto;padding:20px 14px 40px}
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 22px 60px rgba(80,0,28,.12);
+    }
+    .topbar{
+      height:8px;
+      background:linear-gradient(90deg,var(--wine),var(--wine2),var(--gold));
+    }
+    .inner{padding:26px 22px}
+    .brand{
+      font-weight:900;
+      color:var(--wine);
+      font-size:13px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    h1{margin:0;color:var(--wine);font-size:30px;line-height:1.05}
+    .sub{margin:9px 0 20px;color:var(--muted);font-size:14px;line-height:1.55}
+    .summary{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:10px 14px;
+      padding:15px;
+      background:#fff8fa;
+      border:1px solid #f0dfe5;
+      border-radius:16px;
+      margin-bottom:20px;
+    }
+    .summary .label{color:var(--muted);font-size:12px;font-weight:700}
+    .summary .value{font-weight:900;color:var(--wine);text-align:right}
+    .section-title{
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.3px;
+      color:#5e4b52;
+      margin:18px 0 10px;
+      text-transform:uppercase;
+    }
+    .qrbox{
+      text-align:center;
+      border:1px dashed rgba(122,0,34,.35);
+      border-radius:20px;
+      padding:18px;
+      background:#fffdfd;
+    }
+    .qrbox img{
+      width:min(310px,100%);
+      height:auto;
+      display:block;
+      margin:0 auto 10px;
+      border-radius:12px;
+    }
+    .upi{
+      display:inline-block;
+      margin-top:4px;
+      padding:9px 12px;
+      background:#fff4f7;
+      border:1px solid #efd7df;
+      border-radius:999px;
+      font-weight:900;
+      color:var(--wine);
+      word-break:break-all;
+    }
+    .note{
+      margin:12px 0 0;
+      font-size:12px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+    .btn{
+      width:100%;
+      border:0;
+      border-radius:14px;
+      padding:15px 16px;
+      font-weight:900;
+      font-size:15px;
+      cursor:pointer;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin-top:12px;
+    }
+    .primary{
+      color:#fff;
+      background:linear-gradient(135deg,var(--wine),#bd1d56);
+      box-shadow:0 12px 26px rgba(122,0,34,.22);
+    }
+    .secondary{
+      color:var(--wine);
+      background:#fff;
+      border:1px solid #e8cfd7;
+    }
+    .warning{
+      margin-top:16px;
+      padding:12px 13px;
+      border-radius:14px;
+      background:#fff9e9;
+      border:1px solid #ecdca9;
+      font-size:12px;
+      line-height:1.55;
+      color:#6c5818;
+    }
+    .back{margin-top:14px;text-align:center}
+    .back a{color:var(--wine);font-weight:800;text-decoration:none}
+    @media(max-width:520px){
+      .wrap{padding:0}
+      .card{border-radius:0;min-height:100vh}
+      .inner{padding:24px 18px 34px}
+      h1{font-size:27px}
+    }
+  </style>
 </head>
 <body>
+  <main class="wrap">
+    <section class="card">
+      <div class="topbar"></div>
+      <div class="inner">
+        <div class="brand">Indian Vivah Matrimony</div>
+        <h1>Membership Payment</h1>
+        <p class="sub">नीचे दिए गए verified payment details से payment करें। भुगतान के बाद screenshot WhatsApp पर भेजें।</p>
 
-    <div class="pay-page-card">
-        <h2>Online Payment Terminal</h2>
-        <p class="subtitle">Niche diye gaye kisi bhi option se surakshit payment poora karein.</p>
-        
-        <!-- TOP: QR CODE BOX -->
-        <span class="section-title">📸 Scan QR Code to Pay</span>
-        <div class="qr-display-box">
-            <!-- Baad me aap yahan apni asli QR image [src="qr.jpg"] laga lena, abhi placeholder mast lagega -->
-            <div class="qr-placeholder">[ OFFICIAL QR CODE ]</div>
-            <p style="font-size: 12px; color: #800020; font-weight: 600;">UPI ID: indianvivah@upi</p>
+        <div class="summary">
+          <div class="label">Selected Plan</div>
+          <div class="value" id="planText">Membership</div>
+          <div class="label">Payable Amount</div>
+          <div class="value" id="amountText">₹0</div>
         </div>
 
-             <!-- MIDDLE: INSTANT UPI APPS WITH LOGOS & ACTIVE REAL APP LINKS -->
-        <span class="section-title">⚡ Pay via Instant UPI Apps</span>
-        <div class="upi-apps-grid">
-            
-            <!-- GOOGLE PAY: Active Link with Logo -->
-            <!-- 🛠️ Sabse jaroori: pa= ke aage apna asli UPI ID daal dena bhai (Jaise: pa=9876543210@ybl) -->
-            <a href="upi://pay?pa=indianvivah@upi&pn=IndianVivahMatrimony&am=&cu=INR" class="upi-app-btn">
-                <img src="googlepay.jpg" alt="Google Pay" style="width: 32px; height: 32px; display: block; margin: 0 auto 6px auto;">
-                <span class="app-name">Google Pay</span>
-            </a>
-            
-            <!-- PHONEPE: Active Link with Logo -->
-            <a href="upi://pay?pa=indianvivah@upi&pn=IndianVivahMatrimony&am=&cu=INR" class="upi-app-btn">
-                <img src="phonepay.jpg" alt="PhonePe" style="width: 32px; height: 32px; display: block; margin: 0 auto 6px auto;">
-                <span class="app-name">PhonePe</span>
-            </a>
-            
-            <!-- PAYTM: Active Link with Logo -->
-            <a href="upi://pay?pa=indianvivah@upi&pn=IndianVivahMatrimony&am=&cu=INR" class="upi-app-btn">
-                <img src="paytm.jpg" alt="Paytm" style="width: 32px; height: 32px; display: block; margin: 0 auto 6px auto;">
-                <span class="app-name">Paytm UPI</span>
-            </a>
-
+        <div class="section-title">Scan QR to Pay</div>
+        <div class="qrbox">
+          <img src="images/phonepe-qr.png" alt="Indian Vivah Matrimony Payment QR" />
+          <div>Official UPI ID</div>
+          <div class="upi">indianvivah77@oksbi</div>
+          <p class="note">Payment करने से पहले receiver name, UPI ID और payable amount स्वयं verify करें।</p>
         </div>
 
+        <a id="upiBtn" class="btn primary" href="#">📱 Open UPI App</a>
+        <a id="waBtn" class="btn secondary" href="#" target="_blank" rel="noopener">💬 Send Payment Screenshot on WhatsApp</a>
 
-        <!-- OTHER OPTIONAL METHODS -->
-        <span class="section-title">💳 Credit Card &amp; Netbanking</span>
-        <div class="pay-row">
-            <div class="pay-left">
-                <span style="font-size: 20px;">🎴</span>
-                <div><span class="pay-title">Credit / Debit Card</span><span class="pay-desc">Visa, MasterCard, RuPay</span></div>
-            </div>
-            <span style="color: #aaa;">→</span>
-        </div>
-        <div class="pay-row">
-            <div class="pay-left">
-                <span style="font-size: 20px;">🏦</span>
-                <div><span class="pay-title">Net Banking</span><span class="pay-desc">SBI, HDFC, ICICI &amp; all major banks</span></div>
-            </div>
-            <span style="color: #aaa;">→</span>
+        <div class="warning">
+          Card / Net Banking payment इस page पर उपलब्ध नहीं है। किसी भी card number, CVV, OTP या internet-banking password को इस website पर दर्ज न करें।
         </div>
 
-        <!-- BOTTOM: WHATSAPP ACTION -->
-        <span class="section-title">📩 Verification</span>
-        <!-- 🛠️ Yahan 91 ke baad apna asli 10-digit mobile number bina kisi space ke likh dijiye bhai -->
-        <a href="whatsapp://send?phone=918982523577" target="_blank" class="btn-send-wa">
-            💬 Send Payment Screenshot on WhatsApp
-        </a>
+        <div class="back"><a href="index.html#plans">← Back to Membership Plans</a></div>
+      </div>
+    </section>
+  </main>
 
-        <a href="index.html" class="back-link">← Cancel &amp; Go Back</a>
-    </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const plan = params.get("plan") || "Membership";
+    const amountRaw = params.get("amount") || "0";
+    const safeAmount = /^\d+(\.\d{1,2})?$/.test(amountRaw) ? amountRaw : "0";
 
+    document.getElementById("planText").textContent = plan + " Membership";
+    document.getElementById("amountText").textContent =
+      "₹" + Number(safeAmount).toLocaleString("en-IN");
+
+    const upi = "indianvivah77@oksbi";
+    const name = "Indian Vivah Matrimony";
+    const note = `${plan} Membership`;
+    const upiLink =
+      `upi://pay?pa=${encodeURIComponent(upi)}` +
+      `&pn=${encodeURIComponent(name)}` +
+      `&am=${encodeURIComponent(safeAmount)}` +
+      `&cu=INR&tn=${encodeURIComponent(note)}`;
+
+    document.getElementById("upiBtn").href = upiLink;
+
+    const waText =
+      `Namaste, maine Indian Vivah Matrimony ka ${plan} Membership plan (₹${Number(safeAmount).toLocaleString("en-IN")}) select kiya hai. Payment screenshot bhej raha/rahi hoon.`;
+    document.getElementById("waBtn").href =
+      `https://wa.me/918982523577?text=${encodeURIComponent(waText)}`;
+  </script>
 </body>
 </html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edit Profile | Indian Vivah Matrimony</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(145deg,#fffaf7,#fff1f4);color:#332027}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 5%;background:linear-gradient(135deg,#650019,#8d1538,#70001d);color:#fff}.brand{font-size:21px;font-weight:900}.brand span{color:#f2d36f}.headlinks{display:flex;gap:8px}.headlinks a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:999px;font-weight:800;font-size:12px}
+main{max-width:1000px;margin:auto;padding:36px 18px 60px}.intro{text-align:center;margin-bottom:24px}.intro h1{color:#750020;font-size:clamp(30px,4vw,44px);margin-bottom:8px}.card{background:#fff;border:1px solid rgba(129,16,51,.10);border-radius:26px;padding:30px;box-shadow:0 24px 70px rgba(91,5,33,.13)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field label{display:block;margin:0 0 7px 3px;color:#604851;font-size:13px;font-weight:800}input,select,textarea{width:100%;min-height:48px;padding:11px 13px;border:1px solid #ddcbd1;border-radius:12px;font:inherit;background:#fff}textarea{resize:vertical}
+.photoBox{margin:22px 0;padding:18px;border:1px dashed #d9a7b5;border-radius:18px;background:#fff9fb}.photoPreview{width:150px;height:180px;object-fit:cover;border-radius:16px;display:none;margin:12px 0;box-shadow:0 8px 22px rgba(70,0,22,.12)}
+.save{width:100%;min-height:55px;margin-top:22px;border:0;border-radius:14px;background:linear-gradient(135deg,#71001d,#b21f50);color:#fff;font-size:15px;font-weight:900;cursor:pointer}.msg{display:none;margin-top:16px;padding:14px;border-radius:12px;text-align:center;font-weight:800}.msg.ok{display:block;background:#edf9f1;color:#176735}.msg.err{display:block;background:#fff1f3;color:#961d32}
+@media(max-width:700px){header{padding:10px 12px}.brand{font-size:16px}main{padding:24px 10px 45px}.card{padding:19px 13px}.grid{grid-template-columns:1fr}}
+
+/* ===== Premium Edit Profile polish ===== */
+body{
+  background:
+    radial-gradient(circle at 92% 8%,rgba(214,178,75,.14),transparent 24%),
+    radial-gradient(circle at 8% 90%,rgba(181,40,88,.08),transparent 26%),
+    linear-gradient(145deg,#fffaf7,#fff1f4);
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 8px 28px rgba(85,0,25,.18);
+  backdrop-filter:blur(14px);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.brand::before{
+  content:"♥";
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff7d7,#d9ac3d);
+  color:#790021;
+  box-shadow:0 5px 16px rgba(0,0,0,.16);
+}
+.intro{
+  position:relative;
+  max-width:760px;
+  margin:0 auto 28px;
+}
+.intro::after{
+  content:"";
+  display:block;
+  width:78px;
+  height:3px;
+  margin:15px auto 0;
+  border-radius:999px;
+  background:linear-gradient(90deg,#7a0022,#d6b24b);
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(214,178,75,.08),transparent 24%),
+    #fff;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:-90px;
+  right:-80px;
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  background:rgba(181,40,88,.045);
+  pointer-events:none;
+}
+.grid{
+  position:relative;
+  z-index:1;
+}
+.field{
+  position:relative;
+}
+.field label{
+  font-size:12px;
+  letter-spacing:.15px;
+}
+input,select,textarea{
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease,background .2s ease;
+  background:#fffdfd;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:rgba(116,0,32,.55);
+  box-shadow:0 0 0 4px rgba(116,0,32,.08);
+  background:#fff;
+}
+.photoBox{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(214,178,75,.13),transparent 28%),
+    linear-gradient(145deg,#fff9fb,#fff);
+}
+.photoBox::after{
+  content:"Profile Photo";
+  position:absolute;
+  top:12px;
+  right:14px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:#fff0f4;
+  color:#760020;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+.photoPreview{
+  border:4px solid #fff;
+  box-shadow:
+    0 14px 30px rgba(70,0,22,.14),
+    0 0 0 1px rgba(116,0,32,.08);
+}
+.save{
+  position:relative;
+  overflow:hidden;
+  box-shadow:
+    0 14px 30px rgba(113,0,29,.25),
+    inset 0 1px 0 rgba(255,255,255,.18);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.save:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(113,0,29,.30);
+}
+.save::after{
+  content:"";
+  position:absolute;
+  top:-35%;
+  left:-55%;
+  width:35%;
+  height:170%;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transition:left .55s ease;
+}
+.save:hover::after{
+  left:125%;
+}
+.headlinks a{
+  transition:transform .2s ease,background .2s ease;
+}
+.headlinks a:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.18);
+}
+@media(max-width:700px){
+  .brand::before{
+    width:32px;
+    height:32px;
+    font-size:14px;
+  }
+  .headlinks{
+    gap:6px;
+  }
+  .headlinks a{
+    padding:8px 10px;
+    font-size:11px;
+  }
+  .intro h1{
+    font-size:31px;
+  }
+  .card{
+    border-radius:22px;
+  }
+  .photoBox{
+    padding:16px 12px;
+  }
+  .photoBox::after{
+    position:static;
+    display:inline-flex;
+    margin-top:8px;
+  }
+  .save{
+    min-height:54px;
+  }
+}
+
+</style></head>
+<body><header><div class="brand">Indian Vivah <span>Matrimony</span></div><div class="headlinks"><a href="my-profile.html">My Profile</a><a href="index.html">Home</a></div></header>
+<main><div class="intro"><h1>Edit Your Profile</h1><p>अपनी existing matrimonial profile details update करें। नया account नहीं बनेगा।</p></div>
+<form id="form" class="card"><div class="grid"><div class="field"><label>Profile For</label><select id="profileFor"><option value="">Select</option><option value="Self">Self</option><option value="Son">Son</option><option value="Daughter">Daughter</option><option value="Brother">Brother</option><option value="Sister">Sister</option><option value="Relative">Relative</option></select></div>
+<div class="field"><label>Gender</label><select id="gender"><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option></select></div>
+<div class="field"><label>Full Name</label><input id="fullName" type="text" required></div>
+<div class="field"><label>Mobile Number</label><input id="mobileNumber" type="tel" required></div>
+<div class="field"><label>Date of Birth</label><input id="dateOfBirth" type="date"></div>
+<div class="field"><label>Religion</label><select id="religion"><option value="">Select</option><option value="Hindu">Hindu</option><option value="Muslim">Muslim</option><option value="Sikh">Sikh</option><option value="Christian">Christian</option><option value="Buddhist">Buddhist</option><option value="Jain">Jain</option><option value="Other">Other</option></select></div>
+<div class="field"><label>Mother Tongue</label><input id="motherTongue" type="text"></div>
+<div class="field"><label>Marital Status</label><select id="maritalStatus"><option value="">Select</option><option value="Never Married">Never Married</option><option value="Divorced">Divorced</option><option value="Widowed">Widowed</option><option value="Separated">Separated</option></select></div>
+<div class="field"><label>State</label><input id="state" type="text"></div>
+<div class="field"><label>District</label><input id="district" type="text"></div>
+<div class="field"><label>City</label><input id="city" type="text"></div>
+<div class="field"><label>PIN Code</label><input id="pinCode" type="text"></div>
+<div class="field"><label>Current Address</label><textarea id="currentAddress" rows="3"></textarea></div>
+<div class="field"><label>Height</label><input id="height" type="text"></div>
+<div class="field"><label>Education</label><input id="education" type="text"></div>
+<div class="field"><label>Occupation</label><input id="occupationType" type="text"></div>
+<div class="field"><label>Work Details</label><textarea id="workDetails" rows="3"></textarea></div>
+<div class="field"><label>Annual Income</label><input id="annualIncome" type="text"></div>
+<div class="field"><label>Diet</label><input id="diet" type="text"></div>
+<div class="field"><label>Smoking</label><input id="smoking" type="text"></div>
+<div class="field"><label>Drinking</label><input id="drinking" type="text"></div>
+<div class="field"><label>Photo Privacy</label><select id="photoPrivacy"><option value="">Select</option><option value="everyone">everyone</option><option value="members">members</option><option value="private">private</option></select></div></div>
+<div class="photoBox"><strong>Profile Photo</strong><p style="color:#7a666e;font-size:12px">नई photo optional है। Photo नहीं चुनेंगे तो existing photo बनी रहेगी।</p><img id="preview" class="photoPreview"><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"></div>
+<p style="margin:18px 0 0;color:#806b73;font-size:11px;line-height:1.55;text-align:center;">
+Profile update होने पर private profile और public matchmaking profile दोनों sync किए जाएंगे।
+</p>
+<button id="saveBtn" class="save" type="submit">SAVE CHANGES</button><div id="msg" class="msg"></div></form></main>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw",
+  authDomain: "indian-vivah-app-2026.firebaseapp.com",
+  projectId: "indian-vivah-app-2026",
+  storageBucket: "indian-vivah-app-2026.firebasestorage.app",
+  messagingSenderId: "807227064930",
+  appId: "1:807227064930:web:c6cbc77cbc15c52ff0073b",
+  measurementId: "G-E4EC5RDHVM"
+};
+
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const cloud="lzqwacv4",preset="indian_vivah_profiles";
+const ids=['profileFor', 'gender', 'fullName', 'mobileNumber', 'dateOfBirth', 'religion', 'motherTongue', 'maritalStatus', 'state', 'district', 'city', 'pinCode', 'currentAddress', 'height', 'education', 'occupationType', 'workDetails', 'annualIncome', 'diet', 'smoking', 'drinking', 'photoPrivacy'];
+let user=null,existing=null;
+const val=id=>document.getElementById(id).value.trim();
+function message(ok,t){const m=document.getElementById("msg");m.className="msg "+(ok?"ok":"err");m.textContent=t;}
+async function upload(file){const fd=new FormData();fd.append("file",file);fd.append("upload_preset",preset);const r=await fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`,{method:"POST",body:fd});const d=await r.json();if(!r.ok||!d.secure_url)throw new Error(d.error?.message||"Photo upload failed");return d.secure_url;}
+async function load(u){user=u;let snap=await getDoc(doc(db,"profiles",u.uid));if(!snap.exists()){const p=await getDoc(doc(db,"public_profiles",u.uid));if(p.exists())existing=p.data();else existing={};}else existing=snap.data();
+ids.forEach(id=>{const e=document.getElementById(id);if(e&&existing[id]!=null)e.value=existing[id];});
+const photos=Array.isArray(existing.photoUrls)?existing.photoUrls:[];if(photos[0]){const p=document.getElementById("preview");p.src=photos[0];p.style.display="block";}
+}
+onAuthStateChanged(auth,u=>{if(!u)location.href="login.html";else load(u).catch(e=>message(false,"Profile load नहीं हुई: "+e.message));});
+document.getElementById("photo").onchange=e=>{const f=e.target.files[0];if(f){const p=document.getElementById("preview");p.src=URL.createObjectURL(f);p.style.display="block";}};
+document.getElementById("form").onsubmit=async e=>{e.preventDefault();if(!user)return;const b=document.getElementById("saveBtn");b.disabled=true;b.textContent="SAVING...";
+try{let photos=Array.isArray(existing?.photoUrls)?existing.photoUrls:[];const f=document.getElementById("photo").files[0];if(f)photos=[await upload(f)];
+const now=new Date().toISOString();const data={uid:user.uid,email:user.email,photoUrls:photos,updatedAt:now,createdAt:existing?.createdAt||now,profileStatus:existing?.profileStatus||"approved"};
+ids.forEach(id=>data[id]=val(id));
+await setDoc(doc(db,"profiles",user.uid),data,{merge:true});
+const publicData={id:user.uid,ownerUid:user.uid,source:"user",managedBy:data.profileFor==="Self"?"Self":(data.profileFor||"Self"),status:"approved",profileFor:data.profileFor,gender:data.gender,fullName:data.fullName,dateOfBirth:data.dateOfBirth,religion:data.religion,motherTongue:data.motherTongue,maritalStatus:data.maritalStatus,state:data.state,district:data.district,city:data.city,height:data.height,education:data.education,occupationType:data.occupationType,workDetails:data.workDetails,annualIncome:data.annualIncome,photoPrivacy:data.photoPrivacy,photoUrls:data.photoUrls,createdAt:data.createdAt,updatedAt:now};
+await setDoc(doc(db,"public_profiles",user.uid),publicData,{merge:true});
+existing=data;message(true,"✅ Profile successfully updated.");b.textContent="✓ SAVED";
+}catch(err){console.error(err);message(false,"❌ Save नहीं हुई: "+(err.message||err));b.textContent="SAVE CHANGES";}finally{b.disabled=false;}};
+</script></body></html>
