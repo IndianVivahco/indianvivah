@@ -749,13 +749,8 @@
 body.is-guest .guest-only{display:block !important;}
 body.is-member .guest-only{display:none !important;}
 
-.iv-plans-on-demand{
-    display:none !important;
-}
-.iv-plans-on-demand.iv-plans-open{
-    display:block !important;
-    animation:ivPlansIn .35s ease both;
-}
+
+
 @keyframes ivPlansIn{
     from{opacity:0;transform:translateY(16px)}
     to{opacity:1;transform:none}
@@ -1129,6 +1124,890 @@ body.is-member .guest-only{display:none !important;}
 }
 </style>
 
+<style>
+/* =========================================================
+   HOME HERO — CLEAN SPLIT LAYOUT
+   Text and buttons stay separate from the photographs.
+   ========================================================= */
+
+/* Keep the correct slider set visible for auth state */
+body:not(.is-member) .member-slide{
+    display:none !important;
+}
+body.is-member .public-slide{
+    display:none !important;
+}
+
+/* Never tint the actual hero photographs */
+.slide-img,
+.m-slide-img{
+    filter:none !important;
+}
+.slider-overlay,
+.m-slider-overlay{
+    display:none !important;
+    background:transparent !important;
+}
+
+/* ---------- DESKTOP ---------- */
+/* PC only: full photo hero with real HTML text/buttons over the image.
+   Mobile CSS below remains unchanged. */
+.d-split-hero.iv-cinematic-home{
+    position:relative;
+    width:min(1240px, calc(100% - 24px));
+    min-height:650px;
+    margin:14px auto 0 !important;
+    display:block !important;
+    overflow:hidden !important;
+    border:1px solid rgba(116,0,32,.08);
+    border-radius:24px;
+    background:#f5f1ed !important;
+    box-shadow:0 18px 44px rgba(71,0,18,.08);
+}
+
+.hero-left-slider.iv-hero-stage{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    min-height:650px !important;
+    overflow:hidden;
+    border-radius:24px;
+    background:#f5f1ed !important;
+}
+
+.hero-left-slider.iv-hero-stage .slide-img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover !important;
+    object-position:center center !important;
+    opacity:0;
+    transform:none !important;
+    filter:none !important;
+    transition:opacity 1s ease !important;
+}
+
+.hero-left-slider.iv-hero-stage .slide-img.active-slide{
+    opacity:1;
+    transform:none !important;
+}
+
+/* Only a gentle readability gradient on the TEXT side.
+   The couple/photo is not covered by a full dark overlay. */
+.d-split-hero.iv-cinematic-home::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(28,0,8,.64) 0%,
+        rgba(28,0,8,.45) 30%,
+        rgba(28,0,8,.18) 50%,
+        rgba(28,0,8,0) 70%
+      );
+}
+
+.iv-hero-text-panel{
+    position:relative;
+    z-index:4;
+    width:min(560px,48%);
+    min-height:650px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    padding:58px 0 54px clamp(38px,5vw,72px);
+    background:transparent !important;
+    color:#fff;
+}
+
+.iv-hero-text-panel .iv-hero-label{
+    display:inline-flex;
+    align-items:center;
+    padding:8px 13px;
+    margin-bottom:18px;
+    border:1px solid rgba(255,255,255,.24);
+    border-radius:999px;
+    background:rgba(64,0,18,.42);
+    color:#f3d77c;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.8px;
+    backdrop-filter:blur(5px);
+}
+
+.iv-hero-text-panel h1{
+    margin:0;
+    max-width:540px;
+    color:#fff;
+    font-size:clamp(46px,5vw,72px);
+    line-height:1.01;
+    letter-spacing:-2px;
+    font-weight:950;
+    text-shadow:0 4px 18px rgba(0,0,0,.34);
+}
+
+.iv-hero-text-panel h1 span{
+    display:block;
+    color:#f0d276;
+}
+
+.iv-hero-text-panel > p{
+    max-width:540px;
+    margin:20px 0 0;
+    color:rgba(255,255,255,.93);
+    font-size:17px;
+    line-height:1.68;
+    font-weight:600;
+    text-shadow:0 2px 9px rgba(0,0,0,.28);
+}
+
+.iv-clean-hero-actions{
+    width:100%;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:26px;
+}
+
+.iv-clean-hero-actions .iv-hero-btn{
+    width:auto !important;
+    min-width:190px;
+    min-height:52px;
+    padding:0 22px !important;
+}
+
+.iv-clean-hero-actions .iv-hero-btn-primary{
+    border:0 !important;
+    color:#fff !important;
+    background:linear-gradient(135deg,#8e002c,#bd1850) !important;
+    box-shadow:0 10px 24px rgba(70,0,22,.28) !important;
+}
+
+.iv-clean-hero-actions .iv-hero-btn-ghost{
+    color:#fff !important;
+    border:1px solid rgba(255,255,255,.55) !important;
+    background:rgba(255,255,255,.10) !important;
+    backdrop-filter:blur(6px);
+}
+
+.iv-clean-trust-row{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+.iv-clean-trust-row span{
+    display:inline-flex;
+    align-items:center;
+    min-height:34px;
+    padding:0 11px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:999px;
+    background:rgba(55,0,16,.34);
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    backdrop-filter:blur(5px);
+}
+
+.iv-clean-action-note{
+    margin-top:13px;
+    color:rgba(255,255,255,.76);
+    font-size:11px;
+    line-height:1.5;
+    text-shadow:0 2px 7px rgba(0,0,0,.25);
+}
+
+.hero-left-slider.iv-hero-stage .iv-orbit-ring,
+.hero-left-slider.iv-hero-stage .iv-floating-chip,
+.hero-left-slider.iv-hero-stage .slider-text{
+    display:none !important;
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:768px){
+    .m-split-hero.iv-mobile-cinematic{
+        position:relative;
+        width:calc(100% - 20px);
+        height:clamp(235px,61vw,295px) !important;
+        min-height:0 !important;
+        margin:10px auto 0 !important;
+        padding:0 !important;
+        overflow:hidden !important;
+        display:block !important;
+        background:#f5f1ed !important;
+        border-radius:18px;
+        box-shadow:0 12px 30px rgba(71,0,18,.08);
+    }
+
+    .m-split-hero.iv-mobile-cinematic .m-slide-img{
+        position:absolute;
+        inset:0;
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:center 28% !important;
+        opacity:0;
+        transform:none !important;
+        transition:opacity 1s ease !important;
+        background:#f5f1ed !important;
+    }
+
+    .m-split-hero.iv-mobile-cinematic .m-slide-img.m-active-slide{
+        opacity:1;
+        transform:none !important;
+    }
+
+
+    /* Same slider images on desktop + mobile; only the crop changes. */
+    .m-split-hero.iv-mobile-cinematic .m-slide-img{
+        image-rendering:auto;
+    }
+    .m-split-hero.iv-mobile-cinematic .m-slide-img[src*="slide1.jpg"],
+    .m-split-hero.iv-mobile-cinematic .m-slide-img[src*="slide2.jpg"],
+    .m-split-hero.iv-mobile-cinematic .m-slide-img[src*="slide3.jpg"],
+    .m-split-hero.iv-mobile-cinematic .m-slide-img[src*="slide4.jpg"]{
+        object-position:center 22% !important;
+    }
+
+    .m-split-hero .iv-mobile-float-chip,
+    .m-split-hero .m-hero-text-only{
+        display:none !important;
+    }
+
+    .iv-mobile-action-section{
+        padding:12px 10px 28px !important;
+        background:#fffaf7 !important;
+    }
+
+    .iv-mobile-action-card{
+        width:100%;
+        padding:24px 20px !important;
+        border:1px solid rgba(116,0,32,.10) !important;
+        border-radius:22px !important;
+        background:#fff !important;
+        box-shadow:0 14px 34px rgba(71,0,18,.08) !important;
+        text-align:left !important;
+    }
+
+    .iv-mobile-action-card .iv-action-kicker{
+        display:inline-flex;
+        margin-bottom:12px;
+    }
+
+    .iv-mobile-action-card h2{
+        margin:0 !important;
+        color:#520016 !important;
+        font-size:32px !important;
+        line-height:1.05 !important;
+        letter-spacing:-1px;
+        font-weight:950 !important;
+    }
+
+    .iv-mobile-action-card h2 span{
+        display:block;
+        color:#b58224;
+    }
+
+    .iv-mobile-action-card > p{
+        margin:13px 0 0 !important;
+        color:#715d64 !important;
+        font-size:14px !important;
+        line-height:1.65 !important;
+    }
+
+    .iv-mobile-action-buttons{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:10px !important;
+        margin-top:20px !important;
+    }
+
+    .iv-mobile-action-buttons .iv-hero-btn{
+        width:100% !important;
+        min-height:50px !important;
+    }
+
+    .iv-mobile-trust-row{
+        display:flex;
+        gap:8px;
+        flex-wrap:wrap;
+        margin-top:16px;
+    }
+
+    .iv-mobile-trust-row span{
+        padding:7px 10px;
+        border:1px solid #eadde1;
+        border-radius:999px;
+        background:#fff9fb;
+        color:#765d66;
+        font-size:11px;
+        font-weight:800;
+    }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   SMART MATCH GUIDE + HOW IT WORKS — MODERN LIVE POLISH
+   ========================================================= */
+
+.iv-live-match-section{
+  position:relative;
+  overflow:hidden;
+}
+
+.iv-live-match-section::before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  left:50%;
+  top:55%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(214,178,75,.18),rgba(181,40,88,.07) 42%,transparent 70%);
+  pointer-events:none;
+  animation:ivGlowPulse 4.8s ease-in-out infinite;
+}
+
+.iv-match-orbit{
+  position:relative;
+  z-index:2;
+}
+
+.iv-match-guide-card{
+  overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+}
+
+.iv-match-guide-card:hover{
+  transform:translateY(-9px) scale(1.015);
+  box-shadow:0 22px 46px rgba(70,0,22,.14) !important;
+  border-color:rgba(214,178,75,.50) !important;
+}
+
+.iv-img-icon,
+.iv-help-img-icon{
+  width:78px !important;
+  height:78px !important;
+  padding:7px !important;
+  margin-bottom:14px !important;
+  display:grid !important;
+  place-items:center !important;
+  border-radius:22px !important;
+  background:linear-gradient(145deg,#fff,#fff4f7) !important;
+  box-shadow:
+    0 12px 26px rgba(116,0,32,.10),
+    inset 0 0 0 1px rgba(214,178,75,.18) !important;
+}
+
+.iv-img-icon img,
+.iv-help-img-icon img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+  filter:none !important;
+  animation:ivIconFloat 3.8s ease-in-out infinite;
+}
+
+.iv-match-card-b .iv-img-icon img,
+.iv-help-card-modern:nth-child(2) .iv-help-img-icon img{animation-delay:.5s}
+.iv-match-card-c .iv-img-icon img,
+.iv-help-card-modern:nth-child(3) .iv-help-img-icon img{animation-delay:1s}
+.iv-match-card-d .iv-img-icon img,
+.iv-help-card-modern:nth-child(4) .iv-help-img-icon img{animation-delay:1.5s}
+
+.iv-match-center-modern{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:310px !important;
+  height:310px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border:1px solid rgba(214,178,75,.30) !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(circle at 35% 28%,rgba(255,255,255,.20),transparent 22%),
+    linear-gradient(145deg,#6a001f,#93002f 58%,#c27a20) !important;
+  color:#fff !important;
+  box-shadow:
+    0 25px 70px rgba(116,0,32,.20),
+    0 0 0 24px rgba(181,40,88,.045),
+    0 0 0 48px rgba(214,178,75,.035) !important;
+  isolation:isolate;
+}
+
+.iv-match-center-modern::before,
+.iv-match-center-modern::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px dashed rgba(181,40,88,.20);
+  animation:ivOrbitSpin 14s linear infinite;
+  z-index:-1;
+}
+
+.iv-match-center-modern::before{
+  inset:-40px;
+}
+
+.iv-match-center-modern::after{
+  inset:-78px;
+  animation-direction:reverse;
+  animation-duration:19s;
+  border-color:rgba(214,178,75,.22);
+}
+
+.iv-match-center-ring-modern{
+  width:74px !important;
+  height:74px !important;
+  display:grid !important;
+  place-items:center !important;
+  margin-bottom:8px !important;
+  border-radius:50% !important;
+  background:linear-gradient(145deg,#be0d48,#8b002b) !important;
+  box-shadow:
+    0 0 0 9px rgba(255,255,255,.07),
+    0 0 0 18px rgba(255,255,255,.035),
+    0 12px 28px rgba(0,0,0,.18) !important;
+  animation:ivHeartPulse 2.6s ease-in-out infinite;
+}
+
+.iv-match-center-modern .iv-match-heart{
+  color:#ffe485 !important;
+  font-size:31px !important;
+  line-height:1 !important;
+  text-shadow:0 5px 16px rgba(0,0,0,.18);
+}
+
+.iv-match-mini-label{
+  margin-top:4px;
+  color:#f6dd86 !important;
+  font-size:9px !important;
+  font-weight:900 !important;
+  letter-spacing:1.5px;
+}
+
+.iv-match-center-modern > strong{
+  margin-top:3px !important;
+  color:#fff !important;
+  font-size:25px !important;
+  font-weight:950 !important;
+  letter-spacing:-.5px;
+}
+
+.iv-match-subline{
+  margin-top:2px;
+  color:rgba(255,255,255,.75) !important;
+  font-size:11px !important;
+}
+
+.iv-match-journey-steps{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex-wrap:wrap;
+  width:86%;
+  margin-top:15px;
+}
+
+.iv-match-journey-steps span{
+  min-width:68px;
+  padding:6px 7px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  backdrop-filter:blur(6px);
+}
+
+.iv-match-journey-steps span b{
+  display:block;
+  color:#f6dd86;
+  font-size:9px;
+}
+
+.iv-match-journey-steps i{
+  color:#f6dd86;
+  font-style:normal;
+  font-weight:900;
+}
+
+.iv-orbit-dot{
+  position:absolute;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#f5d86f;
+  box-shadow:0 0 16px rgba(245,216,111,.75);
+}
+
+.iv-orbit-dot-1{top:-42px;left:50%;animation:ivDotFloat 2.8s ease-in-out infinite}
+.iv-orbit-dot-2{right:-55px;bottom:65px;animation:ivDotFloat 3.2s ease-in-out infinite .4s}
+.iv-orbit-dot-3{left:-54px;top:90px;animation:ivDotFloat 3.5s ease-in-out infinite .8s}
+
+/* HOW IT WORKS */
+.iv-live-help-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(214,178,75,.08),transparent 28%),
+    radial-gradient(circle at 92% 78%,rgba(181,40,88,.07),transparent 28%),
+    linear-gradient(180deg,#fffdfb,#fff8fa) !important;
+}
+
+.iv-help-grid-modern{
+  position:relative;
+}
+
+.iv-help-grid-modern::before{
+  content:"";
+  position:absolute;
+  left:9%;
+  right:9%;
+  top:76px;
+  height:3px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#e6c75e,#b52858,#e6c75e);
+  opacity:.28;
+  z-index:0;
+}
+
+.iv-help-card-modern{
+  position:relative;
+  z-index:1;
+  min-height:290px;
+  padding:24px 22px 25px !important;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(214,178,75,.10),transparent 34%),
+    #fff !important;
+  transition:transform .34s ease, box-shadow .34s ease, border-color .34s ease !important;
+}
+
+.iv-help-card-modern:hover{
+  transform:translateY(-9px);
+  border-color:rgba(181,40,88,.25) !important;
+  box-shadow:0 22px 48px rgba(71,0,18,.12) !important;
+}
+
+.iv-help-card-modern .iv-help-step{
+  top:18px !important;
+  right:18px !important;
+  font-size:34px !important;
+  color:rgba(116,0,32,.12) !important;
+}
+
+.iv-help-card-modern h3{
+  margin-top:4px !important;
+  font-size:19px !important;
+}
+
+.iv-help-card-modern p{
+  line-height:1.72 !important;
+}
+
+.iv-help-progress{
+  position:absolute;
+  top:70px;
+  right:-15px;
+  width:32px;
+  height:3px;
+  background:linear-gradient(90deg,#d6b24b,#b52858);
+  opacity:.55;
+}
+
+.iv-help-card-modern:nth-child(4) .iv-help-progress{
+  display:none;
+}
+
+@keyframes ivIconFloat{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-5px) rotate(1deg)}
+}
+
+@keyframes ivHeartPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.075)}
+}
+
+@keyframes ivGlowPulse{
+  0%,100%{opacity:.72;transform:translate(-50%,-50%) scale(.96)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}
+}
+
+@keyframes ivOrbitSpin{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes ivDotFloat{
+  0%,100%{transform:translateY(0);opacity:.72}
+  50%{transform:translateY(-8px);opacity:1}
+}
+
+@media(max-width:900px){
+  .iv-match-center-modern{
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    transform:none !important;
+    width:260px !important;
+    height:260px !important;
+    margin:28px auto !important;
+    grid-column:1/-1;
+  }
+
+  .iv-match-guide-card{
+    position:relative !important;
+    inset:auto !important;
+  }
+
+  .iv-match-orbit{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:14px !important;
+  }
+
+  .iv-help-grid-modern::before,
+  .iv-help-progress{
+    display:none !important;
+  }
+}
+
+@media(max-width:600px){
+  .iv-match-orbit{
+    grid-template-columns:1fr !important;
+  }
+
+  .iv-match-center-modern{
+    width:235px !important;
+    height:235px !important;
+    order:3;
+  }
+
+  .iv-match-center-modern > strong{
+    font-size:22px !important;
+  }
+
+  .iv-match-journey-steps{
+    width:92%;
+    gap:4px;
+  }
+
+  .iv-match-journey-steps span{
+    min-width:58px;
+    font-size:8px;
+  }
+
+  .iv-img-icon,
+  .iv-help-img-icon{
+    width:70px !important;
+    height:70px !important;
+  }
+
+  .iv-help-card-modern{
+    min-height:auto;
+  }
+}
+</style>
+
+
+<style>
+/* Professional mixed-color icon treatment */
+.iv-pro-icon{
+  overflow:hidden !important;
+  display:grid !important;
+  place-items:center !important;
+  background:linear-gradient(145deg,#ffffff,#f8fafc) !important;
+  border:1px solid rgba(21,42,78,.08) !important;
+  box-shadow:0 9px 22px rgba(32,52,78,.08) !important;
+}
+
+.iv-pro-icon img{
+  width:88% !important;
+  height:88% !important;
+  display:block !important;
+  object-fit:contain !important;
+  filter:none !important;
+}
+
+/* Why Indian Vivah */
+.stat-icon-wrapper.iv-pro-icon{
+  width:68px !important;
+  height:68px !important;
+  border-radius:18px !important;
+  flex:0 0 68px;
+}
+.stat-box{
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.stat-box:hover{
+  transform:translateY(-5px);
+  box-shadow:0 16px 34px rgba(32,52,78,.10);
+  border-color:rgba(62,118,205,.18);
+}
+
+/* Blog cards */
+.iv-blog-icon.iv-pro-icon{
+  width:72px !important;
+  height:72px !important;
+  border-radius:19px !important;
+}
+.suggestion-icon.iv-pro-icon{
+  width:76px !important;
+  height:76px !important;
+  border-radius:20px !important;
+  margin:0 auto 14px !important;
+}
+
+/* Contact */
+.contact-icon.iv-pro-icon{
+  width:70px !important;
+  height:70px !important;
+  border-radius:18px !important;
+  flex:0 0 70px;
+}
+.safety-icon.iv-pro-icon{
+  width:68px !important;
+  height:68px !important;
+  border-radius:18px !important;
+  flex:0 0 68px;
+}
+
+/* Keep these sections professional, not toy-like */
+.stat-box,
+.iv-blog-card,
+.contact-card,
+.safety-note{
+  background:#fff !important;
+}
+
+@media(max-width:700px){
+  .stat-icon-wrapper.iv-pro-icon,
+  .contact-icon.iv-pro-icon,
+  .safety-icon.iv-pro-icon{
+    width:60px !important;
+    height:60px !important;
+    flex-basis:60px;
+  }
+
+  .iv-blog-icon.iv-pro-icon,
+  .suggestion-icon.iv-pro-icon{
+    width:64px !important;
+    height:64px !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   MEMBERSHIP ICONS — DISTINCT PREMIUM VISUALS
+   ========================================================= */
+
+.iv-membership-icon{
+    width:82px !important;
+    height:82px !important;
+    flex:0 0 82px !important;
+    display:grid !important;
+    place-items:center !important;
+    padding:7px !important;
+    overflow:hidden !important;
+    border-radius:24px !important;
+    background:#fff !important;
+    border:1px solid rgba(71,0,18,.08) !important;
+    box-shadow:
+        0 12px 28px rgba(71,0,18,.10),
+        inset 0 0 0 1px rgba(255,255,255,.75) !important;
+}
+
+.iv-membership-icon img{
+    width:100% !important;
+    height:100% !important;
+    display:block !important;
+    object-fit:contain !important;
+    filter:none !important;
+    transform:none !important;
+}
+
+/* Each plan keeps its own visual character */
+.silver-icon{
+    background:linear-gradient(145deg,#ffffff,#f3f7fb) !important;
+    border-color:rgba(92,125,160,.18) !important;
+}
+
+.gold-icon{
+    background:linear-gradient(145deg,#fffdf5,#fff7dc) !important;
+    border-color:rgba(204,158,38,.22) !important;
+}
+
+.platinum-icon{
+    background:linear-gradient(145deg,#f7fbff,#eef3ff) !important;
+    border-color:rgba(38,76,145,.20) !important;
+}
+
+.plan-card{
+    transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease !important;
+}
+
+.plan-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 22px 48px rgba(71,0,18,.12) !important;
+}
+
+.plan-card:hover .iv-membership-icon{
+    transform:translateY(-3px) scale(1.03);
+    transition:transform .28s ease;
+}
+
+@media(max-width:700px){
+    .iv-membership-icon{
+        width:72px !important;
+        height:72px !important;
+        flex-basis:72px !important;
+        border-radius:21px !important;
+    }
+}
+</style>
+
+
+<style>
+/* Membership plans: visible inline after How It Works only for logged-in members */
+.iv-plans-inline{
+    display:block;
+    position:relative;
+    margin-top:0;
+}
+
+body.is-guest .iv-plans-inline{
+    display:none !important;
+}
+
+body.is-member .iv-plans-inline{
+    display:block !important;
+}
+</style>
+
 </head>
 
 
@@ -1153,7 +2032,7 @@ body.is-member .guest-only{display:none !important;}
 
 
 
-                <a href="#plans">Membership</a>
+                <a href="#plans" class="member-only">Membership</a>
 
                 <a href="services.html" class="iv-services-page-link">Services</a>
 
@@ -1181,91 +2060,73 @@ body.is-member .guest-only{display:none !important;}
 
         <section class="d-split-hero iv-cinematic-home" id="home">
 
+            <!-- FULL DESKTOP SLIDER PHOTO -->
             <div class="hero-left-slider iv-hero-stage">
 
-                <img src="slide1.jpg" alt="Matrimonial profile showcase 1" class="slide-img active-slide">
-                <img src="slide2.jpg" alt="Matrimonial profile showcase 2" class="slide-img">
-                <img src="slide3.jpg" alt="Matrimonial profile showcase 3" class="slide-img">
-                <img src="slide4.jpg" alt="Matrimonial profile showcase 4" class="slide-img">
+                <!-- PUBLIC / GUEST SLIDES -->
+                <img src="slide1.jpg" alt="Wedding Slide" class="slide-img public-slide active-slide">
+                <img src="slide2.jpg" alt="Wedding Slide" class="slide-img public-slide">
+                <img src="slide3.jpg" alt="Wedding Slide" class="slide-img public-slide">
+                <img src="slide4.jpg" alt="Wedding Slide" class="slide-img public-slide">
+                <img src="images/slides/public/public-slide-1.png" alt="Indian Wedding" class="slide-img public-slide">
+                <img src="images/slides/public/public-slide-2.png" alt="Indian Wedding" class="slide-img public-slide">
+                <img src="images/slides/public/public-slide-3.png" alt="Indian Wedding" class="slide-img public-slide">
+                <img src="images/slides/public/public-slide-4.png" alt="Indian Wedding" class="slide-img public-slide">
 
-                <div class="slider-overlay"></div>
-
-                <div class="iv-orbit-ring iv-orbit-ring-one"></div>
-                <div class="iv-orbit-ring iv-orbit-ring-two"></div>
-
-                <div class="iv-floating-chip iv-chip-one">💞 Meaningful Matches</div>
-                <div class="iv-floating-chip iv-chip-two">🔐 Privacy Focused</div>
-
-                <div class="slider-text iv-hero-copy">
-                    <span class="iv-hero-label">INDIAN VIVAH MATRIMONY</span>
-
-                    <h1>
-                        Find Someone
-                        <span>Worth Choosing.</span>
-                    </h1>
-
-                    <p>
-                        Create your matrimonial profile, explore suitable matches and continue your journey
-                        through a secure member experience.
-                    </p>
-
-                    <div class="iv-hero-proof-row">
-                        <span>✓ Free Profile Registration</span>
-                        <span>✓ Member-only Experience</span>
-                        <span>✓ All Communities Welcome</span>
-                    </div>
-                </div>
+                <!-- LOGGED-IN MEMBER SLIDES -->
+                <img src="images/slides/member/member-hero-main.png" alt="Member Hero" class="slide-img member-slide">
+                <img src="images/slides/member/member-slide-1.png" alt="Member Experience" class="slide-img member-slide">
+                <img src="images/slides/member/member-slide-2.png" alt="Member Experience" class="slide-img member-slide">
+                <img src="images/slides/member/member-slide-3.png" alt="Member Experience" class="slide-img member-slide">
+                <img src="images/slides/member/member-slide-4.png" alt="Member Experience" class="slide-img member-slide">
 
             </div>
 
-            <div class="hero-right-reg iv-home-action-side">
+            <!-- REAL CLICKABLE TEXT + BUTTONS OVER PHOTO (DESKTOP ONLY) -->
+            <div class="iv-hero-text-panel">
+                <span class="iv-hero-label">INDIAN VIVAH MATRIMONY</span>
 
-                <div class="reg-card iv-home-action-card iv-tilt-card">
+                <h1>
+                    Find Someone
+                    <span>Worth Choosing.</span>
+                </h1>
 
-                    <div class="iv-action-glow"></div>
+                <p>
+                    Create your matrimonial profile, explore suitable matches and continue
+                    your journey with a clean, privacy-focused member experience.
+                </p>
 
-                    <span class="iv-action-kicker">START YOUR JOURNEY</span>
+                <div class="iv-clean-hero-actions">
+                    <button
+                        type="button"
+                        id="heroPrimaryAction"
+                        class="iv-hero-btn iv-hero-btn-primary iv-shine-btn"
+                        onclick="window.location.href='register.html'"
+                    >
+                        <span>Create Free Profile</span>
+                        <b>→</b>
+                    </button>
 
-                    <div class="iv-action-ring">
-                        <div class="iv-action-ring-inner">💍</div>
-                    </div>
-
-                    <h2>Ready to Find Your Match?</h2>
-
-                    <p>
-                        अपना free profile बनाइए या existing account में login करें।
-                    </p>
-
-                    <div class="iv-home-action-buttons">
-
-                        <button
-                            type="button"
-                            id="heroPrimaryAction"
-                            class="iv-hero-btn iv-hero-btn-primary iv-shine-btn"
-                            onclick="window.location.href='register.html'"
-                        >
-                            <span>Create Free Profile</span>
-                            <b>→</b>
-                        </button>
-
-                        <button
-                            type="button"
-                            id="heroAccountAction"
-                            class="iv-hero-btn iv-hero-btn-ghost"
-                            onclick="window.location.href='login.html'"
-                        >
-                            <span>Member Login</span>
-                            <b>↗</b>
-                        </button>
-
-                    </div>
-
-                    <div class="iv-action-foot">
-                        Already registered? Login करके member-only sections access करें।
-                    </div>
-
+                    <button
+                        type="button"
+                        id="heroAccountAction"
+                        class="iv-hero-btn iv-hero-btn-ghost"
+                        onclick="window.location.href='login.html'"
+                    >
+                        <span>Already Registered? Login</span>
+                        <b>↗</b>
+                    </button>
                 </div>
 
+                <div class="iv-clean-trust-row">
+                    <span>✓ Free Profile Registration</span>
+                    <span>✓ Privacy Focused</span>
+                    <span>✓ All Communities Welcome</span>
+                </div>
+
+                <div class="iv-clean-action-note">
+                    Login करने के बाद member-only sections access करें।
+                </div>
             </div>
 
         </section>
@@ -1322,7 +2183,7 @@ body.is-member .guest-only{display:none !important;}
 
 
 
-                    <a href="#plans">Membership</a>
+                    <a href="#plans" class="member-only">Membership</a>
 
                     <a href="services.html" class="iv-services-page-link">Services</a>
 
@@ -1354,40 +2215,44 @@ body.is-member .guest-only{display:none !important;}
 
         <section class="m-split-hero iv-mobile-cinematic" id="m-home">
 
-            <img src="slide1.jpg" alt="Matrimonial profile showcase 1" class="m-slide-img m-active-slide">
-            <img src="slide2.jpg" alt="Matrimonial profile showcase 2" class="m-slide-img">
-            <img src="slide3.jpg" alt="Matrimonial profile showcase 3" class="m-slide-img">
-            <img src="slide4.jpg" alt="Matrimonial profile showcase 4" class="m-slide-img">
+            <!-- PUBLIC / GUEST MOBILE SLIDES -->
+            <img src="slide1.jpg" alt="Wedding Slide" class="m-slide-img public-slide m-active-slide">
+            <img src="slide2.jpg" alt="Wedding Slide" class="m-slide-img public-slide">
+            <img src="slide3.jpg" alt="Wedding Slide" class="m-slide-img public-slide">
+            <img src="slide4.jpg" alt="Wedding Slide" class="m-slide-img public-slide">
+            <img src="images/slides/public/public-slide-1.png" alt="Indian Wedding" class="m-slide-img public-slide">
+            <img src="images/slides/public/public-slide-2.png" alt="Indian Wedding" class="m-slide-img public-slide">
+            <img src="images/slides/public/public-slide-3.png" alt="Indian Wedding" class="m-slide-img public-slide">
+            <img src="images/slides/public/public-slide-4.png" alt="Indian Wedding" class="m-slide-img public-slide">
 
-            <div class="m-slider-overlay"></div>
-
-            <div class="iv-mobile-float-chip">💞 Meaningful Matches</div>
-
-            <div class="m-hero-text-only">
-                <span class="iv-mobile-hero-label">INDIAN VIVAH MATRIMONY</span>
-                <h1>Find Someone <span>Worth Choosing.</span></h1>
-                <p>Create your profile and continue your matrimonial journey as a member.</p>
-            </div>
+            <!-- LOGGED-IN MEMBER MOBILE SLIDES -->
+            <img src="images/slides/member/member-hero-main.png" alt="Member Hero" class="m-slide-img member-slide">
+            <img src="images/slides/member/member-slide-1.png" alt="Member Experience" class="m-slide-img member-slide">
+            <img src="images/slides/member/member-slide-2.png" alt="Member Experience" class="m-slide-img member-slide">
+            <img src="images/slides/member/member-slide-3.png" alt="Member Experience" class="m-slide-img member-slide">
+            <img src="images/slides/member/member-slide-4.png" alt="Member Experience" class="m-slide-img member-slide">
 
         </section>
 
+        <!-- MOBILE TEXT / BUTTONS BELOW PHOTO -->
         <section class="m-reg-section iv-mobile-action-section">
-
             <div class="m-reg-box iv-mobile-action-card">
 
-                <span class="iv-action-kicker">START YOUR JOURNEY</span>
+                <span class="iv-action-kicker">INDIAN VIVAH MATRIMONY</span>
 
-                <div class="iv-mobile-ring">💍</div>
-
-                <h2>Your Matrimonial Journey Starts Here</h2>
+                <h2>
+                    Find Someone
+                    <span>Worth Choosing.</span>
+                </h2>
 
                 <p>
-                    Free profile बनाइए या existing account में login करें।
+                    Create your profile and continue your matrimonial journey without
+                    covering the photo with text.
                 </p>
 
                 <div class="iv-mobile-action-buttons">
-
-                    <button id="mobileHeroPrimaryAction"
+                    <button
+                        id="mobileHeroPrimaryAction"
                         type="button"
                         class="iv-hero-btn iv-hero-btn-primary iv-shine-btn"
                         onclick="window.location.href='register.html'"
@@ -1395,18 +2260,23 @@ body.is-member .guest-only{display:none !important;}
                         Create Free Profile →
                     </button>
 
-                    <button id="mobileHeroAccountAction"
+                    <button
+                        id="mobileHeroAccountAction"
                         type="button"
                         class="iv-hero-btn iv-hero-btn-ghost"
                         onclick="window.location.href='login.html'"
                     >
                         Member Login
                     </button>
+                </div>
 
+                <div class="iv-mobile-trust-row">
+                    <span>✓ Free Registration</span>
+                    <span>✓ Privacy Focused</span>
+                    <span>✓ All Communities</span>
                 </div>
 
             </div>
-
         </section>
 
     </div> <!-- MOBILE VIEW CLOSED -->
@@ -1433,7 +2303,7 @@ body.is-member .guest-only{display:none !important;}
     <div class="stats-container">
 
         <div class="stat-box">
-            <div class="stat-icon-wrapper">💍</div>
+            <div class="stat-icon-wrapper iv-pro-icon"><img src="images/extra-icons/free-profile.png" alt="Free Profile Registration"></div>
             <div class="stat-info">
                 <h3 class="stat-number">Free</h3>
                 <p class="stat-text">Profile Registration</p>
@@ -1441,7 +2311,7 @@ body.is-member .guest-only{display:none !important;}
         </div>
 
         <div class="stat-box">
-            <div class="stat-icon-wrapper">🔐</div>
+            <div class="stat-icon-wrapper iv-pro-icon"><img src="images/extra-icons/privacy-profile.png" alt="Privacy Focused"></div>
             <div class="stat-info">
                 <h3 class="stat-number">Privacy</h3>
                 <p class="stat-text">Focused Profile Experience</p>
@@ -1449,7 +2319,7 @@ body.is-member .guest-only{display:none !important;}
         </div>
 
         <div class="stat-box">
-            <div class="stat-icon-wrapper">🤝</div>
+            <div class="stat-icon-wrapper iv-pro-icon"><img src="images/extra-icons/all-communities.png" alt="All Communities Welcome"></div>
             <div class="stat-info">
                 <h3 class="stat-number">All</h3>
                 <p class="stat-text">Communities Welcome</p>
@@ -1457,7 +2327,7 @@ body.is-member .guest-only{display:none !important;}
         </div>
 
         <div class="stat-box">
-            <div class="stat-icon-wrapper">📱</div>
+            <div class="stat-icon-wrapper iv-pro-icon"><img src="images/extra-icons/app-web.png" alt="App and Web Platform"></div>
             <div class="stat-info">
                 <h3 class="stat-number">App + Web</h3>
                 <p class="stat-text">Connected Matrimonial Platform</p>
@@ -1487,9 +2357,8 @@ body.is-member .guest-only{display:none !important;}
     </section>
 
 
-    <!-- SECTION 3: AI LOVE METER (Dono layout ke liye fix) -->
-
-    <section class="section-container ai-section member-only" id="match-guide">
+    <!-- SECTION 3: SMART MATCH GUIDE -->
+    <section class="section-container ai-section member-only iv-live-match-section" id="match-guide">
 
         <div class="iv-match-guide-heading iv-reveal">
             <span class="iv-section-kicker iv-section-kicker-light">Smart Match Guide</span>
@@ -1502,34 +2371,56 @@ body.is-member .guest-only{display:none !important;}
 
         <div class="iv-match-orbit iv-reveal">
 
-            <div class="iv-match-center">
-                <div class="iv-match-center-ring">
-                    <div class="iv-match-heart">♥</div>
-                </div>
-                <strong>Match Journey</strong>
-                <span>Understand • Verify • Decide</span>
-            </div>
-
             <article class="iv-match-guide-card iv-match-card-a iv-tilt-card">
-                <div class="iv-match-guide-icon">💬</div>
+                <div class="iv-match-guide-icon iv-img-icon">
+                    <img src="images/modern-icons/communication-chat.png" alt="Communication">
+                </div>
                 <h3>Communication</h3>
                 <p>खुलकर बातचीत और एक-दूसरे को समझने की क्षमता रिश्ते की मजबूत नींव बनाती है।</p>
             </article>
 
             <article class="iv-match-guide-card iv-match-card-b iv-tilt-card">
-                <div class="iv-match-guide-icon">🤝</div>
-                <h3>Values & Respect</h3>
+                <div class="iv-match-guide-icon iv-img-icon">
+                    <img src="images/modern-icons/values-respect.png" alt="Values and Respect">
+                </div>
+                <h3>Values &amp; Respect</h3>
                 <p>जीवन मूल्यों, सम्मान और family expectations में पर्याप्त समझ महत्वपूर्ण है।</p>
             </article>
 
+            <div class="iv-match-center iv-match-center-modern">
+                <div class="iv-orbit-dot iv-orbit-dot-1"></div>
+                <div class="iv-orbit-dot iv-orbit-dot-2"></div>
+                <div class="iv-orbit-dot iv-orbit-dot-3"></div>
+
+                <div class="iv-match-center-ring iv-match-center-ring-modern">
+                    <div class="iv-match-heart">♥</div>
+                </div>
+
+                <span class="iv-match-mini-label">YOUR MATCH PATH</span>
+                <strong>Match Journey</strong>
+                <span class="iv-match-subline">समझें • सत्यापित करें • निर्णय लें</span>
+
+                <div class="iv-match-journey-steps">
+                    <span><b>01</b> Understand</span>
+                    <i>→</i>
+                    <span><b>02</b> Verify</span>
+                    <i>→</i>
+                    <span><b>03</b> Decide</span>
+                </div>
+            </div>
+
             <article class="iv-match-guide-card iv-match-card-c iv-tilt-card">
-                <div class="iv-match-guide-icon">🎯</div>
+                <div class="iv-match-guide-icon iv-img-icon">
+                    <img src="images/modern-icons/future-goals.png" alt="Future Goals">
+                </div>
                 <h3>Future Goals</h3>
                 <p>Career, location, family planning और lifestyle expectations पर स्पष्ट बातचीत करें।</p>
             </article>
 
             <article class="iv-match-guide-card iv-match-card-d iv-tilt-card">
-                <div class="iv-match-guide-icon">🔎</div>
+                <div class="iv-match-guide-icon iv-img-icon">
+                    <img src="images/modern-icons/independent-verification.png" alt="Independent Verification">
+                </div>
                 <h3>Independent Verification</h3>
                 <p>महत्वपूर्ण profile details का स्वतंत्र सत्यापन करने के बाद ही निर्णय आगे बढ़ाएँ।</p>
             </article>
@@ -1549,7 +2440,7 @@ body.is-member .guest-only{display:none !important;}
 
 
     <!-- How Indian Vivah Helps -->
-    <section class="section-container bg-light member-only" id="how-it-helps">
+    <section class="section-container bg-light member-only iv-live-help-section" id="how-it-helps">
 
         <div class="iv-help-heading">
             <span class="iv-section-kicker">How It Works</span>
@@ -1560,32 +2451,43 @@ body.is-member .guest-only{display:none !important;}
             </p>
         </div>
 
-        <div class="iv-help-grid">
+        <div class="iv-help-grid iv-help-grid-modern">
 
-            <article class="iv-help-card">
+            <article class="iv-help-card iv-help-card-modern">
                 <div class="iv-help-step">01</div>
-                <div class="iv-help-icon">📝</div>
+                <div class="iv-help-icon iv-help-img-icon">
+                    <img src="images/modern-icons/create-profile.png" alt="Create Your Profile">
+                </div>
+                <div class="iv-help-progress"></div>
                 <h3>Create Your Profile</h3>
                 <p>अपनी basic matrimonial information, education, occupation और location details के साथ profile बनाइए।</p>
             </article>
 
-            <article class="iv-help-card">
+            <article class="iv-help-card iv-help-card-modern">
                 <div class="iv-help-step">02</div>
-                <div class="iv-help-icon">🔎</div>
+                <div class="iv-help-icon iv-help-img-icon">
+                    <img src="images/modern-icons/explore-profiles.png" alt="Explore Profiles">
+                </div>
+                <div class="iv-help-progress"></div>
                 <h3>Explore Profiles</h3>
                 <p>उपलब्ध matrimonial profiles देखें और अपनी preference के अनुसार suitable matches explore करें।</p>
             </article>
 
-            <article class="iv-help-card">
+            <article class="iv-help-card iv-help-card-modern">
                 <div class="iv-help-step">03</div>
-                <div class="iv-help-icon">💞</div>
+                <div class="iv-help-icon iv-help-img-icon">
+                    <img src="images/modern-icons/show-interest.png" alt="Show Interest">
+                </div>
+                <div class="iv-help-progress"></div>
                 <h3>Show Interest</h3>
                 <p>Membership और available features के अनुसार matrimonial interest भेजें और response देखें।</p>
             </article>
 
-            <article class="iv-help-card">
+            <article class="iv-help-card iv-help-card-modern">
                 <div class="iv-help-step">04</div>
-                <div class="iv-help-icon">🤝</div>
+                <div class="iv-help-icon iv-help-img-icon">
+                    <img src="images/modern-icons/connect-carefully.png" alt="Connect Carefully">
+                </div>
                 <h3>Connect Carefully</h3>
                 <p>आगे बढ़ने से पहले जरूरी जानकारी independently verify करें और आपसी सहमति से बातचीत आगे बढ़ाएँ।</p>
             </article>
@@ -1593,6 +2495,218 @@ body.is-member .guest-only{display:none !important;}
         </div>
 
     </section>
+
+<section class="section-container member-only iv-plans-inline" id="plans">
+    <div class="iv-plans-close-row">
+    </div>
+
+    <div class="membership-heading">
+        <span class="membership-kicker">Choose Your Membership</span>
+
+        <h2 class="section-title">
+            Membership Plans
+        </h2>
+
+        <p class="section-subtitle">
+            अपनी matrimonial journey के अनुसार plan चुनें।
+            Profile registration free है; premium interaction features
+            membership के अनुसार उपलब्ध होते हैं।
+        </p>
+    </div>
+
+
+    <div class="plans-grid">
+
+        <!-- SILVER -->
+        <article class="plan-card">
+
+            <div class="plan-top">
+                <div class="plan-icon iv-membership-icon silver-icon"><img src="images/membership-icons/silver_gemstone_heart_membership_badge.png" alt="Silver Membership"></div>
+
+                <div>
+                    <h3>Silver</h3>
+                    <p class="plan-caption">
+                        शुरुआत करने के लिए
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="price">
+                ₹3,500
+                <span>/ 3 Months</span>
+            </div>
+
+
+            <ul class="plan-features">
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Active membership for 3 months
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Up to 10 matrimonial interests
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Accepted interest के बाद chat access
+                </li>
+
+                <li class="feature-muted">
+                    <span>—</span>
+                    Direct chat before accepted interest नहीं
+                </li>
+
+            </ul>
+
+
+            <button
+                type="button"
+                class="btn-plan"
+                data-plan="Silver" data-amount="3500"
+            >
+                Choose Silver
+            </button>
+
+        </article>
+
+
+
+        <!-- GOLD -->
+        <article class="plan-card premium-plan">
+
+            <div class="badge">
+                Popular
+            </div>
+
+
+            <div class="plan-top">
+
+                <div class="plan-icon iv-membership-icon gold-icon"><img src="images/membership-icons/golden_premium_star_emblem.png" alt="Gold Membership"></div>
+
+                <div>
+                    <h3>Gold</h3>
+                    <p class="plan-caption">
+                        ज्यादा interaction के लिए
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="price">
+                ₹6,000
+                <span>/ 6 Months</span>
+            </div>
+
+
+            <ul class="plan-features">
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Active membership for 6 months
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Up to 25 matrimonial interests
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Accepted interest chat
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Direct chat with eligible registered profiles
+                </li>
+
+            </ul>
+
+
+            <button
+                type="button"
+                class="btn-plan"
+                data-plan="Gold" data-amount="6000"
+            >
+                Choose Gold
+            </button>
+
+        </article>
+
+
+
+        <!-- PLATINUM -->
+        <article class="plan-card">
+
+            <div class="plan-top">
+
+                <div class="plan-icon iv-membership-icon platinum-icon"><img src="images/membership-icons/luxurious_sapphire_platinum_crown.png" alt="Platinum Membership"></div>
+
+                <div>
+                    <h3>Platinum</h3>
+                    <p class="plan-caption">
+                        Maximum access के लिए
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="price">
+                ₹10,000
+                <span>/ 12 Months</span>
+            </div>
+
+
+            <ul class="plan-features">
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Active membership for 12 months
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Unlimited matrimonial interests
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Accepted interest chat
+                </li>
+
+                <li>
+                    <span class="feature-check">✓</span>
+                    Direct chat with eligible registered profiles
+                </li>
+
+            </ul>
+
+
+            <button
+                type="button"
+                class="btn-plan"
+                data-plan="Platinum" data-amount="10000"
+            >
+                Choose Platinum
+            </button>
+
+        </article>
+
+    </div>
+
+
+    <p class="membership-note">
+        Membership activation payment verification के बाद लागू होगी।
+        उपलब्ध features current service rules और account eligibility के अनुसार काम करेंगे।
+    </p>
+
+</section>
 
 
 
@@ -1687,218 +2801,7 @@ body.is-member .guest-only{display:none !important;}
 
     <!-- Section 5: Membership Plans -->
 
-    <section class="section-container iv-plans-on-demand" id="plans">
-    <div class="iv-plans-close-row">
-        <button type="button" id="closePlansBtn" class="iv-plans-close-btn">✕ Close Plans</button>
-    </div>
-
-    <div class="membership-heading">
-        <span class="membership-kicker">Choose Your Membership</span>
-
-        <h2 class="section-title">
-            Membership Plans
-        </h2>
-
-        <p class="section-subtitle">
-            अपनी matrimonial journey के अनुसार plan चुनें।
-            Profile registration free है; premium interaction features
-            membership के अनुसार उपलब्ध होते हैं।
-        </p>
-    </div>
-
-
-    <div class="plans-grid">
-
-        <!-- SILVER -->
-        <article class="plan-card">
-
-            <div class="plan-top">
-                <div class="plan-icon">💍</div>
-
-                <div>
-                    <h3>Silver</h3>
-                    <p class="plan-caption">
-                        शुरुआत करने के लिए
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="price">
-                ₹3,500
-                <span>/ 3 Months</span>
-            </div>
-
-
-            <ul class="plan-features">
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Active membership for 3 months
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Up to 10 matrimonial interests
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Accepted interest के बाद chat access
-                </li>
-
-                <li class="feature-muted">
-                    <span>—</span>
-                    Direct chat before accepted interest नहीं
-                </li>
-
-            </ul>
-
-
-            <button
-                type="button"
-                class="btn-plan"
-                data-plan="Silver" data-amount="3500"
-            >
-                Choose Silver
-            </button>
-
-        </article>
-
-
-
-        <!-- GOLD -->
-        <article class="plan-card premium-plan">
-
-            <div class="badge">
-                Popular
-            </div>
-
-
-            <div class="plan-top">
-
-                <div class="plan-icon">✨</div>
-
-                <div>
-                    <h3>Gold</h3>
-                    <p class="plan-caption">
-                        ज्यादा interaction के लिए
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="price">
-                ₹6,000
-                <span>/ 6 Months</span>
-            </div>
-
-
-            <ul class="plan-features">
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Active membership for 6 months
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Up to 25 matrimonial interests
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Accepted interest chat
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Direct chat with eligible registered profiles
-                </li>
-
-            </ul>
-
-
-            <button
-                type="button"
-                class="btn-plan"
-                data-plan="Gold" data-amount="6000"
-            >
-                Choose Gold
-            </button>
-
-        </article>
-
-
-
-        <!-- PLATINUM -->
-        <article class="plan-card">
-
-            <div class="plan-top">
-
-                <div class="plan-icon">👑</div>
-
-                <div>
-                    <h3>Platinum</h3>
-                    <p class="plan-caption">
-                        Maximum access के लिए
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="price">
-                ₹10,000
-                <span>/ 12 Months</span>
-            </div>
-
-
-            <ul class="plan-features">
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Active membership for 12 months
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Unlimited matrimonial interests
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Accepted interest chat
-                </li>
-
-                <li>
-                    <span class="feature-check">✓</span>
-                    Direct chat with eligible registered profiles
-                </li>
-
-            </ul>
-
-
-            <button
-                type="button"
-                class="btn-plan"
-                data-plan="Platinum" data-amount="10000"
-            >
-                Choose Platinum
-            </button>
-
-        </article>
-
-    </div>
-
-
-    <p class="membership-note">
-        Membership activation payment verification के बाद लागू होगी।
-        उपलब्ध features current service rules और account eligibility के अनुसार काम करेंगे।
-    </p>
-
-</section>
+    
 
 
     <!-- Section 6: Wedding Services Marketplace -->
@@ -2048,7 +2951,7 @@ body.is-member .guest-only{display:none !important;}
         <div class="blog-grid iv-reveal">
 
             <article class="blog-card">
-                <div class="iv-blog-icon">💬</div>
+                <div class="iv-blog-icon iv-pro-icon"><img src="images/extra-icons/relationship-understanding.png" alt="Relationship Understanding"></div>
                 <h4>रिश्तों की समझ कैसे बेहतर बनाएं?</h4>
                 <p>
                     जीवनसाथी चुनते समय केवल profile details ही नहीं, बल्कि सोच, संवाद,
@@ -2074,7 +2977,7 @@ body.is-member .guest-only{display:none !important;}
             </article>
 
             <article class="blog-card">
-                <div class="iv-blog-icon">💞</div>
+                <div class="iv-blog-icon iv-pro-icon"><img src="images/extra-icons/married-life-balance.png" alt="Married Life Balance"></div>
                 <h4>वैवाहिक जीवन में तालमेल कैसे बनाए रखें?</h4>
                 <p>
                     विवाह के बाद विश्वास, संवाद और जिम्मेदारियों का संतुलन रिश्ते को मजबूत रखने में मदद करता है।
@@ -2399,7 +3302,7 @@ body.is-member .guest-only{display:none !important;}
                 <h4>Explore</h4>
                 <a href="#home">Home</a>
                 <a href="#profiles">Profiles</a>
-                <a href="#plans">Membership</a>
+                <a href="#plans" class="member-only">Membership</a>
                 <a href="services.html" class="iv-services-page-link">Wedding Services</a>
                 <a href="#faq">FAQ</a>
                 <a href="#contact">Contact</a>
@@ -3503,7 +4406,7 @@ document.addEventListener("click", function(event){
         </div>
 
         <small>
-            Membership plans और free registration public homepage पर उपलब्ध हैं।
+            Membership plans login के बाद member account में उपलब्ध हैं।
         </small>
     </div>
 </div>
@@ -3516,7 +4419,18 @@ document.addEventListener("click", function(event){
 
     function openPlans(event){
         if(event) event.preventDefault();
-        if(!plans) return;
+
+        if(!document.body.classList.contains("is-member")){
+            window.location.href = "login.html";
+            return;
+        }
+
+        const plansSection = document.getElementById("plans");
+        if(plansSection){
+            plansSection.scrollIntoView({behavior:"smooth", block:"start"});
+        }
+    }
+
         plans.classList.add("iv-plans-open");
         setTimeout(() => {
             plans.scrollIntoView({behavior:"smooth", block:"start"});
@@ -3543,7 +4457,7 @@ document.addEventListener("click", function(event){
         closeBtn.addEventListener("click", closePlans);
     }
 
-    if(location.hash === "#plans"){
+    if(location.hash === "#plans" && document.body.classList.contains("is-member")){
         openPlans();
     }
 })();

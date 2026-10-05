@@ -33,46 +33,108 @@ document.addEventListener("DOMContentLoaded", function () {
     updateActiveNav();
 
 
+        // =====================================================
+    // HERO SLIDER — GUEST / MEMBER AWARE
     // =====================================================
-    // DESKTOP HERO SLIDER
-    // =====================================================
 
-    const slides = document.querySelectorAll(".slide-img");
+    function getAllowedSlides(selector) {
 
-    if (slides.length > 1) {
-        let currentSlideIndex = 0;
+        const allSlides =
+            Array.from(document.querySelectorAll(selector));
 
-        setInterval(function () {
-            slides[currentSlideIndex].classList.remove("active-slide");
+        const isMember =
+            document.body.classList.contains("is-member");
 
-            currentSlideIndex =
-                (currentSlideIndex + 1) % slides.length;
+        return allSlides.filter(function (slide) {
 
-            slides[currentSlideIndex].classList.add("active-slide");
-        }, 4000);
+            if (isMember) {
+                return slide.classList.contains("member-slide");
+            }
+
+            return slide.classList.contains("public-slide");
+        });
     }
 
 
-    // =====================================================
-    // MOBILE HERO SLIDER
-    // =====================================================
+    function startSmartSlider(selector, activeClass) {
 
-    const mobileSlides = document.querySelectorAll(".m-slide-img");
+        let currentIndex = -1;
 
-    if (mobileSlides.length > 1) {
-        let mobileIndex = 0;
+        function showSlide(randomFirst = false) {
 
+            const allowedSlides =
+                getAllowedSlides(selector);
+
+            if (!allowedSlides.length) return;
+
+            // Sabhi slides se active hatao
+            document.querySelectorAll(selector)
+                .forEach(function (slide) {
+                    slide.classList.remove(activeClass);
+                });
+
+            if (
+                randomFirst ||
+                currentIndex < 0 ||
+                currentIndex >= allowedSlides.length
+            ) {
+
+                currentIndex =
+                    Math.floor(
+                        Math.random() * allowedSlides.length
+                    );
+
+            } else {
+
+                currentIndex =
+                    (currentIndex + 1) %
+                    allowedSlides.length;
+            }
+
+            allowedSlides[currentIndex]
+                .classList.add(activeClass);
+        }
+
+
+        // Pehli image random
+        showSlide(true);
+
+
+        // Har 4 second slide change
         setInterval(function () {
-            mobileSlides[mobileIndex].classList.remove("m-active-slide");
-
-            mobileIndex =
-                (mobileIndex + 1) % mobileSlides.length;
-
-            mobileSlides[mobileIndex].classList.add("m-active-slide");
+            showSlide(false);
         }, 4000);
+
+
+        // Login / Logout hone par turant naya slider set
+        const observer =
+            new MutationObserver(function () {
+
+                currentIndex = -1;
+                showSlide(true);
+            });
+
+        observer.observe(
+            document.body,
+            {
+                attributes: true,
+                attributeFilter: ["class"]
+            }
+        );
     }
 
 
+    startSmartSlider(
+        ".slide-img",
+        "active-slide"
+    );
+
+    startSmartSlider(
+        ".m-slide-img",
+        "m-active-slide"
+    );
+
+    
     // =====================================================
     // MOBILE DRAWER
     // =====================================================

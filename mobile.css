@@ -214,8 +214,8 @@
   .m-split-hero{
     position:relative;
     width:100%;
-    height:min(64vh,540px);
-    min-height:430px;
+    height:min(72vh,590px);
+    min-height:560px;
     margin-top:0 !important;
     overflow:hidden;
     display:flex;
