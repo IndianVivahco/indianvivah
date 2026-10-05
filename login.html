@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Indian Vivah Matrimony</title>
+
+    <meta name="theme-color" content="#790021">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(212,175,55,.18), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(145,15,55,.12), transparent 32%),
+                linear-gradient(145deg, #fffaf7, #fff0f4);
+            color: #321b23;
+        }
+
+        .topbar {
+            min-height: 70px;
+            padding: 12px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #620018,
+                    #85102f,
+                    #6d001c
+                );
+
+            color: white;
+
+            box-shadow:
+                0 5px 25px rgba(85,0,25,.20);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff7d3,
+                    #d7aa39
+                );
+
+            color: #760020;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .brand h2 {
+            font-size: 22px;
+        }
+
+        .brand h2 span {
+            color: #f2d36d;
+        }
+
+        .home-btn {
+            color: white;
+            text-decoration: none;
+
+            padding: 9px 16px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid rgba(255,255,255,.35);
+
+            background:
+                rgba(255,255,255,.10);
+
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .page {
+            min-height:
+                calc(100vh - 70px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 45px 18px;
+        }
+
+        .login-wrap {
+            width: 100%;
+            max-width: 950px;
+
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(0, .85fr);
+
+            background:
+                rgba(255,255,255,.97);
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            border:
+                1px solid rgba(120,0,32,.09);
+
+            box-shadow:
+                0 25px 70px
+                rgba(90,0,30,.14);
+        }
+
+        .left-panel {
+            padding: 55px 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #71001e,
+                    #9a1740,
+                    #76102e
+                );
+
+            color: white;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::after {
+            content: "♥";
+
+            position: absolute;
+            right: -30px;
+            bottom: -55px;
+
+            font-size: 220px;
+
+            color:
+                rgba(255,255,255,.05);
+
+            transform:
+                rotate(-12deg);
+        }
+
+        .left-panel .small {
+            display: inline-block;
+
+            width: fit-content;
+
+            margin-bottom: 15px;
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,.11);
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .left-panel h1 {
+            font-size:
+                clamp(31px, 4vw, 45px);
+
+            line-height: 1.15;
+        }
+
+        .left-panel h1 span {
+            color: #f2d36d;
+        }
+
+        .left-panel p {
+            max-width: 430px;
+
+            margin-top: 18px;
+
+            color:
+                rgba(255,255,255,.82);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        .feature-list {
+            margin-top: 28px;
+
+            display: grid;
+            gap: 11px;
+        }
+
+        .feature {
+            font-size: 13px;
+
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .feature b {
+            width: 25px;
+            height: 25px;
+
+            flex: 0 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.12);
+        }
+
+        .right-panel {
+            padding: 48px 42px;
+        }
+
+        .right-panel h2 {
+            color: #750020;
+            font-size: 29px;
+        }
+
+        .subtitle {
+            margin-top: 7px;
+            margin-bottom: 28px;
+
+            color: #7a636c;
+
+            line-height: 1.55;
+            font-size: 13px;
+        }
+
+        .field {
+            margin-top: 17px;
+        }
+
+        label {
+            display: block;
+
+            margin: 0 0 7px 3px;
+
+            color: #5b444d;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            min-height: 50px;
+
+            padding: 12px 46px 12px 14px;
+
+            border:
+                1px solid #ddcbd1;
+
+            border-radius: 13px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            transition: .2s;
+        }
+
+        input:focus {
+            border-color: #9a1740;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(154,23,64,.08);
+        }
+
+        .toggle-password {
+            position: absolute;
+
+            right: 9px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            border: none;
+            background: transparent;
+
+            cursor: pointer;
+
+            font-size: 19px;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            min-height: 54px;
+
+            margin-top: 24px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #71001d,
+                    #a91845,
+                    #c1285a
+                );
+
+            box-shadow:
+                0 11px 25px
+                rgba(145,16,54,.23);
+        }
+
+        .login-btn:disabled {
+            opacity: .65;
+            cursor: wait;
+        }
+
+        .message {
+            display: none;
+
+            margin-top: 17px;
+
+            padding: 13px 14px;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+            line-height: 1.5;
+
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .message.error {
+            display: block;
+
+            color: #991d34;
+
+            background: #fff0f3;
+
+            border:
+                1px solid #efc5ce;
+        }
+
+        .message.success {
+            display: block;
+
+            color: #196738;
+
+            background: #edf9f1;
+
+            border:
+                1px solid #bce4c9;
+        }
+
+        .register-link {
+            margin-top: 23px;
+
+            padding-top: 18px;
+
+            text-align: center;
+
+            border-top:
+                1px solid #eee2e6;
+
+            color: #806a72;
+
+            font-size: 13px;
+        }
+
+        .register-link a {
+            color: #800020;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .security {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #8a747c;
+
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+
+            .topbar {
+                min-height: 60px;
+                padding: 9px 12px;
+            }
+
+            .brand-icon {
+                width: 39px;
+                height: 39px;
+                font-size: 19px;
+            }
+
+            .brand h2 {
+                font-size: 16px;
+            }
+
+            .home-btn {
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .page {
+                padding: 22px 11px 40px;
+                align-items: flex-start;
+            }
+
+            .login-wrap {
+                grid-template-columns: 1fr;
+                border-radius: 21px;
+            }
+
+            .left-panel {
+                padding: 30px 23px;
+            }
+
+            .left-panel h1 {
+                font-size: 28px;
+            }
+
+            .left-panel p {
+                margin-top: 11px;
+                font-size: 12px;
+            }
+
+            .feature-list {
+                display: none;
+            }
+
+            .right-panel {
+                padding: 27px 17px 30px;
+            }
+
+            .right-panel h2 {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                margin-bottom: 21px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ♥
+        </div>
+
+        <h2>
+            Indian Vivah
+            <span>Matrimony</span>
+        </h2>
+
+    </div>
+
+    <a
+        href="index.html"
+        class="home-btn"
+    >
+        ← Home
+    </a>
+
+</header>
+
+<main class="page">
+
+    <div class="login-wrap">
+
+        <section class="left-panel">
+
+            <div class="small">
+                ♥ MEMBER LOGIN
+            </div>
+
+            <h1>
+                Welcome Back to
+                <span>Indian Vivah</span>
+            </h1>
+
+            <p>
+                अपने registered account में login करके
+                अपनी matrimonial journey जारी रखें।
+            </p>
+
+            <div class="feature-list">
+
+                <div class="feature">
+                    <b>✓</b>
+                    Same Indian Vivah account
+                </div>
+
+                <div class="feature">
+                    <b>✓</b>
+                    Secure Firebase Authentication
+                </div>
+
+                <div class="feature">
+                    <b>✓</b>
+                    Website और App के लिए एक ही account
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="right-panel">
+
+            <h2>
+                Login
+            </h2>
+
+            <p class="subtitle">
+                अपना registered Email और Password डालें।
+            </p>
+
+            <form id="loginForm">
+
+                <div class="field">
+
+                    <label for="email">
+                        Email ID
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="example@gmail.com"
+                        required
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrap">
+
+                        <input
+                            id="password"
+                            type="password"
+                            minlength="6"
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="toggle-password"
+                            aria-label="Show Password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    id="loginBtn"
+                    class="login-btn"
+                >
+                    LOGIN TO INDIAN VIVAH
+                </button>
+
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+            </form>
+
+            <div class="register-link">
+
+                अभी account नहीं है?
+
+                <a href="register.html">
+                    Register Free
+                </a>
+
+            </div>
+
+            <div class="security">
+                🔒 आपका Password profile database में
+                store नहीं किया जाता।
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from
+    "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+    import {
+        getAuth,
+        signInWithEmailAndPassword
+    } from
+    "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw",
+
+        authDomain:
+            "indian-vivah-app-2026.firebaseapp.com",
+
+        projectId:
+            "indian-vivah-app-2026",
+
+        storageBucket:
+            "indian-vivah-app-2026.firebasestorage.app",
+
+        messagingSenderId:
+            "807227064930",
+
+        appId:
+            "1:807227064930:web:c6cbc77cbc15c52ff0073b",
+
+        measurementId:
+            "G-E4EC5RDHVM"
+    };
+
+
+    const app =
+        initializeApp(firebaseConfig);
+
+    const auth =
+        getAuth(app);
+
+
+    const loginForm =
+        document.getElementById(
+            "loginForm"
+        );
+
+    const loginBtn =
+        document.getElementById(
+            "loginBtn"
+        );
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+    const passwordInput =
+        document.getElementById(
+            "password"
+        );
+
+    const togglePassword =
+        document.getElementById(
+            "togglePassword"
+        );
+
+
+    function showMessage(
+        type,
+        text
+    ) {
+
+        message.className =
+            "message " + type;
+
+        message.textContent =
+            text;
+    }
+
+
+    togglePassword.addEventListener(
+        "click",
+        function () {
+
+            const hidden =
+                passwordInput.type ===
+                "password";
+
+            passwordInput.type =
+                hidden
+                    ? "text"
+                    : "password";
+
+            togglePassword.textContent =
+                hidden
+                    ? "🙈"
+                    : "👁";
+        }
+    );
+
+
+    loginForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            message.className =
+                "message";
+
+            message.textContent =
+                "";
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+            const password =
+                passwordInput.value;
+
+            loginBtn.disabled = true;
+
+            loginBtn.textContent =
+                "LOGGING IN...";
+
+            try {
+
+                const credential =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+                const user =
+                    credential.user;
+
+                console.log(
+                    "Logged in UID:",
+                    user.uid
+                );
+
+                showMessage(
+                    "success",
+                    "✅ Login successful. आपका Indian Vivah account खुल गया है।"
+                );
+
+                loginBtn.textContent =
+                    "✓ LOGIN SUCCESSFUL";
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "index.html";
+
+                    },
+                    900
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Login Error:",
+                    error
+                );
+
+                let errorText =
+                    "❌ Login नहीं हो पाया। Email और Password दोबारा check करें।";
+
+
+                if (
+                    error.code ===
+                    "auth/invalid-credential"
+                ) {
+
+                    errorText =
+                        "❌ Email या Password सही नहीं है।";
+
+                } else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    errorText =
+                        "❌ सही Email ID दर्ज करें।";
+
+                } else if (
+                    error.code ===
+                    "auth/too-many-requests"
+                ) {
+
+                    errorText =
+                        "❌ बहुत अधिक login attempts हुए हैं। थोड़ी देर बाद फिर कोशिश करें।";
+
+                } else if (
+                    error.code ===
+                    "auth/network-request-failed"
+                ) {
+
+                    errorText =
+                        "❌ Internet connection check करें और फिर कोशिश करें।";
+                }
+
+
+                showMessage(
+                    "error",
+                    errorText
+                );
+
+                loginBtn.disabled = false;
+
+                loginBtn.textContent =
+                    "LOGIN TO INDIAN VIVAH";
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

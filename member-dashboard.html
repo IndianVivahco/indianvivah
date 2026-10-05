@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Member Dashboard | Indian Vivah Matrimony</title>
+<style>
+:root{
+  --wine:#6f001f;
+  --wine2:#a71648;
+  --gold:#d7b54a;
+  --gold2:#f1d97a;
+  --ink:#2d2125;
+  --muted:#75646a;
+  --line:#eadde1;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 92% 5%,rgba(215,181,74,.13),transparent 22%),
+    linear-gradient(180deg,#fffaf7,#fff3f6 44%,#fff);
+  min-height:100vh;
+}
+a{text-decoration:none;color:inherit}
+.app{max-width:1180px;margin:auto;padding:18px}
+
+.top{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:-18px -18px 20px;
+  padding:14px 18px;
+  color:#fff;
+  background:rgba(91,0,27,.96);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 26px rgba(67,0,22,.18);
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.mark{
+  width:38px;height:38px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  color:var(--wine);
+  background:linear-gradient(145deg,#fff3bf,#d6aa36);
+  box-shadow:0 7px 16px rgba(0,0,0,.16);
+}
+.topnav{display:flex;gap:8px;flex-wrap:wrap}
+.topnav a{
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+.topnav a:hover{background:rgba(255,255,255,.10)}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:24px;
+  min-height:360px;
+  padding:32px;
+  border-radius:32px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(215,181,74,.26),transparent 24%),
+    linear-gradient(135deg,#62001d,#8d002d 56%,#5d001b);
+  box-shadow:0 24px 60px rgba(70,0,24,.18);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:420px;height:420px;
+  right:-150px;top:-150px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 0 48px rgba(255,255,255,.03),
+    0 0 0 96px rgba(215,181,74,.035);
+  animation:orbitPulse 5s ease-in-out infinite;
+}
+@keyframes orbitPulse{
+  0%,100%{transform:scale(1);opacity:.9}
+  50%{transform:scale(1.05);opacity:.65}
+}
+.hero-copy{position:relative;z-index:2;align-self:center}
+.kicker{
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14);
+  color:#f4da7e;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.9px;
+}
+.hero h1{
+  margin:16px 0 8px;
+  font-size:47px;
+  line-height:1.02;
+  letter-spacing:-1.1px;
+}
+.hero p{
+  margin:0;
+  max-width:620px;
+  color:#f1dfe5;
+  font-size:15px;
+  line-height:1.7;
+}
+
+.hero-visual{
+  position:relative;
+  z-index:2;
+  min-height:300px;
+  display:grid;
+  place-items:center;
+}
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  width:250px;height:250px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,232,161,.24),rgba(255,255,255,0) 70%);
+  filter:blur(5px);
+  animation:softGlow 3.6s ease-in-out infinite;
+}
+@keyframes softGlow{
+  0%,100%{transform:scale(.95);opacity:.7}
+  50%{transform:scale(1.08);opacity:1}
+}
+.hero-couple{
+  position:relative;
+  z-index:2;
+  width:min(360px,92%);
+  border-radius:28px;
+  display:block;
+  box-shadow:0 26px 50px rgba(32,0,12,.30);
+  animation:floatHero 4.2s ease-in-out infinite;
+}
+@keyframes floatHero{
+  0%,100%{transform:translateY(0) rotate(-1deg)}
+  50%{transform:translateY(-10px) rotate(1deg)}
+}
+.member-badge{
+  position:absolute;
+  right:6%;
+  bottom:8%;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:11px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  color:#68001d;
+  font-size:11px;
+  font-weight:900;
+  box-shadow:0 14px 28px rgba(40,0,15,.22);
+  animation:badgePulse 2.6s ease-in-out infinite;
+}
+.member-badge img{
+  width:34px;height:34px;
+  object-fit:cover;
+  border-radius:10px;
+}
+@keyframes badgePulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+}
+
+.section-title{
+  margin:32px 0 14px;
+  color:#570018;
+  font-size:24px;
+  letter-spacing:-.4px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.card{
+  position:relative;
+  min-height:175px;
+  padding:18px;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(215,181,74,.08),transparent 28%),
+    #fff;
+  border:1px solid rgba(111,0,31,.08);
+  box-shadow:0 14px 34px rgba(67,0,22,.07);
+  overflow:hidden;
+  transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  top:-120%;
+  left:-45%;
+  width:36%;
+  height:300%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.70),transparent);
+  transform:rotate(18deg);
+  transition:left .7s ease;
+  pointer-events:none;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 22px 46px rgba(67,0,22,.12);
+  border-color:rgba(215,181,74,.34);
+}
+.card:hover::after{left:130%}
+
+.icon-wrap{
+  width:70px;
+  height:70px;
+  display:grid;
+  place-items:center;
+  border-radius:20px;
+  background:linear-gradient(145deg,#fff4f6,#fff9e9);
+  box-shadow:0 8px 20px rgba(81,0,26,.07);
+}
+.icon-wrap img{
+  width:58px;
+  height:58px;
+  object-fit:cover;
+  border-radius:16px;
+  animation:iconFloat 3.4s ease-in-out infinite;
+}
+.card:nth-child(2n) .icon-wrap img{animation-delay:.4s}
+.card:nth-child(3n) .icon-wrap img{animation-delay:.8s}
+@keyframes iconFloat{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-5px) scale(1.03)}
+}
+.card h3{margin:14px 0 5px;color:#4d0015;font-size:17px}
+.card p{margin:0;color:#7a686e;font-size:12px;line-height:1.55}
+.arrow{
+  position:absolute;
+  right:16px;
+  bottom:14px;
+  color:#9d7b1c;
+  font-weight:900;
+  transition:transform .2s ease;
+}
+.card:hover .arrow{transform:translateX(4px)}
+
+.two{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:18px;
+  margin-top:18px;
+}
+.panel{
+  padding:22px;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid rgba(111,0,31,.08);
+  box-shadow:0 14px 36px rgba(67,0,22,.065);
+}
+.panel h3{margin:0 0 14px;color:#520017}
+
+.empty{
+  min-height:235px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:24px;
+  border:1px dashed #dfccd3;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(215,181,74,.11),transparent 35%),
+    #fffafb;
+}
+.empty img{
+  width:118px;
+  height:118px;
+  object-fit:cover;
+  border-radius:28px;
+  box-shadow:0 12px 28px rgba(70,0,22,.08);
+  animation:iconFloat 3.6s ease-in-out infinite;
+}
+.empty b{display:block;color:#560018;margin:10px 0 6px}
+.empty span{color:#7d6b71;font-size:12px;line-height:1.6}
+
+.list{display:grid;gap:10px}
+.item{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  border-radius:15px;
+  background:#fff9fa;
+  border:1px solid #f0e2e7;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.item:hover{
+  transform:translateX(4px);
+  box-shadow:0 8px 18px rgba(70,0,22,.06);
+}
+.item img{
+  width:44px;
+  height:44px;
+  object-fit:cover;
+  border-radius:13px;
+  flex:0 0 44px;
+}
+.item strong{display:block;color:#4e0016;font-size:13px}
+.item small{color:#7b686e;font-size:11px;line-height:1.4}
+
+.strip{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:center;
+  padding:24px;
+  border-radius:24px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(215,181,74,.20),transparent 24%),
+    linear-gradient(135deg,#6b001f,#960033);
+  box-shadow:0 18px 42px rgba(69,0,23,.14);
+}
+.strip h3{margin:0 0 5px}
+.strip p{margin:0;color:#f2e0e6;font-size:13px}
+.strip a{
+  padding:13px 18px;
+  border-radius:13px;
+  background:#fff;
+  color:#67001d;
+  font-weight:900;
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+}
+
+@media(max-width:700px){
+  .app{padding:0 12px 30px}
+  .top{margin:0 -12px 14px;padding:11px 12px}
+  .brand span:last-child{max-width:155px;line-height:1.05}
+  .topnav a{padding:7px 9px;font-size:10px}
+  .hero{padding:22px 16px;border-radius:22px}
+  .hero h1{font-size:34px}
+  .hero p{font-size:13px}
+  .hero-visual{min-height:250px}
+  .hero-couple{width:min(300px,94%)}
+  .member-badge{right:2%;bottom:2%;font-size:10px}
+  .grid{gap:10px}
+  .card{min-height:165px;padding:15px;border-radius:18px}
+  .icon-wrap{width:62px;height:62px}
+  .icon-wrap img{width:52px;height:52px}
+  .card h3{font-size:15px}
+  .card p{font-size:11px}
+  .strip{grid-template-columns:1fr}
+  .strip a{text-align:center}
+}
+</style>
+</head>
+<body>
+<div id="accessScreen" style="min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(180deg,#fffaf7,#fff3f6);font-family:Arial,Helvetica,sans-serif;">
+  <div style="max-width:460px;width:100%;background:#fff;border:1px solid #eadde1;border-radius:24px;padding:28px;text-align:center;box-shadow:0 20px 50px rgba(70,0,24,.10);">
+    <div style="width:68px;height:68px;margin:0 auto 14px;display:grid;place-items:center;border-radius:20px;background:#fff4e8;font-size:32px;">👑</div>
+    <h2 id="accessTitle" style="margin:0 0 8px;color:#6f001f;">Checking Membership…</h2>
+    <p id="accessText" style="margin:0;color:#75646a;line-height:1.6;font-size:14px;">आपके account की paid membership verify की जा रही है।</p>
+  </div>
+</div>
+
+<div class="app" id="memberApp" style="display:none;">
+
+<header class="top">
+  <a class="brand" href="index.html">
+    <span class="mark">♥</span>
+    <span>Indian Vivah Matrimony</span>
+  </a>
+  <nav class="topnav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="kicker">PREMIUM MEMBER AREA</span>
+    <h1>Welcome to your<br>Member Dashboard</h1>
+    <p>
+      Matches, interests, shortlist, messages, membership और matrimonial services —
+      सब कुछ एक premium app-style dashboard में।
+    </p>
+    <div id="memberPlanLine" style="margin-top:15px;display:inline-flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <span id="memberPlanPill" style="padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);font-size:11px;font-weight:900;color:#ffe79a;">MEMBERSHIP ACTIVE</span>
+      <span id="memberExpiryText" style="font-size:12px;color:#f2e0e6;"></span>
+    </div>
+
+  </div>
+
+  <div class="hero-visual">
+    <img class="hero-couple" src="images/member/welcome-couple.png" alt="Premium matrimonial member welcome">
+    <div class="member-badge">
+      <img src="images/member/membership-3d.png" alt="">
+      <span id="memberBadgeText">Premium Member</span>
+    </div>
+  </div>
+</section>
+
+<h2 class="section-title">Quick Access</h2>
+
+<section class="grid">
+
+  <a class="card" href="my-profile.html">
+    <div class="icon-wrap"><img src="images/member/profile-3d.png" alt="My Profile"></div>
+    <h3>My Profile</h3>
+    <p>अपनी matrimonial profile देखें और update करें।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="index.html#profiles">
+    <div class="icon-wrap"><img src="images/member/matches-3d.png" alt="Find Matches"></div>
+    <h3>Find Matches</h3>
+    <p>Suitable matrimonial profiles explore करें।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="#">
+    <div class="icon-wrap"><img src="images/member/interest-3d.png" alt="Interests"></div>
+    <h3>Interests</h3>
+    <p>Sent और received interests यहाँ दिखाई देंगे।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="#">
+    <div class="icon-wrap"><img src="images/member/shortlist-3d.png" alt="Shortlisted"></div>
+    <h3>Shortlisted</h3>
+    <p>पसंद किए profiles जल्दी access करें।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="#">
+    <div class="icon-wrap"><img src="images/member/messages-3d.png" alt="Messages"></div>
+    <h3>Messages</h3>
+    <p>Eligible matches के साथ communication area।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="index.html#plans">
+    <div class="icon-wrap"><img src="images/member/membership-3d.png" alt="Membership"></div>
+    <h3>My Membership</h3>
+    <p>Plan, validity और benefits देखें।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="services.html">
+    <div class="icon-wrap"><img src="images/member/services-3d.png" alt="Our Services"></div>
+    <h3>Our Services</h3>
+    <p>Match, vivah और sammelan assistance।</p>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card" href="safety.html">
+    <div class="icon-wrap"><img src="images/member/safety-3d.png" alt="Safety and Support"></div>
+    <h3>Safety & Support</h3>
+    <p>Safe matrimonial journey के लिए important guidance।</p>
+    <span class="arrow">→</span>
+  </a>
+
+</section>
+
+<section class="two">
+
+  <div class="panel">
+    <h3>New Matches</h3>
+    <div class="empty">
+      <div>
+        <img src="images/member/matches-3d.png" alt="New Matches">
+        <b>Your suitable matches will appear here</b>
+        <span>Match/filter logic जुड़ने के बाद account के अनुसार profiles यहाँ दिखाई जाएँगी।</span>
+      </div>
+    </div>
+  </div>
+
+  <aside class="panel">
+    <h3>Member Tools</h3>
+
+    <div class="list">
+
+      <a class="item" href="my-profile.html">
+        <img src="images/member/profile-3d.png" alt="">
+        <div><strong>Edit Profile</strong><small>अपनी details update करें</small></div>
+      </a>
+
+      <a class="item" href="#">
+        <img src="images/member/matches-3d.png" alt="">
+        <div><strong>Profile Views</strong><small>किसने profile देखा — यहाँ आएगा</small></div>
+      </a>
+
+      <a class="item" href="#">
+        <img src="images/member/interest-3d.png" alt="">
+        <div><strong>Notifications</strong><small>Interests और updates एक जगह</small></div>
+      </a>
+
+      <a class="item" href="services.html">
+        <img src="images/member/services-3d.png" alt="">
+        <div><strong>Need Assistance?</strong><small>Matrimonial services देखें</small></div>
+      </a>
+
+    </div>
+  </aside>
+
+</section>
+
+<section class="strip">
+  <div>
+    <h3>Premium features अब इसी dashboard में unlock होंगे.</h3>
+    <p>अगला step Firebase membership status जोड़ना है, ताकि केवल verified paid accounts यह dashboard खोल सकें।</p>
+  </div>
+  <a href="services.html">Explore Services →</a>
+</section>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw",
+  authDomain: "indian-vivah-app-2026.firebaseapp.com",
+  projectId: "indian-vivah-app-2026",
+  storageBucket: "indian-vivah-app-2026.firebasestorage.app",
+  messagingSenderId: "807227064930",
+  appId: "1:807227064930:web:c6cbc77cbc15c52ff0073b",
+  measurementId: "G-E4EC5RDHVM"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const accessScreen = document.getElementById("accessScreen");
+const memberApp = document.getElementById("memberApp");
+const accessTitle = document.getElementById("accessTitle");
+const accessText = document.getElementById("accessText");
+
+function showBlocked(title, text, target, delay = 2200){
+  accessTitle.textContent = title;
+  accessText.textContent = text;
+  setTimeout(() => location.href = target, delay);
+}
+
+function formatDate(value){
+  try{
+    const d = value?.toDate ? value.toDate() : new Date(value);
+    if (Number.isNaN(d.getTime())) return "";
+    return d.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    });
+  }catch(_){
+    return "";
+  }
+}
+
+onAuthStateChanged(auth, async (user) => {
+  if(!user){
+    showBlocked(
+      "Login Required",
+      "Member Dashboard खोलने के लिए पहले अपने registered account से login करें।",
+      "login.html"
+    );
+    return;
+  }
+
+  try{
+    const ref = doc(db, "memberships", user.uid);
+    const snap = await getDoc(ref);
+
+    if(!snap.exists()){
+      showBlocked(
+        "Paid Membership Required",
+        "इस account पर active paid membership नहीं मिली। Membership activate होने के बाद dashboard खुलेगा।",
+        "index.html#plans"
+      );
+      return;
+    }
+
+    const m = snap.data();
+    const expiry = m.expiryDate?.toDate ? m.expiryDate.toDate() : null;
+    const active = m.status === "active" && expiry && expiry > new Date();
+
+    if(!active){
+      showBlocked(
+        "Membership Inactive",
+        "आपकी membership inactive या expired है। नया plan activate करने के बाद dashboard access मिलेगा।",
+        "index.html#plans"
+      );
+      return;
+    }
+
+    const plan = m.planName || m.plan || "Premium";
+    const expiryText = formatDate(m.expiryDate);
+
+    document.getElementById("memberBadgeText").textContent = `${plan} Member`;
+    document.getElementById("memberPlanPill").textContent = `${String(plan).toUpperCase()} • ACTIVE`;
+    document.getElementById("memberExpiryText").textContent =
+      expiryText ? `Valid till ${expiryText}` : "";
+
+    accessScreen.style.display = "none";
+    memberApp.style.display = "";
+  }catch(error){
+    console.error("Membership verification failed:", error);
+    accessTitle.textContent = "Unable to Verify Membership";
+    accessText.textContent = "Membership check में समस्या आई। Console error देखें और दोबारा कोशिश करें।";
+  }
+});
+</script>
+
+</body>
+</html>
