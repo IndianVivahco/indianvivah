@@ -130,18 +130,97 @@ header{
 }
 .actions .btn.gold{box-shadow:0 8px 18px rgba(214,178,75,.22)}
 .actions .btn:hover{transform:translateY(-1px)}
+
 @media(max-width:700px){
-  .brand::before{width:32px;height:32px;font-size:14px}
-  .actions{gap:6px}
-  .title{margin-bottom:22px}
-  .title h1{font-size:31px}
-  .profile.card{border-radius:22px}
-  .top{border-radius:22px 22px 0 0;padding-top:26px}
-  .photo{width:150px;height:180px}
-  .name{font-size:28px}
-  .details{border-radius:0 0 22px 22px}
-  .section{padding:16px 13px;border-radius:16px}
-  .item{padding:12px}
+
+  header{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 14px 16px;
+  }
+
+  .brand{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:5px;
+    white-space:nowrap;
+    font-size:16px;
+    line-height:1.2;
+  }
+
+  .brand::before{
+    width:32px;
+    height:32px;
+    font-size:14px;
+    flex:0 0 32px;
+  }
+
+  .brand span{
+    display:inline;
+    margin-left:0;
+  }
+
+  .actions{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:8px;
+    flex-wrap:nowrap;
+  }
+
+  .actions .btn{
+    min-height:38px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 14px;
+    font-size:12px;
+    white-space:nowrap;
+  }
+
+  .title{
+    margin-bottom:22px;
+  }
+
+  .title h1{
+    font-size:31px;
+  }
+
+  .profile-card{
+    border-radius:22px;
+  }
+
+  .top{
+    border-radius:22px 22px 0 0;
+    padding-top:26px;
+  }
+
+  .photo{
+    width:150px;
+    height:180px;
+  }
+
+  .name{
+    font-size:28px;
+  }
+
+  .details{
+    border-radius:0 0 22px 22px;
+  }
+
+  section{
+    padding:16px 13px;
+    border-radius:16px;
+  }
+
+  .item{
+    padding:12px;
+  }
 }
 
 </style>
