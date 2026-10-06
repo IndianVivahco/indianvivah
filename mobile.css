@@ -1,1295 +1,2623 @@
 /* =========================================================
+
    INDIAN VIVAH MATRIMONY — PREMIUM MOBILE CSS
+
    Clean replacement for the old mobile.css
+
    ========================================================= */
 
+
+
 @media (min-width:769px){
+
   .mobile-view{display:none !important}
+
 }
+
+
 
 @media (max-width:768px){
 
+
+
   :root{
+
     --iv-wine:#740020;
+
     --iv-wine-dark:#470012;
+
     --iv-rose:#b52858;
+
     --iv-gold:#d6b24b;
+
     --iv-gold-soft:#f0d984;
+
     --iv-cream:#fffaf6;
+
     --iv-blush:#f9eef2;
+
     --iv-card:#fff;
+
     --iv-text:#2f2025;
+
     --iv-muted:#78666c;
+
     --iv-line:#eadde1;
+
   }
+
+
 
   html,body{
+
     width:100%;
+
     min-height:100%;
+
     overflow-x:hidden !important;
+
     background:#fffaf7;
+
   }
+
+
 
   body{
+
     padding-top:0;
+
   }
+
+
 
   .desktop-view,
+
   .d-header,
+
   header.d-header{
+
     display:none !important;
+
   }
+
+
 
   .mobile-view{
+
     display:block !important;
+
     width:100%;
+
     min-height:auto !important;
+
     height:auto !important;
+
     overflow:visible !important;
+
     background:#fffaf7 !important;
+
   }
 
+
+
   /* =======================================================
+
      MOBILE HEADER
+
      ======================================================= */
+
+
 
   .m-header{
+
     position:sticky !important;
+
     top:0 !important;
+
     left:0 !important;
+
     z-index:5000 !important;
+
     width:100% !important;
+
     min-height:66px;
+
     display:flex !important;
+
     align-items:center !important;
+
     justify-content:space-between !important;
+
     padding:10px 16px !important;
+
     background:
+
       linear-gradient(110deg,#500016,#740020 58%,#920032) !important;
+
     color:#fff !important;
+
     border-bottom:1px solid rgba(255,255,255,.08);
+
     box-shadow:0 8px 24px rgba(60,0,18,.16);
+
     backdrop-filter:blur(14px);
+
   }
+
+
 
   .m-header .logo{
+
     display:flex !important;
+
     align-items:center !important;
+
     gap:9px !important;
+
     color:var(--iv-gold-soft) !important;
+
     font-size:20px !important;
+
     font-weight:900 !important;
+
     letter-spacing:-.3px;
+
   }
+
+
 
   .m-header .logo img{
+
     width:46px !important;
+
     height:32px !important;
+
     object-fit:contain !important;
+
     border-radius:8px;
+
   }
+
+
 
   .m-header .logo span{
+
     color:var(--iv-gold-soft) !important;
+
   }
+
+
 
   .m-menu-btn{
+
     width:42px;
+
     height:42px;
+
     display:grid;
+
     place-items:center;
+
     border:1px solid rgba(255,255,255,.16) !important;
+
     border-radius:12px;
+
     background:rgba(255,255,255,.08) !important;
+
     color:var(--iv-gold-soft) !important;
+
     font-size:24px !important;
+
     cursor:pointer;
+
   }
 
+
+
   /* =======================================================
+
      MOBILE SIDE DRAWER
+
      ======================================================= */
+
+
 
   .m-side-drawer{
+
     position:fixed !important;
+
     top:0 !important;
+
     right:-310px !important;
+
     z-index:7000 !important;
+
     width:min(310px,86vw) !important;
+
     height:100dvh !important;
+
     display:flex !important;
+
     flex-direction:column !important;
+
     overflow-y:auto !important;
+
     background:#fff !important;
+
     box-shadow:-18px 0 45px rgba(36,0,10,.20) !important;
+
     transition:right .32s ease !important;
+
   }
+
+
 
   .m-side-drawer.open-drawer{
+
     right:0 !important;
+
   }
+
+
 
   .drawer-header{
+
     display:flex !important;
+
     align-items:center !important;
+
     justify-content:space-between !important;
+
     padding:20px !important;
+
     background:
+
       linear-gradient(135deg,var(--iv-wine-dark),var(--iv-wine)) !important;
+
     color:#fff !important;
+
   }
+
+
 
   .drawer-header h3{
+
     font-size:20px;
+
     font-weight:900;
+
   }
+
+
 
   .close-drawer-btn{
+
     width:38px;
+
     height:38px;
+
     border:0 !important;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.10) !important;
+
     color:#fff !important;
+
     font-size:20px !important;
+
     cursor:pointer;
+
   }
+
+
 
   .m-drawer-nav{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:4px !important;
+
     padding:16px !important;
+
   }
+
+
 
   .m-drawer-nav a{
+
     display:flex;
+
     align-items:center;
+
     min-height:48px;
+
     padding:0 12px !important;
+
     border:0 !important;
+
     border-radius:11px;
+
     color:#3e2c32 !important;
+
     text-decoration:none !important;
+
     font-size:15px !important;
+
     font-weight:750 !important;
+
   }
+
+
 
   .m-drawer-nav a:hover{
+
     background:#fff2f5;
+
     color:var(--iv-wine) !important;
+
   }
+
+
 
   .firebase-mobile-auth-btn,
+
   .m-btn-drawer-login{
+
     width:100% !important;
+
     min-height:46px;
+
     margin-top:8px !important;
+
     padding:0 14px !important;
+
     border:0 !important;
+
     border-radius:11px !important;
+
     background:linear-gradient(135deg,var(--iv-wine),var(--iv-rose)) !important;
+
     color:#fff !important;
+
     font-weight:850 !important;
+
     cursor:pointer;
+
   }
+
+
 
   .drawer-overlay{
+
     position:fixed !important;
+
     inset:0 !important;
+
     z-index:6990 !important;
+
     display:none !important;
+
     background:rgba(25,0,8,.58) !important;
+
     backdrop-filter:blur(3px);
+
   }
+
+
 
   .drawer-overlay.show-overlay{
+
     display:block !important;
+
   }
 
+
+
   /* =======================================================
+
      MOBILE HERO
+
      ======================================================= */
+
+
 
   .m-split-hero{
+
     position:relative;
+
     width:100%;
+
     height:min(72vh,590px);
+
     min-height:560px;
+
     margin-top:0 !important;
+
     overflow:hidden;
+
     display:flex;
+
     align-items:flex-end;
+
     justify-content:center;
+
     padding:0 18px 34px;
+
     background:#3d0012;
+
   }
+
+
 
   .m-slide-img{
+
     position:absolute;
+
     inset:0;
+
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
     object-position:center 20%;
+
     opacity:0;
+
     z-index:1;
+
     transition:opacity 1s ease, transform 5s ease;
+
   }
+
+
 
   .m-slide-img.m-active-slide{
+
     opacity:1;
+
     z-index:2;
+
     transform:scale(1.025);
+
   }
+
+
 
   .m-slider-overlay{
+
     position:absolute;
+
     inset:0;
+
     z-index:3;
+
     background:
+
       linear-gradient(0deg,rgba(39,0,12,.72),rgba(39,0,12,.08) 58%),
+
       linear-gradient(90deg,rgba(39,0,12,.12),rgba(39,0,12,.02)) !important;
+
   }
+
+
 
   .m-hero-text-only{
+
     position:relative;
+
     z-index:4;
+
     width:100%;
+
     max-width:520px;
+
     margin:0 !important;
+
     padding:0 !important;
+
     text-align:left !important;
+
     color:#fff !important;
+
   }
+
+
 
   .m-hero-text-only h1{
+
     margin:0 0 8px;
+
     color:#fff !important;
+
     font-size:clamp(34px,9vw,48px) !important;
+
     line-height:1.02;
+
     letter-spacing:-1.2px;
+
     font-weight:900 !important;
+
     text-shadow:0 5px 20px rgba(0,0,0,.38) !important;
+
   }
+
+
 
   .m-hero-text-only p{
+
     margin:0;
+
     color:rgba(255,255,255,.86) !important;
+
     font-size:14px !important;
+
     font-weight:600;
+
     text-shadow:0 3px 12px rgba(0,0,0,.38) !important;
+
   }
 
+
+
   /* =======================================================
+
      MOBILE QUICK REGISTRATION
+
      ======================================================= */
+
+
 
   .m-reg-section{
+
     padding:18px 14px 26px !important;
+
     background:
+
       radial-gradient(circle at 100% 0%,rgba(214,178,75,.12),transparent 32%),
+
       linear-gradient(180deg,#fff8fa,#fff) !important;
+
   }
+
+
 
   .m-reg-box{
+
     width:100%;
+
     padding:22px !important;
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:11px !important;
+
     border:1px solid rgba(116,0,32,.10) !important;
+
     border-radius:22px !important;
+
     border-top:0 !important;
+
     background:#fff !important;
+
     box-shadow:0 16px 38px rgba(71,0,18,.10) !important;
+
     text-align:left !important;
+
   }
+
+
 
   .m-reg-box h2{
+
     margin:0 !important;
+
     color:var(--iv-wine-dark) !important;
+
     font-size:24px !important;
+
     font-weight:900 !important;
+
   }
+
+
 
   .m-reg-box p{
+
     margin:0 0 7px !important;
+
     color:var(--iv-muted) !important;
+
     font-size:13px !important;
+
   }
+
+
 
   .m-reg-box input,
+
   .m-reg-box select{
+
     width:100% !important;
+
     min-height:49px;
+
     padding:0 13px !important;
+
     border:1px solid var(--iv-line) !important;
+
     border-radius:12px !important;
+
     background:#fff !important;
+
     color:var(--iv-text) !important;
+
     font-size:14px !important;
+
     outline:none;
+
   }
+
+
 
   .m-reg-box input:focus,
+
   .m-reg-box select:focus{
+
     border-color:rgba(116,0,32,.48) !important;
+
     box-shadow:0 0 0 4px rgba(116,0,32,.07);
+
   }
+
+
 
   .m-btn-search{
+
     width:100% !important;
+
     min-height:50px;
+
     border:0 !important;
+
     border-radius:12px !important;
+
     background:linear-gradient(135deg,var(--iv-wine),var(--iv-rose)) !important;
+
     color:#fff !important;
+
     font-size:15px !important;
+
     font-weight:900 !important;
+
     box-shadow:0 10px 24px rgba(116,0,32,.18) !important;
+
     cursor:pointer;
+
   }
 
+
+
   /* =======================================================
+
      COMMON MOBILE SECTIONS
+
      ======================================================= */
+
+
 
   .section-container,
+
   .why-choose-us,
+
   .faq-section,
+
   .contact-section{
+
     width:100%;
+
     padding:54px 15px !important;
+
     text-align:center;
+
   }
+
+
 
   .section-title,
+
   .faq-title,
+
   .suggestion-title{
+
     color:var(--iv-wine-dark) !important;
+
     font-size:29px !important;
+
     line-height:1.12;
+
     letter-spacing:-.7px;
+
     font-weight:900 !important;
+
   }
+
+
 
   .section-subtitle,
+
   .section-desc,
+
   .suggestion-subtitle{
+
     margin:9px auto 28px !important;
+
     color:var(--iv-muted) !important;
+
     font-size:13px !important;
+
     line-height:1.7;
+
   }
+
+
 
   .bg-light{
+
     background:linear-gradient(180deg,#fffaf8,#fff) !important;
+
   }
 
+
+
   /* =======================================================
+
      STATS
+
      ======================================================= */
+
+
 
   .stats-container{
+
     display:grid !important;
+
     grid-template-columns:1fr 1fr !important;
+
     gap:12px !important;
+
   }
+
+
 
   .stat-box{
+
     min-height:140px;
+
     display:flex !important;
+
     flex-direction:column;
+
     align-items:flex-start !important;
+
     gap:11px;
+
     padding:18px !important;
+
     border:1px solid var(--iv-line);
+
     border-radius:18px;
+
     background:#fff;
+
     box-shadow:0 8px 24px rgba(70,0,22,.07);
+
     text-align:left;
+
   }
+
+
 
   .stat-icon-wrapper{
+
     width:44px !important;
+
     height:44px !important;
+
     display:grid;
+
     place-items:center;
+
     margin:0 !important;
+
     border-radius:14px;
+
     background:#fff0f4;
+
     font-size:20px !important;
+
   }
+
+
 
   .stat-number{
+
     color:var(--iv-wine-dark);
+
     font-size:21px !important;
+
     font-weight:900;
+
   }
+
+
 
   .stat-text{
+
     color:var(--iv-muted);
+
     font-size:12px !important;
+
     line-height:1.35;
+
   }
 
+
+
   /* =======================================================
+
      LIVE PROFILES — MOBILE APP-LIKE CARDS
+
      ======================================================= */
+
+
 
   #profiles{
+
     padding-left:0 !important;
+
     padding-right:0 !important;
+
   }
+
+
 
   #profiles > .section-title,
+
   #profiles > .section-subtitle{
+
     padding-left:16px;
+
     padding-right:16px;
+
   }
+
+
 
   .iv-live-profile-grid,
+
   .profile-grid{
+
     width:100% !important;
+
     display:flex !important;
+
     flex-direction:row !important;
+
     flex-wrap:nowrap !important;
+
     gap:14px !important;
+
     overflow-x:auto !important;
+
     overflow-y:hidden !important;
+
     align-items:stretch !important;
+
     justify-content:flex-start !important;
+
     padding:12px 16px 24px !important;
+
     scroll-snap-type:x mandatory;
+
     scrollbar-width:none;
+
     -webkit-overflow-scrolling:touch;
+
   }
+
+
 
   .iv-live-profile-grid::-webkit-scrollbar,
+
   .profile-grid::-webkit-scrollbar{
+
     display:none;
+
   }
+
+
 
   .iv-profile-card{
+
     flex:0 0 84vw !important;
+
     max-width:340px !important;
+
     min-width:282px !important;
+
     overflow:hidden;
+
     scroll-snap-align:center;
+
     border:1px solid rgba(116,0,32,.10) !important;
+
     border-radius:22px !important;
+
     background:#fff !important;
+
     box-shadow:0 14px 34px rgba(70,0,22,.11) !important;
+
   }
+
+
 
   .iv-profile-photo-wrap{
+
     width:100%;
+
     aspect-ratio:4/5 !important;
+
     height:auto !important;
+
     overflow:hidden;
+
   }
+
+
 
   .iv-profile-photo{
+
     width:100%;
+
     height:100%;
+
     object-fit:cover !important;
+
     object-position:center 14% !important;
+
     display:block;
+
   }
+
+
 
   .iv-profile-card:hover .iv-profile-photo{
+
     transform:none !important;
+
   }
+
+
 
   .iv-profile-badge{
+
     display:none !important;
+
   }
+
+
 
   .iv-profile-location-badge{
+
     left:14px !important;
+
     right:14px !important;
+
     bottom:13px !important;
+
     font-size:12px !important;
+
   }
+
+
 
   .iv-profile-content{
+
     padding:18px !important;
+
   }
+
+
 
   .iv-profile-name{
+
     font-size:20px !important;
+
   }
+
+
 
   .iv-profile-meta{
+
     font-size:12px !important;
+
   }
+
+
 
   .iv-profile-info-row{
+
     font-size:13px !important;
+
   }
+
+
 
   .iv-profile-view-btn{
+
     min-height:46px;
+
     border-radius:12px !important;
+
     font-size:13px !important;
+
   }
+
+
 
   .profile-card{
+
     flex:0 0 84vw !important;
+
     max-width:340px !important;
+
     min-width:282px !important;
+
   }
 
+
+
   /* =======================================================
+
      AI METER
+
      ======================================================= */
+
+
 
   .ai-section{
+
     background:
+
       radial-gradient(circle at 20% 10%,rgba(214,178,75,.17),transparent 30%),
+
       linear-gradient(145deg,#460013,#740020,#9b123e) !important;
+
   }
+
+
 
   .ai-section .section-title{color:#fff !important}
+
   .ai-section .section-subtitle{color:rgba(255,255,255,.72) !important}
 
+
+
   .love-meter-box{
+
     width:100%;
+
     padding:20px !important;
+
     border:1px solid rgba(255,255,255,.13);
+
     border-radius:20px !important;
+
     background:rgba(255,255,255,.08) !important;
+
     box-shadow:0 16px 38px rgba(0,0,0,.18);
+
     backdrop-filter:blur(10px);
+
   }
+
+
 
   .input-group{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:10px !important;
+
     margin-bottom:12px !important;
+
   }
+
+
 
   .input-group input,
+
   .love-meter-box input{
+
     min-height:48px;
+
     border-radius:11px !important;
+
   }
+
+
 
   #btn-calculate{
+
     min-height:48px;
+
     border-radius:11px !important;
+
     font-size:14px !important;
+
   }
 
+
+
   /* =======================================================
+
      STORIES
+
      ======================================================= */
+
+
 
   .story-grid{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:16px !important;
+
     align-items:stretch !important;
+
   }
+
+
 
   .story-card{
+
     width:100% !important;
+
     max-width:none !important;
+
     padding:22px !important;
+
     border:1px solid var(--iv-line) !important;
+
     border-radius:20px !important;
+
     background:#fff !important;
+
     box-shadow:0 9px 26px rgba(70,0,22,.07) !important;
+
     text-align:center !important;
+
   }
+
+
 
   .story-img{
+
     width:118px !important;
+
     height:118px !important;
+
     border-radius:50% !important;
+
     object-fit:cover !important;
+
     object-position:center top !important;
+
   }
 
+
+
   /* =======================================================
+
      MEMBERSHIP
+
      ======================================================= */
+
+
 
   .plans-grid{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:16px !important;
+
     align-items:stretch !important;
+
   }
+
+
 
   .plan-card{
+
     width:100% !important;
+
     min-height:auto !important;
+
     padding:26px 22px !important;
+
     border:1px solid var(--iv-line) !important;
+
     border-radius:20px !important;
+
     background:#fff !important;
+
     box-shadow:0 9px 26px rgba(70,0,22,.07) !important;
+
     text-align:left !important;
+
   }
+
+
 
   .premium-plan{
+
     transform:none !important;
+
   }
+
+
 
   .price{
+
     font-size:31px !important;
+
   }
+
+
 
   .badge{
+
     top:14px !important;
+
     right:14px !important;
+
     left:auto !important;
+
     transform:none !important;
+
   }
 
+
+
   /* =======================================================
+
      WEDDING SERVICES / SAMMELAN
+
      ======================================================= */
+
+
 
   .sammelan-top-photos-row{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:14px !important;
+
     width:100% !important;
+
     margin-bottom:18px !important;
+
   }
+
+
 
   .sammelan-top-img{
+
     width:100% !important;
+
     max-width:none !important;
+
     height:320px !important;
+
     min-width:0 !important;
+
     object-fit:cover !important;
+
     object-position:center top !important;
+
     border:0 !important;
+
     border-radius:20px !important;
+
     box-shadow:0 10px 28px rgba(70,0,22,.08) !important;
+
   }
+
+
 
   .sammelan-banner-box{
+
     width:100% !important;
+
     padding:25px 19px !important;
+
     border-radius:20px !important;
+
     text-align:center;
+
   }
+
+
 
   .sammelan-banner-box h3{
+
     font-size:22px !important;
+
   }
+
+
 
   .services-grid,
+
   .services-premium-grid{
+
     display:grid !important;
+
     grid-template-columns:1fr !important;
+
     gap:15px !important;
+
     max-height:none !important;
+
     overflow:visible !important;
+
     padding:0 !important;
+
   }
+
+
 
   .service-premium-box,
+
   .service-box{
+
     width:100% !important;
+
     margin:0 !important;
+
     padding:0 0 20px !important;
+
     overflow:hidden;
+
     border:1px solid var(--iv-line) !important;
+
     border-radius:20px !important;
+
     background:#fff !important;
+
     box-shadow:0 9px 26px rgba(70,0,22,.07) !important;
+
     text-align:left !important;
+
   }
+
+
 
   .service-icon-logo{
+
     width:100% !important;
+
     height:200px !important;
+
     margin:0 0 18px !important;
+
     border:0 !important;
+
     border-radius:0 !important;
+
     background:#f8edf1 !important;
+
     transform:none !important;
+
   }
+
+
 
   .service-icon-logo img{
+
     width:100% !important;
+
     height:100% !important;
+
     object-fit:cover !important;
+
     border-radius:0 !important;
+
   }
+
+
 
   .service-premium-box h3,
+
   .service-premium-box p,
+
   .service-box h3,
+
   .service-box p{
+
     padding-left:18px !important;
+
     padding-right:18px !important;
+
   }
 
+
+
   /* =======================================================
+
      BLOG / SUGGESTION
+
      ======================================================= */
+
+
 
   .blog-grid{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:15px !important;
+
   }
+
+
 
   .blog-card{
+
     width:100% !important;
+
     padding:21px !important;
+
     border:1px solid var(--iv-line) !important;
+
     border-radius:19px !important;
+
     background:#fff !important;
+
     box-shadow:0 8px 24px rgba(70,0,22,.06) !important;
+
     text-align:left !important;
+
   }
+
+
 
   .suggestion-section{
+
     margin:32px 0 0 !important;
+
     padding:21px !important;
+
     border:1px solid var(--iv-line);
+
     border-radius:20px !important;
+
     background:#fff !important;
+
     box-shadow:0 8px 24px rgba(70,0,22,.06);
+
   }
+
+
 
   .form-group select,
+
   .form-group textarea,
+
   .suggestion-section input{
+
     width:100%;
+
     padding:12px 13px;
+
     border:1px solid var(--iv-line);
+
     border-radius:11px;
+
     background:#fff;
+
   }
+
+
 
   .submit-btn{
+
     width:100%;
+
     min-height:48px;
+
     border-radius:11px !important;
+
   }
 
+
+
   /* =======================================================
+
      FAQ
+
      ======================================================= */
+
+
 
   .faq-container{
+
     max-height:none !important;
+
     overflow:visible !important;
+
     padding:0 !important;
+
     margin-top:26px !important;
+
   }
+
+
 
   .faq-item{
+
     margin-bottom:10px;
+
     overflow:hidden;
+
     border:1px solid var(--iv-line);
+
     border-radius:15px;
+
     background:#fff;
+
   }
+
+
 
   .faq-question{
+
     width:100%;
+
     padding:16px !important;
+
     font-size:14px !important;
+
     text-align:left;
+
   }
+
+
 
   .faq-answer p{
+
     padding:0 16px 16px !important;
+
     font-size:13px !important;
+
     line-height:1.7;
+
   }
 
+
+
   /* =======================================================
+
      CONTACT / FOOTER
+
      ======================================================= */
+
+
 
   .contact-buttons{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:10px !important;
+
   }
+
+
 
   .c-btn{
+
     width:100%;
+
     min-height:48px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     border-radius:12px !important;
+
   }
+
+
 
   .main-footer{
+
     padding:46px 18px 22px !important;
+
     background:
+
       radial-gradient(circle at 85% 0%,rgba(214,178,75,.08),transparent 30%),
+
       #26000c !important;
+
   }
+
+
 
   .footer-grid{
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:30px !important;
+
   }
+
+
 
   .footer-bottom{
+
     margin-top:28px !important;
+
     font-size:11px !important;
+
   }
+
+
 
   /* =======================================================
+
      POPUPS
+
      ======================================================= */
 
+
+
   .plan-popup-card,
+
   .sammelan-form-card,
+
   .profile-modal-content{
+
     width:94vw !important;
+
     max-width:94vw !important;
+
     max-height:88dvh !important;
+
     padding:24px 18px !important;
+
     border-radius:20px !important;
+
   }
+
+
 
   .sammelan-form-row,
+
   .triple-row{
+
     display:grid !important;
+
     grid-template-columns:1fr !important;
+
     gap:12px !important;
+
   }
+
+
 
   .radio-group{
+
     flex-wrap:wrap !important;
+
   }
+
+
 
   .reg-success-overlay,
+
   .login-popup-overlay,
+
   .signup-popup-overlay{
+
     display:none !important;
+
   }
+
 }
+
+
 
 /* Extra-small phones */
+
 @media (max-width:380px){
+
   .m-hero-text-only h1{font-size:31px !important}
+
   .iv-profile-card,.profile-card{flex-basis:88vw !important;min-width:270px !important}
+
   .stats-container{grid-template-columns:1fr !important}
+
 }
+
+
 
 /* =========================================================
+
    FINAL PREMIUM MOBILE REFINEMENTS — 2026-10-02
+
    ========================================================= */
 
+
+
 .iv-mobile-hero-label,
+
 .iv-section-kicker,
+
 .membership-kicker,
+
 .iv-quick-start-badge,
+
 .sammelan-badge{
+
   font-size:11.5px !important;
+
   line-height:1.25;
+
   letter-spacing:.55px;
+
 }
+
+
 
 .iv-mobile-hero-label{
+
   display:inline-flex;
+
   padding:7px 11px;
+
   margin-bottom:10px;
+
   border:1px solid rgba(255,255,255,.20);
+
   border-radius:999px;
+
   background:rgba(255,255,255,.10);
+
   color:#f2d471;
+
   font-weight:900;
+
 }
+
+
 
 .iv-profiles-heading,
+
 .iv-match-guide-heading,
+
 .iv-help-heading,
+
 .iv-services-heading,
+
 .iv-blog-heading,
+
 .iv-contact-heading{
+
   padding:0 16px;
+
   margin:0 auto 25px;
+
   text-align:center;
+
 }
+
+
 
 .iv-section-kicker,
+
 .membership-kicker{
+
   padding:7px 11px !important;
+
 }
+
+
 
 .iv-match-guide-grid,
+
 .iv-help-grid,
+
 .iv-contact-grid{
+
   grid-template-columns:1fr !important;
+
   gap:12px !important;
+
 }
+
+
 
 .iv-match-guide-card,
+
 .iv-help-card{
+
   padding:19px !important;
+
   border-radius:17px !important;
+
 }
 
+
+
 .iv-match-guide-action button{
+
   width:100%;
+
 }
+
+
 
 .iv-help-step{font-size:24px}
 
+
+
 .iv-blog-more p{font-size:12px !important}
+
 .suggestion-section{text-align:left !important}
+
 .suggestion-title,.suggestion-subtitle{text-align:center}
 
+
+
 .iv-contact-card{
+
   padding:17px !important;
+
   border-radius:17px !important;
+
 }
+
 .iv-contact-card-icon{
+
   flex-basis:46px !important;
+
   width:46px !important;
+
   height:46px !important;
+
 }
+
 .iv-safety-note{
+
   margin-top:18px !important;
+
   padding:15px !important;
+
 }
+
+
 
 .footer-grid{
+
   display:flex !important;
+
   flex-direction:column !important;
+
   gap:28px !important;
+
 }
+
+
 
 .iv-quick-start-badge{
+
   font-size:11.5px !important;
+
 }
 
 
 
+
+
+
+
 /* =========================================================
+
    PHASE 1 — MOBILE MEMBER ACCESS
+
    ========================================================= */
+
+
 
 body:not(.is-member) .member-only{
+
   display:none !important;
+
 }
+
+
 
 body:not(.is-member) [data-member-link]::after{
+
   content:" 🔒";
+
   font-size:11px;
+
   margin-left:auto;
+
 }
+
+
 
 .iv-mobile-register-btn{
+
   margin-top:5px !important;
+
   color:#4b0015 !important;
+
   background:linear-gradient(135deg,#f2d77d,#d4ae43) !important;
+
 }
 
+
+
 .iv-access-overlay{
+
   padding:14px !important;
+
 }
+
 .iv-access-card{
+
   width:100% !important;
+
   max-width:430px;
+
   padding:32px 19px 24px !important;
+
   border-radius:22px !important;
+
 }
+
 .iv-access-lock{
+
   width:64px !important;
+
   height:64px !important;
+
   border-radius:20px !important;
+
   font-size:27px !important;
+
 }
+
 .iv-access-card h2{
+
   font-size:25px !important;
+
 }
+
 .iv-access-card p{
+
   font-size:13px !important;
+
 }
+
 .iv-access-actions{
+
   grid-template-columns:1fr !important;
+
 }
+
+
+
 
 
 /* =========================================================
+
    PHASE 2 — MOBILE CINEMATIC / 3D
+
    ========================================================= */
+
+
 
 @media (max-width:768px){
 
+
+
   .iv-mobile-cinematic{
+
     height:min(69vh,590px) !important;
+
     min-height:490px !important;
+
     padding:0 18px 38px !important;
+
   }
+
+
 
   .iv-mobile-cinematic .m-slider-overlay{
+
     background:
+
       radial-gradient(circle at 80% 18%,rgba(240,217,132,.14),transparent 25%),
+
       linear-gradient(0deg,rgba(35,0,11,.82),rgba(35,0,11,.08) 64%) !important;
+
   }
+
+
 
   .iv-mobile-cinematic .m-hero-text-only h1 span{
+
     display:block;
+
     color:#f2da83;
+
   }
+
+
 
   .iv-mobile-float-chip{
+
     position:absolute;
+
     top:22px;
+
     right:15px;
+
     z-index:5;
+
     padding:8px 10px;
+
     border:1px solid rgba(255,255,255,.18);
+
     border-radius:12px;
+
     background:rgba(48,0,15,.42);
+
     color:#fff;
+
     font-size:10px;
+
     font-weight:850;
+
     backdrop-filter:blur(10px);
+
     animation:ivMobileFloat 4.5s ease-in-out infinite;
+
   }
+
+
 
   .iv-mobile-action-section{
+
     position:relative;
+
     z-index:8;
+
     margin-top:-22px;
+
     padding:0 14px 30px !important;
+
     background:linear-gradient(180deg,#fff8fa,#fff) !important;
+
   }
+
+
 
   .iv-mobile-action-card{
+
     position:relative;
+
     padding:26px 19px !important;
+
     border:1px solid rgba(116,0,32,.10) !important;
+
     border-radius:24px !important;
+
     background:
+
       radial-gradient(circle at 100% 0%,rgba(214,178,75,.16),transparent 30%),
+
       #fff !important;
+
     box-shadow:0 18px 42px rgba(70,0,22,.13) !important;
+
     text-align:center !important;
+
   }
+
+
 
   .iv-mobile-action-card::before{
+
     content:none !important;
+
   }
+
+
 
   .iv-mobile-ring{
+
     width:66px;
+
     height:66px;
+
     display:grid;
+
     place-items:center;
+
     margin:15px auto 13px;
+
     border-radius:50%;
+
     background:linear-gradient(145deg,#fff4c8,#ddbb54);
+
     box-shadow:0 12px 25px rgba(116,0,32,.12),0 0 0 8px rgba(214,178,75,.08);
+
     font-size:28px;
+
   }
+
+
 
   .iv-mobile-action-card h2{
+
     margin:0 !important;
+
     color:#520017 !important;
+
     font-size:27px !important;
+
     line-height:1.08;
+
     letter-spacing:-.6px;
+
   }
+
+
 
   .iv-mobile-action-card > p{
+
     margin:10px auto 18px !important;
+
     color:#7b676e !important;
+
     font-size:13px !important;
+
     line-height:1.65;
+
     text-align:center !important;
+
   }
+
+
 
   .iv-mobile-action-buttons{
+
     display:grid;
+
     gap:10px;
+
   }
+
+
 
   .iv-mobile-action-buttons .iv-hero-btn{
+
     min-height:50px;
+
     justify-content:center;
+
   }
+
+
 
   /* Smart guide becomes visual stacked journey on phone */
+
   .iv-match-orbit{
+
     min-height:auto !important;
+
     display:flex !important;
+
     flex-direction:column !important;
+
     gap:12px !important;
+
     padding:0 !important;
+
   }
+
+
 
   .iv-match-center{
+
     position:relative !important;
+
     top:auto !important;
+
     left:auto !important;
+
     order:-1;
+
     width:190px !important;
+
     height:190px !important;
+
     margin:10px auto 34px;
+
     transform:none !important;
+
   }
+
+
 
   .iv-match-center::before{
+
     inset:-18px !important;
+
   }
+
+
 
   .iv-match-center::after{
+
     inset:-35px !important;
+
   }
+
+
 
   .iv-match-orbit .iv-match-guide-card{
+
     position:relative !important;
+
     top:auto !important;
+
     right:auto !important;
+
     bottom:auto !important;
+
     left:auto !important;
+
     width:100% !important;
+
   }
+
+
 
   /* Sammelan image above but still lifted */
+
   .iv-sammelan-showcase{
+
     grid-template-columns:1fr !important;
+
     gap:26px !important;
+
     min-height:auto !important;
+
     padding:22px 18px 27px !important;
+
     border-radius:23px !important;
+
   }
+
+
 
   .iv-sammelan-copy{
+
     order:2;
+
     text-align:left !important;
+
   }
+
+
 
   .iv-sammelan-copy h3{
+
     font-size:30px !important;
+
   }
+
+
 
   .iv-sammelan-visual{
+
     order:1;
+
     width:94%;
+
     height:300px !important;
+
     margin:0 auto;
+
     transform:translateY(-18px) rotate(1.2deg) !important;
+
   }
+
+
 
   .iv-sammelan-photo-back{
+
     inset:19px -10px -12px 20px !important;
+
   }
+
+
 
   .iv-sammelan-floating-badge{
+
     left:-8px !important;
+
     bottom:14px !important;
+
     padding:10px 12px !important;
+
   }
+
+
 
   .iv-sammelan-copy .btn-sammelan-reg{
+
     width:100% !important;
+
   }
+
+
 
   .iv-reveal{
+
     transform:translateY(20px);
+
   }
 
+
+
   @keyframes ivMobileFloat{
+
     0%,100%{transform:translateY(0)}
+
     50%{transform:translateY(-7px)}
+
   }
+
 }
 
 
+
+
+
 /* ===== Phase 3 Member Sections Premium Polish (Mobile) ===== */
+
 @media(max-width:700px){
+
   #match-guide{
+
     background:
+
       radial-gradient(circle at 50% 5%,rgba(214,178,75,.13),transparent 22%),
+
       linear-gradient(180deg,#fffaf8,#fff5f7);
-  }
-  .iv-match-orbit{
-    min-height:auto;
-    padding:18px 12px 20px;
-    border-radius:24px;
-    box-shadow:0 18px 44px rgba(80,0,28,.09);
-  }
-  .iv-match-orbit::before{
-    display:none;
-  }
-  .iv-match-center{
-    position:relative;
-    inset:auto;
-    transform:none;
-    width:150px;
-    height:150px;
-    margin:0 auto 18px;
-    box-shadow:0 18px 38px rgba(84,0,27,.24);
-  }
-  .iv-match-orbit .iv-match-guide-card{
-    position:relative;
-    inset:auto;
-    width:100%;
-    margin:10px 0 0;
-    border-radius:18px;
-    background:rgba(255,255,255,.94);
-    box-shadow:0 10px 26px rgba(70,0,22,.075);
-  }
-  .iv-match-orbit .iv-match-guide-card:hover{
-    transform:none;
-  }
-  .iv-match-guide-action{
-    margin-top:18px;
+
   }
 
-  .iv-sammelan-showcase{
+  .iv-match-orbit{
+
+    min-height:auto;
+
+    padding:18px 12px 20px;
+
     border-radius:24px;
+
+    box-shadow:0 18px 44px rgba(80,0,28,.09);
+
+  }
+
+  .iv-match-orbit::before{
+
+    display:none;
+
+  }
+
+  .iv-match-center{
+
+    position:relative;
+
+    inset:auto;
+
+    transform:none;
+
+    width:150px;
+
+    height:150px;
+
+    margin:0 auto 18px;
+
+    box-shadow:0 18px 38px rgba(84,0,27,.24);
+
+  }
+
+  .iv-match-orbit .iv-match-guide-card{
+
+    position:relative;
+
+    inset:auto;
+
+    width:100%;
+
+    margin:10px 0 0;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.94);
+
+    box-shadow:0 10px 26px rgba(70,0,22,.075);
+
+  }
+
+  .iv-match-orbit .iv-match-guide-card:hover{
+
+    transform:none;
+
+  }
+
+  .iv-match-guide-action{
+
+    margin-top:18px;
+
+  }
+
+
+
+  .iv-sammelan-showcase{
+
+    border-radius:24px;
+
     overflow:hidden;
+
     box-shadow:0 18px 44px rgba(80,0,28,.10);
+
   }
+
   .iv-sammelan-copy{
+
     padding:24px 18px 12px;
+
   }
+
   .iv-sammelan-copy h3{
+
     font-size:28px;
+
     line-height:1.06;
+
   }
+
   .iv-sammelan-points{
+
     gap:8px;
+
   }
+
   .iv-sammelan-points span{
+
     border-radius:14px;
+
     box-shadow:0 7px 18px rgba(80,0,28,.055);
+
   }
+
   .iv-sammelan-visual{
+
     transform:none;
+
     margin-top:8px;
+
     padding:0 14px 20px;
+
   }
+
   .iv-sammelan-showcase:hover .iv-sammelan-visual{
+
     transform:none;
+
   }
+
   .iv-sammelan-photo-back{
+
     transform:rotate(-3deg) translate(-8px,8px);
+
   }
+
   .iv-sammelan-main-photo{
+
     border-width:5px;
+
     box-shadow:0 20px 42px rgba(73,0,25,.20);
+
   }
+
   .iv-sammelan-floating-badge{
+
     right:6px;
+
     bottom:8px;
+
     transform:scale(.90);
+
     transform-origin:right bottom;
+
+  }
+
+}
+
+/* =========================================================
+   LOGGED-IN MOBILE MEMBER SLIDER — FINAL 7 IMAGES
+   Keeps desktop unchanged.
+   ========================================================= */
+@media (max-width:768px){
+
+  body.is-member .m-split-hero.iv-mobile-cinematic{
+    height:min(72vh,590px) !important;
+    min-height:560px !important;
+  }
+
+  body.is-member .m-split-hero.iv-mobile-cinematic .m-slide-img.member-slide{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    filter:none !important;
+    image-rendering:auto;
+    transition:opacity 1s ease, transform 5s ease !important;
+  }
+
+  /* Per-image crop tuning */
+  body.is-member .iv-member-mobile-1{object-position:center 24% !important;}
+  body.is-member .iv-member-mobile-2{object-position:center 22% !important;}
+  body.is-member .iv-member-mobile-3{object-position:center 20% !important;}
+  body.is-member .iv-member-mobile-4{object-position:center 23% !important;}
+  body.is-member .iv-member-mobile-5{object-position:center 20% !important;}
+  body.is-member .iv-member-mobile-6{object-position:center 19% !important;}
+  body.is-member .iv-member-mobile-7{object-position:center 20% !important;}
+
+  body.is-member .m-slide-img.member-slide.m-active-slide{
+    transform:scale(1.018) !important;
   }
 }
