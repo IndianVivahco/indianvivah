@@ -2008,6 +2008,587 @@ body.is-member .iv-plans-inline{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   MOBILE HERO + PREMIUM DASHBOARD — V11
+   Desktop remains unchanged.
+   ========================================================= */
+
+@media (max-width:768px){
+
+    /* Taller mobile hero so it feels like a proper visual, not a video strip */
+    .m-split-hero.iv-mobile-cinematic{
+        width:calc(100% - 20px) !important;
+        height:clamp(330px, 88vw, 430px) !important;
+        min-height:330px !important;
+        margin:10px auto 0 !important;
+        border-radius:20px !important;
+        background:#efe6e8 !important;
+        box-shadow:0 14px 34px rgba(71,0,18,.11) !important;
+    }
+
+    .m-split-hero.iv-mobile-cinematic .m-slide-img{
+        object-fit:cover !important;
+        object-position:center 25% !important;
+    }
+
+    /* Text panel below the photo: rich Indian Vivah maroon visual */
+    .iv-mobile-action-section{
+        padding:10px 10px 26px !important;
+        background:#fff8f5 !important;
+    }
+
+    .iv-mobile-action-card{
+        position:relative !important;
+        overflow:hidden !important;
+        padding:28px 20px 24px !important;
+        border:1px solid rgba(255,215,128,.20) !important;
+        border-radius:24px !important;
+        background:
+            radial-gradient(circle at 88% 12%, rgba(255,208,109,.18) 0 9%, transparent 10%),
+            radial-gradient(circle at 10% 95%, rgba(255,255,255,.08) 0 15%, transparent 16%),
+            linear-gradient(145deg,#4a0015 0%,#720020 52%,#95002f 100%) !important;
+        box-shadow:0 18px 38px rgba(69,0,19,.20) !important;
+        text-align:left !important;
+    }
+
+    .iv-mobile-action-card::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        pointer-events:none;
+        opacity:.34;
+        background-image:
+            linear-gradient(45deg, rgba(255,255,255,.035) 25%, transparent 25%),
+            linear-gradient(-45deg, rgba(255,255,255,.035) 25%, transparent 25%);
+        background-size:24px 24px;
+    }
+
+    .iv-mobile-action-card > *{
+        position:relative;
+        z-index:1;
+    }
+
+    .iv-mobile-action-card .iv-action-kicker{
+        color:#ffe1a0 !important;
+        background:rgba(255,255,255,.09) !important;
+        border:1px solid rgba(255,224,158,.22) !important;
+        padding:8px 12px !important;
+        border-radius:999px !important;
+        letter-spacing:.7px !important;
+    }
+
+    .iv-mobile-action-card h2{
+        color:#ffffff !important;
+        font-size:31px !important;
+        line-height:1.08 !important;
+        margin-top:5px !important;
+        text-shadow:0 4px 16px rgba(0,0,0,.18);
+    }
+
+    .iv-mobile-action-card h2 span{
+        color:#f1c45e !important;
+    }
+
+    .iv-mobile-action-card > p{
+        color:rgba(255,255,255,.84) !important;
+        font-size:14px !important;
+        line-height:1.65 !important;
+    }
+
+    .iv-mobile-action-buttons{
+        margin-top:20px !important;
+    }
+
+    .iv-mobile-action-buttons .iv-hero-btn-primary{
+        background:linear-gradient(135deg,#f4c45c,#dca833) !important;
+        color:#4c0016 !important;
+        border-color:transparent !important;
+        box-shadow:0 10px 24px rgba(0,0,0,.15) !important;
+    }
+
+    .iv-mobile-action-buttons .iv-hero-btn-ghost{
+        background:rgba(255,255,255,.08) !important;
+        color:#ffffff !important;
+        border:1px solid rgba(255,255,255,.34) !important;
+    }
+
+    .iv-mobile-trust-row span{
+        background:rgba(255,255,255,.08) !important;
+        border-color:rgba(255,255,255,.18) !important;
+        color:#fff6f8 !important;
+    }
+
+    /* Slim right-side Premium Dashboard tab on mobile */
+    .iv-premium-dashboard-btn{
+        left:auto !important;
+        right:0 !important;
+        bottom:auto !important;
+        top:53% !important;
+        transform:translateY(-50%) !important;
+
+        width:52px !important;
+        min-width:52px !important;
+        height:205px !important;
+        padding:9px 6px !important;
+
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        gap:7px !important;
+
+        border-radius:18px 0 0 18px !important;
+        background:linear-gradient(180deg,#8e0029,#580018) !important;
+        border:1px solid rgba(255,210,104,.45) !important;
+        border-right:0 !important;
+        box-shadow:-8px 10px 24px rgba(61,0,18,.22) !important;
+        z-index:999 !important;
+        animation:none !important;
+    }
+
+    .iv-premium-dashboard-btn::before{
+        display:none !important;
+    }
+
+    .iv-premium-dashboard-btn img{
+        width:36px !important;
+        height:36px !important;
+        flex:0 0 36px !important;
+        border-radius:11px !important;
+        margin:0 !important;
+    }
+
+    .iv-premium-dashboard-btn .iv-premium-text{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        flex:1 !important;
+        min-height:0 !important;
+    }
+
+    .iv-premium-dashboard-btn strong{
+        writing-mode:vertical-rl !important;
+        transform:rotate(180deg) !important;
+        font-size:10px !important;
+        line-height:1 !important;
+        letter-spacing:.35px !important;
+        white-space:nowrap !important;
+        color:#fff !important;
+    }
+
+    .iv-premium-dashboard-btn span{
+        display:none !important;
+    }
+
+    .iv-premium-dashboard-btn .iv-lock{
+        font-size:15px !important;
+        margin:0 !important;
+    }
+
+    .m-drawer-nav .iv-premium-menu-link{
+        font-weight:850 !important;
+        color:#8b0027 !important;
+    }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   MOBILE POLISH + PREMIUM FAQ + LIVE MATRIMONY VISUAL — V12
+   ========================================================= */
+
+/* Live visual between customer reviews and FAQ */
+.iv-live-matrimony-strip{
+    padding:28px 18px 8px;
+    background:linear-gradient(180deg,#fffaf8 0%,#ffffff 100%);
+}
+.iv-live-matrimony-card{
+    max-width:1120px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);
+    overflow:hidden;
+    border:1px solid rgba(126,0,36,.10);
+    border-radius:28px;
+    background:#fff;
+    box-shadow:0 18px 48px rgba(79,0,23,.10);
+}
+.iv-live-image-wrap{
+    position:relative;
+    min-height:290px;
+    overflow:hidden;
+    background:#eadcdf;
+}
+.iv-live-image-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    animation:ivLiveZoom 9s ease-in-out infinite alternate;
+}
+.iv-live-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:34px 30px;
+    background:
+        radial-gradient(circle at 92% 12%,rgba(245,193,81,.20),transparent 27%),
+        linear-gradient(145deg,#560018,#850027);
+    color:#fff;
+}
+.iv-live-copy span{
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1.1px;
+    color:#f5c85e;
+}
+.iv-live-copy h3{
+    margin:10px 0 12px;
+    font-size:30px;
+    line-height:1.18;
+    color:#fff;
+}
+.iv-live-copy p{
+    margin:0;
+    line-height:1.7;
+    color:rgba(255,255,255,.84);
+}
+.iv-live-heart{
+    position:absolute;
+    color:#fff;
+    text-shadow:0 8px 18px rgba(83,0,25,.25);
+    animation:ivHeartFloat 3.4s ease-in-out infinite;
+}
+.iv-heart-one{right:9%;top:12%;font-size:28px;}
+.iv-heart-two{right:17%;top:21%;font-size:18px;animation-delay:.8s;}
+.iv-live-ring{
+    position:absolute;
+    right:7%;
+    bottom:10%;
+    width:72px;
+    height:72px;
+    border:2px solid rgba(255,255,255,.72);
+    border-radius:50%;
+    box-shadow:0 0 0 9px rgba(255,255,255,.12);
+    animation:ivRingPulse 2.8s ease-out infinite;
+}
+@keyframes ivLiveZoom{
+    from{transform:scale(1.00);}
+    to{transform:scale(1.055);}
+}
+@keyframes ivHeartFloat{
+    0%,100%{transform:translateY(0) scale(1);}
+    50%{transform:translateY(-8px) scale(1.08);}
+}
+@keyframes ivRingPulse{
+    0%{transform:scale(.88);opacity:.65;}
+    70%,100%{transform:scale(1.15);opacity:0;}
+}
+
+/* Premium FAQ */
+.faq-section{
+    position:relative;
+    overflow:hidden;
+    padding-top:58px !important;
+    padding-bottom:70px !important;
+    background:
+        radial-gradient(circle at 8% 8%,rgba(236,193,91,.11),transparent 23%),
+        radial-gradient(circle at 92% 90%,rgba(128,0,38,.07),transparent 27%),
+        linear-gradient(180deg,#fffdfb 0%,#fff7f7 100%) !important;
+}
+.faq-section::before{
+    content:"?";
+    position:absolute;
+    right:4%;
+    top:12px;
+    font-size:170px;
+    font-weight:900;
+    line-height:1;
+    color:rgba(117,0,35,.025);
+    pointer-events:none;
+}
+.faq-title{
+    position:relative;
+    z-index:1;
+    font-size:38px !important;
+    letter-spacing:-.5px;
+}
+.faq-title::after{
+    content:"";
+    display:block;
+    width:74px;
+    height:4px;
+    margin:12px auto 0;
+    border-radius:99px;
+    background:linear-gradient(90deg,#8b0028,#efbd4d);
+}
+.faq-section .section-subtitle{
+    max-width:760px;
+    margin-left:auto !important;
+    margin-right:auto !important;
+}
+.faq-container{
+    position:relative;
+    z-index:1;
+    max-width:900px !important;
+}
+.faq-item{
+    overflow:hidden;
+    border:1px solid rgba(111,0,33,.10) !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.94) !important;
+    box-shadow:0 10px 26px rgba(81,0,23,.055) !important;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.faq-item:hover{
+    transform:translateY(-2px);
+    border-color:rgba(183,129,24,.24) !important;
+    box-shadow:0 16px 34px rgba(81,0,23,.085) !important;
+}
+.faq-question{
+    min-height:64px;
+    padding:17px 20px !important;
+    background:linear-gradient(180deg,#fff 0%,#fffdfc 100%) !important;
+}
+.faq-answer{
+    background:linear-gradient(180deg,#fffaf8,#fff) !important;
+}
+.faq-answer p{
+    color:#6f4b55 !important;
+    line-height:1.8 !important;
+}
+
+/* Mobile only */
+@media (max-width:768px){
+
+    /* Keep the current mobile photo exactly as-is. */
+
+    /* Back to clean white card under photo */
+    .iv-mobile-action-section{
+        padding:10px 10px 24px !important;
+        background:#fff8f5 !important;
+    }
+    .iv-mobile-action-card{
+        padding:24px 20px 22px !important;
+        border:1px solid rgba(112,0,31,.10) !important;
+        border-radius:24px !important;
+        background:#ffffff !important;
+        box-shadow:0 14px 34px rgba(74,0,21,.09) !important;
+        text-align:left !important;
+    }
+    .iv-mobile-action-card::before{
+        display:none !important;
+    }
+    .iv-mobile-action-card h2{
+        color:#520019 !important;
+        font-size:31px !important;
+        line-height:1.08 !important;
+        margin:0 0 14px !important;
+        text-shadow:none !important;
+    }
+    .iv-mobile-action-card h2 span{
+        color:#c08a18 !important;
+    }
+    .iv-mobile-action-card > p{
+        color:#765b63 !important;
+        font-size:14px !important;
+        line-height:1.65 !important;
+        margin-bottom:4px !important;
+    }
+
+    /* Red primary button again, with subtle glow */
+    .iv-mobile-action-buttons .iv-hero-btn-primary{
+        background:linear-gradient(135deg,#8b0028,#bd174d) !important;
+        color:#ffffff !important;
+        border-color:transparent !important;
+        box-shadow:
+            0 10px 24px rgba(142,0,43,.20),
+            0 0 0 rgba(189,23,77,0) !important;
+        animation:ivCreateGlow 2.2s ease-in-out infinite;
+    }
+    @keyframes ivCreateGlow{
+        0%,100%{
+            box-shadow:0 10px 24px rgba(142,0,43,.18),0 0 0 0 rgba(189,23,77,.10);
+        }
+        50%{
+            box-shadow:0 13px 30px rgba(142,0,43,.26),0 0 20px 2px rgba(189,23,77,.18);
+        }
+    }
+    .iv-mobile-action-buttons .iv-hero-btn-ghost{
+        background:#ffffff !important;
+        color:#850026 !important;
+        border:1px solid rgba(133,0,38,.20) !important;
+        box-shadow:none !important;
+    }
+    .iv-mobile-trust-row span{
+        background:#fff9fa !important;
+        border-color:rgba(128,0,37,.10) !important;
+        color:#76535e !important;
+    }
+
+    /* Horizontal dashboard button at bottom-right */
+    .iv-premium-dashboard-btn{
+        left:auto !important;
+        right:10px !important;
+        top:auto !important;
+        bottom:12px !important;
+        transform:none !important;
+
+        width:auto !important;
+        min-width:0 !important;
+        max-width:250px !important;
+        height:auto !important;
+        min-height:54px !important;
+        padding:7px 10px 7px 7px !important;
+
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        gap:8px !important;
+
+        border-radius:16px !important;
+        border:1px solid rgba(242,197,83,.48) !important;
+        background:linear-gradient(135deg,#850026,#5d001c) !important;
+        box-shadow:0 12px 30px rgba(66,0,19,.24) !important;
+        z-index:999 !important;
+        animation:none !important;
+    }
+    .iv-premium-dashboard-btn img{
+        width:40px !important;
+        height:40px !important;
+        flex:0 0 40px !important;
+        border-radius:11px !important;
+        margin:0 !important;
+    }
+    .iv-premium-dashboard-btn .iv-premium-text{
+        display:block !important;
+        flex:1 !important;
+        min-width:0 !important;
+    }
+    .iv-premium-dashboard-btn strong{
+        writing-mode:horizontal-tb !important;
+        transform:none !important;
+        display:block !important;
+        white-space:nowrap !important;
+        font-size:10px !important;
+        line-height:1.15 !important;
+        letter-spacing:.05px !important;
+        color:#ffffff !important;
+    }
+    .iv-premium-dashboard-btn span{
+        display:block !important;
+        margin-top:3px !important;
+        font-size:7px !important;
+        line-height:1 !important;
+        color:#f2c653 !important;
+        white-space:nowrap !important;
+    }
+    .iv-premium-dashboard-btn .iv-lock{
+        display:block !important;
+        font-size:13px !important;
+        margin-left:2px !important;
+    }
+
+    /* Live visual stacks elegantly on mobile */
+    .iv-live-matrimony-strip{
+        padding:18px 12px 4px;
+    }
+    .iv-live-matrimony-card{
+        grid-template-columns:1fr;
+        border-radius:22px;
+    }
+    .iv-live-image-wrap{
+        min-height:250px;
+    }
+    .iv-live-copy{
+        padding:24px 20px 26px;
+    }
+    .iv-live-copy h3{
+        font-size:24px;
+    }
+
+    /* Premium FAQ on small screens */
+    .faq-section{
+        padding:44px 14px 58px !important;
+    }
+    .faq-title{
+        font-size:29px !important;
+        line-height:1.15 !important;
+    }
+    .faq-section .section-subtitle{
+        font-size:14px !important;
+        line-height:1.55 !important;
+    }
+    .faq-item{
+        border-radius:16px !important;
+        margin-bottom:10px !important;
+    }
+    .faq-question{
+        padding:15px 16px !important;
+        font-size:14px !important;
+        line-height:1.45 !important;
+    }
+    .faq-answer p{
+        font-size:13.5px !important;
+        line-height:1.7 !important;
+    }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   TRUST SHOWCASE — TWO SELECTED MATRIMONY VISUALS
+   ========================================================= */
+.iv-trust-showcase{
+    padding:30px 18px 18px;
+    background:
+        radial-gradient(circle at 8% 20%, rgba(86,132,108,.08), transparent 24%),
+        linear-gradient(180deg,#fffaf8 0%,#fbfffc 100%);
+}
+.iv-trust-showcase-inner{
+    max-width:1120px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+.iv-trust-visual-card{
+    overflow:hidden;
+    border-radius:26px;
+    border:1px solid rgba(44,94,77,.12);
+    background:#fff;
+    box-shadow:0 18px 42px rgba(51,72,63,.10);
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+.iv-trust-visual-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 22px 52px rgba(51,72,63,.15);
+}
+.iv-trust-visual-card img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+@media(max-width:768px){
+    .iv-trust-showcase{
+        padding:18px 12px 8px;
+    }
+    .iv-trust-showcase-inner{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+    .iv-trust-visual-card{
+        border-radius:22px;
+    }
+}
+</style>
+
 </head>
 
 
@@ -2033,6 +2614,8 @@ body.is-member .iv-plans-inline{
 
 
                 <a href="#plans" class="member-only">Membership</a>
+
+                <a href="member-dashboard.html" class="iv-premium-menu-link">Premium Dashboard</a>
 
                 <a href="services.html" class="iv-services-page-link">Services</a>
 
@@ -2185,6 +2768,8 @@ body.is-member .iv-plans-inline{
 
                     <a href="#plans" class="member-only">Membership</a>
 
+                    <a href="member-dashboard.html" class="iv-premium-menu-link">Premium Member Dashboard</a>
+
                     <a href="services.html" class="iv-services-page-link">Services</a>
 
 
@@ -2238,16 +2823,13 @@ body.is-member .iv-plans-inline{
         <section class="m-reg-section iv-mobile-action-section">
             <div class="m-reg-box iv-mobile-action-card">
 
-                <span class="iv-action-kicker">INDIAN VIVAH MATRIMONY</span>
-
-                <h2>
+                                <h2>
                     Find Someone
                     <span>Worth Choosing.</span>
                 </h2>
 
                 <p>
-                    Create your profile and continue your matrimonial journey without
-                    covering the photo with text.
+                    अपना प्रोफाइल बनाइए और अपनी जीवनसाथी खोज की यात्रा आगे बढ़ाइए।
                 </p>
 
                 <div class="iv-mobile-action-buttons">
@@ -2745,7 +3327,7 @@ body.is-member .iv-plans-inline{
             <div class="iv-customer-exp-head">
                 <span>CUSTOMER EXPERIENCES</span>
                 <h3>What Our Customers Say</h3>
-                <p>Indian Vivah के साथ अपने matrimonial journey के बारे में कुछ families के अनुभव।</p>
+                <p>Indian Vivah Matrimony के साथ अपनी जीवनसाथी खोज की यात्रा के बारे में कुछ परिवारों के अनुभव।</p>
             </div>
 
             <div class="iv-customer-exp-grid">
@@ -2754,9 +3336,8 @@ body.is-member .iv-plans-inline{
                     <div class="iv-customer-quote">“</div>
                     <h4>Sonali &amp; Prateek Sharma</h4>
                     <p>
-                        “Indian Vivah पर profile process simple और comfortable रहा।
-                        हमें बातचीत आगे बढ़ाने के लिए जरूरी guidance और support समय पर मिला,
-                        जिससे पूरी matrimonial journey व्यवस्थित और आसान लगी।”
+                        “शुरुआत में हमें थोड़ा संकोच था, लेकिन प्रोफाइल बनाने और आगे बातचीत करने की प्रक्रिया काफी आसान रही।
+                        समय-समय पर सही जानकारी मिलती रही, इसलिए हमें चीजें समझने में परेशानी नहीं हुई।”
                     </p>
                     <span>Customer Experience</span>
                 </article>
@@ -2765,9 +3346,9 @@ body.is-member .iv-plans-inline{
                     <div class="iv-customer-quote">“</div>
                     <h4>Arti Namdev &amp; Prakash Singh</h4>
                     <p>
-                        “हमारे लिए सबसे अच्छी बात यह रही कि process जल्दबाजी वाला नहीं लगा।
-                        Profile और family preferences को समझकर आगे बढ़ने का तरीका साफ था
-                        और communication भी सहज रहा।”
+                        “हमें सबसे अच्छी बात यह लगी कि जल्दबाजी नहीं की गई।
+                        पहले जानकारी समझी, फिर परिवार की पसंद और हमारी सोच के अनुसार बात आगे बढ़ी।
+                        इस वजह से पूरा अनुभव संतुलित लगा।”
                     </p>
                     <span>Customer Experience</span>
                 </article>
@@ -2776,9 +3357,8 @@ body.is-member .iv-plans-inline{
                     <div class="iv-customer-quote">“</div>
                     <h4>Kavita &amp; Pawan Kori</h4>
                     <p>
-                        “Indian Vivah के माध्यम से matrimonial profile देखना और suitable
-                        conversation शुरू करना आसान रहा। हमें अपनी सुविधा से निर्णय लेने
-                        और परिवार के साथ आगे बढ़ने का पूरा समय मिला।”
+                        “हम दोनों के परिवार अलग-अलग बातों को महत्व देते थे, इसलिए शुरुआत में निर्णय आसान नहीं था।
+                        बातचीत का अवसर मिला और धीरे-धीरे एक-दूसरे को समझना आसान हुआ।”
                     </p>
                     <span>Customer Experience</span>
                 </article>
@@ -2787,9 +3367,9 @@ body.is-member .iv-plans-inline{
                     <div class="iv-customer-quote">“</div>
                     <h4>Sonam &amp; Govind Ahirwar</h4>
                     <p>
-                        “Platform का अनुभव साफ और straightforward रहा।
-                        Profile details, communication और आगे की प्रक्रिया समझने में
-                        हमें अच्छा support मिला और overall experience positive रहा।”
+                        “पूरी प्रक्रिया सीधी और साफ लगी।
+                        प्रोफाइल की जानकारी देखने, बात करने और आगे क्या करना है यह समझने में सुविधा रही।
+                        हमारे लिए अनुभव अच्छा और सहज रहा।”
                     </p>
                     <span>Customer Experience</span>
                 </article>
@@ -3051,28 +3631,46 @@ body.is-member .iv-plans-inline{
 
 
 
+
+<section class="iv-trust-showcase" aria-label="Indian Vivah Matrimony trust and guidance">
+    <div class="iv-trust-showcase-inner">
+        <div class="iv-trust-visual-card">
+            <img src="images/trust-profile-match.png"
+                 alt="Indian Vivah Matrimony profile guidance and thoughtful matching"
+                 loading="lazy">
+        </div>
+
+        <div class="iv-trust-visual-card">
+            <img src="images/family-introduction.png"
+                 alt="Indian Vivah Matrimony family introduction and thoughtful decision"
+                 loading="lazy">
+        </div>
+    </div>
+</section>
+
+
 <!-- Indian Vivah FAQ Section -->
 
-<section class="faq-section member-only" id="faq">
+<section class="faq-section" id="faq">
 
     <h2 class="faq-title">Frequently Asked Questions</h2>
 
     <p class="section-subtitle">
-        Indian Vivah Matrimony के registration, profiles, membership और privacy से जुड़े सामान्य प्रश्न।
+        Indian Vivah Matrimony पर प्रोफाइल, सदस्यता, गोपनीयता और सहायता से जुड़े सामान्य प्रश्न।
     </p>
 
     <div class="faq-container">
 
         <div class="faq-item">
             <button class="faq-question">
-                क्या Indian Vivah पर profile बनाना free है?
+                क्या Indian Vivah Matrimony पर प्रोफाइल बनाना निःशुल्क है?
                 <span class="arrow">▼</span>
             </button>
 
             <div class="faq-answer">
                 <p>
-                    हाँ। Matrimonial profile registration free है। कुछ additional contact,
-                    interest या premium सुविधाएँ membership plan के अनुसार उपलब्ध हो सकती हैं।
+                    हाँ। Indian Vivah Matrimony पर प्रोफाइल पंजीयन निःशुल्क है। कुछ अतिरिक्त संपर्क,
+                    रुचि या प्रीमियम सुविधाएँ सदस्यता योजना के अनुसार उपलब्ध हो सकती हैं।
                 </p>
             </div>
         </div>
@@ -3111,15 +3709,33 @@ body.is-member .iv-plans-inline{
 
         <div class="faq-item">
             <button class="faq-question">
-                Membership लेने पर क्या सुविधाएँ मिलती हैं?
+                क्या Premium Membership लेने पर सभी profiles के contact details दिखाई देते हैं?
                 <span class="arrow">▼</span>
             </button>
 
             <div class="faq-answer">
                 <p>
-                    Membership plan के अनुसार interests, contact access और chat जैसी सुविधाएँ
-                    उपलब्ध हो सकती हैं। प्रत्येक plan की वर्तमान सुविधाएँ Membership section में
-                    दी गई जानकारी के अनुसार लागू होंगी।
+                    नहीं। Premium Membership लेने के बाद भी सभी profiles के contact details नहीं दिखते।
+                    जिस profile को Premium Member request या interest भेजता है, उस profile द्वारा request
+                    स्वीकार किए जाने के बाद ही उपलब्ध contact या chat access दिया जाता है। इससे दोनों पक्षों
+                    की सहमति और privacy बनी रहती है।
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Premium Member को Indian Vivah Matrimony team से क्या सहायता मिलती है?
+                <span class="arrow">▼</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Premium Member Indian Vivah Matrimony support team से सहायता ले सकता है।
+                    Support team सदस्य की profile, पसंद और उपलब्ध जानकारी के अनुसार उपयुक्त रिश्ते
+                    तलाशने में सहायता करती है, संबंधित profiles की जानकारी बताती है और प्रक्रिया के दौरान
+                    संपर्क में रहती है। Membership plan की लागू शर्तों के अनुसार हर महीने matrimonial
+                    proposals या रिश्तों की जानकारी साझा की जाती है।
                 </p>
             </div>
         </div>
@@ -3224,7 +3840,7 @@ body.is-member .iv-plans-inline{
 
     <!-- Section 8: Contact & Support -->
 
-    <section class="section-container contact-section member-only" id="contact">
+    <section class="section-container contact-section" id="contact">
 
         <div class="iv-contact-heading">
             <span class="iv-section-kicker">Support & Assistance</span>
@@ -4429,12 +5045,6 @@ document.addEventListener("click", function(event){
         if(plansSection){
             plansSection.scrollIntoView({behavior:"smooth", block:"start"});
         }
-    }
-
-        plans.classList.add("iv-plans-open");
-        setTimeout(() => {
-            plans.scrollIntoView({behavior:"smooth", block:"start"});
-        }, 30);
     }
 
     function closePlans(){
