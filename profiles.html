@@ -105,7 +105,7 @@ async function loadPage(pageNumber){
     console.error('Profile load failed:',e);
     $('grid').innerHTML='<div class="empty">Unable to load profiles. Check Firestore index/rules or refresh.</div>';
     $('pager').hidden=true;
-  }finally{loading=false}
+  }finally{loading=false; if(pageCache[currentPage-1]) render()}
 }
 function safe(v){return v==null?'':String(v).trim()}
 function age(d){if(!d)return '';const b=new Date(d);if(Number.isNaN(b.getTime()))return '';const now=new Date();let n=now.getFullYear()-b.getFullYear();if(now.getMonth()<b.getMonth()||(now.getMonth()===b.getMonth()&&now.getDate()<b.getDate()))n--;return n>=18&&n<110?n:''}
