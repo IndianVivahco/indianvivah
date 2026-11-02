@@ -4633,6 +4633,13 @@ function createProfileCard(profile) {
     image.className =
         "iv-profile-photo";
 
+    // Photo privacy: blur for other members; no interest auto-unblur.
+    if (profile.photoPrivacy === "accepted_interest_only" &&
+        Array.isArray(profile.photoUrls) && profile.photoUrls[0]) {
+        image.style.filter = "blur(16px)";
+        image.style.transform = "scale(1.08)";
+    }
+
     image.loading =
         "lazy";
 
