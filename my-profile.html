@@ -223,6 +223,12 @@ header{
   }
 }
 
+/* Photo privacy controls */
+.privacy-panel{margin-top:14px;padding:14px;border:1px solid #ead7dd;border-radius:14px;background:#fff}
+.privacy-panel label{display:block;margin:9px 0;font-size:13px;cursor:pointer}
+.privacy-panel button{background:#790021;color:white;border:0;border-radius:9px;padding:10px 16px;cursor:pointer;font-weight:700}
+.privacy-panel button:disabled{opacity:.55;cursor:wait}
+.privacy-note{font-size:12px;color:#795d66;margin-top:8px}
 </style>
 </head>
 <body>
@@ -239,7 +245,14 @@ header{
   <div id="empty" class="state" style="display:none"></div>
   <div id="profile" class="card profile">
     <div class="top">
-      <div id="photo" class="photo">👤</div>
+      <div><div id="photo" class="photo">👤</div>
+<div class="privacy-panel" id="privacyPanel" hidden>
+<strong>Photo Privacy</strong>
+<label><input type="radio" name="privacyChoice" value="everyone"> Everyone can view my photos</label>
+<label><input type="radio" name="privacyChoice" value="accepted_interest_only"> Blur my photos for other members</label>
+<button id="savePrivacy" type="button">Save Photo Privacy</button>
+<div id="privacyMessage" class="privacy-note" role="status" aria-live="polite"></div>
+</div></div>
       <div>
         <div id="name" class="name">-</div>
         <div id="location" class="loc">-</div>
@@ -275,7 +288,7 @@ header{
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import {getAuth,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import {getFirestore,doc,getDoc} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import {getFirestore,doc,getDoc,updateDoc} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw",
@@ -288,6 +301,29 @@ const firebaseConfig = {
 };
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+let currentUser=null;
+const privacyPanel=document.getElementById('privacyPanel');
+const privacyMessage=document.getElementById('privacyMessage');
+const savePrivacy=document.getElementById('savePrivacy');
+function setPrivacyChoice(value){
+  const chosen=value==='accepted_interest_only'?'accepted_interest_only':'everyone';
+  document.querySelector(`input[name="privacyChoice"][value="${chosen}"]`).checked=true;
+}
+savePrivacy.addEventListener('click',async()=>{
+  if(!currentUser)return;
+  const selected=document.querySelector('input[name="privacyChoice"]:checked');
+  if(!selected)return;
+  savePrivacy.disabled=true;privacyMessage.textContent='Saving...';
+  try{
+    // Only the signed-in owner's private document is writable here.
+    await updateDoc(doc(db,'profiles',currentUser.uid),{photoPrivacy:selected.value});
+    set('photoPrivacy',selected.value);
+    privacyMessage.textContent='Photo Privacy saved successfully.';
+  }catch(err){
+    console.error('Privacy update failed',err);
+    privacyMessage.textContent='Save failed. Check login, profile document and Firestore permissions.';
+  }finally{savePrivacy.disabled=false;}
+});
 const ids=["profileFor","dateOfBirth","religion","motherTongue","mobileNumber","email","state","district","city","pinCode","currentAddress","height","education","occupationType","annualIncome","workDetails","diet","smoking","drinking","photoPrivacy"];
 const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=(v??"").toString().trim()||"-";};
 function showEmpty(msg){
@@ -325,12 +361,14 @@ async function load(user){
    if(!data) return showEmpty("इस account की profile अभी उपलब्ध नहीं मिली। Edit/Complete Profile से profile details जोड़ें।");
    set("name",data.fullName); set("gender",data.gender); set("maritalStatus",data.maritalStatus); set("status",data.profileStatus||data.status||"approved");
    ids.forEach(id=>set(id,id==="email"?(data.email||user.email):data[id]));
+    setPrivacyChoice(data.photoPrivacy);
+    privacyPanel.hidden=false;
    const loc=[data.city,data.district,data.state].filter(Boolean).join(", ");set("location",loc);
    const photos=Array.isArray(data.photoUrls)?data.photoUrls:[];
    if(photos[0]) document.getElementById("photo").innerHTML=`<img src="${photos[0]}" alt="Profile Photo">`;
    document.getElementById("loading").style.display="none";document.getElementById("profile").style.display="block";
  }catch(e){console.error(e);showEmpty("Profile load नहीं हो सकी। Console में Firebase error देखें।");}
 }
-onAuthStateChanged(auth,u=>{if(!u)location.href="login.html";else load(u);});
+onAuthStateChanged(auth,u=>{currentUser=u;if(!u)location.href="login.html";else load(u);});
 </script>
 </body></html>
