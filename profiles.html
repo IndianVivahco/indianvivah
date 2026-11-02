@@ -71,22 +71,61 @@
 </style></head><body>
 <header><div class="nav"><a class="brand" href="index.html">Indian Vivah <span>Matrimony</span></a><nav class="navlinks"><a href="index.html">Home</a><a href="profiles.html" aria-current="page">Profiles</a><a href="index.html#plans">Membership</a><a class="account" href="my-profile.html">My Profile</a></nav></div></header>
 <section class="hero"><div class="heroInner"><div><div class="eyebrow">✦ FIND YOUR LIFE PARTNER</div><h1>Explore Matrimonial<br>Profiles</h1><p>Discover matrimonial profiles, explore details and search according to your preferences.</p></div></div></section>
-<main class="shell"><div class="filterbox"><div class="field"><label for="search">Search name, education or occupation</label><input id="search" type="search" placeholder="Search profiles..."></div><div class="field"><label for="gender">Gender</label><select id="gender"><option value="">All genders</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option></select></div><button class="clear" id="reset" type="button">Reset</button></div>
+<main class="shell"><div class="filterbox"><div class="field"><label for="search">Search on this page</label><input id="search" type="search" placeholder="Search current 12 profiles..."></div><div class="field"><label for="gender">Gender</label><select id="gender"><option value="">All genders</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option></select></div><button class="clear" id="reset" type="button">Reset</button></div>
 <div class="heading"><div><h2>Discover Profiles</h2><p>Browse matrimonial profiles and find a suitable match</p></div></div><div class="grid" id="grid"><div class="empty">Loading profiles...</div></div><nav id="pager" class="pager" aria-label="Profile pages" hidden><button type="button" id="prevPage">← Previous</button><span class="page-label" id="pageLabel"></span><button type="button" id="nextPage">Next →</button></nav></main>
 <footer class="site-footer"><div class="footer-inner"><div><h3>Indian Vivah Matrimony</h3><p>Discover meaningful matrimonial connections. Explore profiles with respect for every member’s privacy preferences.</p></div><div><h4>Quick Links</h4><a href="index.html">Home</a><a href="profiles.html">Explore Profiles</a><a href="index.html#plans">Membership</a></div><div><h4>Account</h4><a href="my-profile.html">My Profile</a></div></div><div class="footer-bottom">© Indian Vivah Matrimony · Respectful connections, thoughtful choices</div></footer>
 <script type="module">
 import {initializeApp,getApps,getApp} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
 import {getAuth,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
-import {getFirestore,collection,query,where,limit,getDocs} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
+import {getFirestore,collection,query,where,limit,getDocs,startAfter,orderBy,documentId} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
 const firebaseConfig={apiKey:'AIzaSyCyXzpn7pKQ5IBtt9pWQ2quZM8zBECndkw',authDomain:'indian-vivah-app-2026.firebaseapp.com',projectId:'indian-vivah-app-2026',storageBucket:'indian-vivah-app-2026.firebasestorage.app',messagingSenderId:'807227064930',appId:'1:807227064930:web:c6cbc77cbc15c52ff0073b',measurementId:'G-E4EC5RDHVM'};
 const app=getApps().length?getApp():initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
-const $=id=>document.getElementById(id);let profiles=[];let currentPage=1;const PAGE_SIZE=12;
+const $=id=>document.getElementById(id);
+let profiles=[];let currentPage=1;const PAGE_SIZE=12;
+const pageCache=[];let loading=false;
+async function loadPage(pageNumber){
+  if(loading)return;
+  loading=true;
+  $('prevPage').disabled=true;$('nextPage').disabled=true;
+  $('grid').innerHTML='<div class="empty">Loading profiles...</div>';
+  try{
+    if(!pageCache[pageNumber-1]){
+      const previous=pageCache[pageNumber-2];
+      const constraints=[where('status','==','approved'),orderBy(documentId())];
+      if(previous?.lastDoc)constraints.push(startAfter(previous.lastDoc));
+      constraints.push(limit(PAGE_SIZE+1));
+      const snap=await getDocs(query(collection(db,'public_profiles'),...constraints));
+      const visible=snap.docs.slice(0,PAGE_SIZE);
+      pageCache[pageNumber-1]={profiles:visible.map(d=>d.data()),lastDoc:visible.at(-1)||null,hasNext:snap.docs.length>PAGE_SIZE};
+    }
+    currentPage=pageNumber;
+    profiles=pageCache[pageNumber-1].profiles;
+    render();
+  }catch(e){
+    console.error('Profile load failed:',e);
+    $('grid').innerHTML='<div class="empty">Unable to load profiles. Check Firestore index/rules or refresh.</div>';
+    $('pager').hidden=true;
+  }finally{loading=false}
+}
 function safe(v){return v==null?'':String(v).trim()}
 function age(d){if(!d)return '';const b=new Date(d);if(Number.isNaN(b.getTime()))return '';const now=new Date();let n=now.getFullYear()-b.getFullYear();if(now.getMonth()<b.getMonth()||(now.getMonth()===b.getMonth()&&now.getDate()<b.getDate()))n--;return n>=18&&n<110?n:''}
 function detail(emoji,val){const row=document.createElement('div');row.className='detail';const i=document.createElement('span');i.textContent=emoji;const t=document.createElement('div');t.textContent=val||'Not specified';row.append(i,t);return row}
 function makeCard(p){const card=document.createElement('article');card.className='card';const photo=document.createElement('div');photo.className='photo';const img=document.createElement('img');const url=Array.isArray(p.photoUrls)&&p.photoUrls.length?safe(p.photoUrls[0]):'';img.src=url||'images/logo.jpg';img.alt='Member profile photo';img.loading='lazy';img.onerror=()=>{img.onerror=null;img.src='images/logo.jpg'};const blurred=p.photoPrivacy==='accepted_interest_only';if(blurred)img.classList.add('blurred');photo.append(img);if(blurred){const tag=document.createElement('div');tag.className='privacyTag';tag.textContent='🔒 Photo privacy enabled';photo.append(tag)}const location=[p.city,p.state].filter(Boolean).join(', ');const body=document.createElement('div');body.className='content';const name=document.createElement('h3');const years=age(p.dateOfBirth);name.textContent=safe(p.fullName)||'Member Profile';if(years)name.textContent+=', '+years;const meta=document.createElement('div');meta.className='meta';meta.textContent=[p.gender,p.maritalStatus].filter(Boolean).join(' • ')||'Matrimonial Profile';const details=document.createElement('div');details.className='details';details.append(detail('📍',location),detail('🎓',safe(p.education)),detail('💼',[p.occupationType,p.workDetails].filter(Boolean).join(' • ')),detail('🤝',[p.religion,p.motherTongue].filter(Boolean).join(' • ')));const btn=document.createElement('a');btn.className='cta';btn.href='index.html#plans';btn.textContent='View Membership Options →';body.append(name,meta,details,btn);card.append(photo,body);return card}
-function render(){const q=$('search').value.trim().toLowerCase(),gender=$('gender').value;const filtered=profiles.filter(p=>(!gender||safe(p.gender).toLowerCase()===gender)&&(!q||[p.fullName,p.education,p.occupationType,p.workDetails,p.city,p.religion].some(v=>safe(v).toLowerCase().includes(q))));$('grid').replaceChildren();if(!filtered.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No matching profiles found. Try different filters.';$('grid').append(empty);$('pager').hidden=true;return}const frag=document.createDocumentFragment();const totalPages=Math.ceil(filtered.length/PAGE_SIZE);currentPage=Math.min(Math.max(1,currentPage),totalPages);filtered.slice((currentPage-1)*PAGE_SIZE,currentPage*PAGE_SIZE).forEach(p=>frag.append(makeCard(p)));$('grid').append(frag);$('pager').hidden=totalPages<=1;$('pageLabel').textContent='Page '+currentPage+' of '+totalPages;$('prevPage').disabled=currentPage===1;$('nextPage').disabled=currentPage===totalPages}
-for(const id of ['search','gender'])$(id).addEventListener(id==='search'?'input':'change',()=>{currentPage=1;render()});$('reset').addEventListener('click',()=>{$('search').value='';$('gender').value='';currentPage=1;render()});
-$('prevPage').addEventListener('click',()=>{if(currentPage>1){currentPage--;render();document.querySelector('.heading').scrollIntoView({behavior:'smooth',block:'start'})}});$('nextPage').addEventListener('click',()=>{currentPage++;render();document.querySelector('.heading').scrollIntoView({behavior:'smooth',block:'start'})});
-onAuthStateChanged(auth,async user=>{if(!user){location.replace('login.html');return}try{const snap=await getDocs(query(collection(db,'public_profiles'),where('status','==','approved'),limit(100)));profiles=snap.docs.map(d=>d.data());render()}catch(e){console.error('Profile load failed:',e);$('grid').replaceChildren();const err=document.createElement('div');err.className='empty';err.textContent='Unable to load profiles. Please refresh the page.';$('grid').append(err)}});
+function render(){
+  const q=$('search').value.trim().toLowerCase(),gender=$('gender').value;
+  const filtered=profiles.filter(p=>(!gender||safe(p.gender).toLowerCase()===gender)&&(!q||[p.fullName,p.education,p.occupationType,p.workDetails,p.city,p.religion].some(v=>safe(v).toLowerCase().includes(q))));
+  $('grid').replaceChildren();
+  if(!filtered.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No matching profiles on this page. Try different filters or go Next.';$('grid').append(empty)}
+  else{const frag=document.createDocumentFragment();filtered.forEach(p=>frag.append(makeCard(p)));$('grid').append(frag)}
+  const hasNext=pageCache[currentPage-1]?.hasNext===true;
+  $('pager').hidden=currentPage===1&&!hasNext;
+  $('pageLabel').textContent='Page '+currentPage;
+  $('prevPage').disabled=loading||currentPage===1;
+  $('nextPage').disabled=loading||!hasNext;
+}
+for(const id of ['search','gender'])$(id).addEventListener(id==='search'?'input':'change',render);
+$('reset').addEventListener('click',()=>{$('search').value='';$('gender').value='';render()});
+$('prevPage').addEventListener('click',async()=>{if(currentPage>1){await loadPage(currentPage-1);document.querySelector('.heading').scrollIntoView({behavior:'smooth',block:'start'})}});
+$('nextPage').addEventListener('click',async()=>{if(pageCache[currentPage-1]?.hasNext){await loadPage(currentPage+1);document.querySelector('.heading').scrollIntoView({behavior:'smooth',block:'start'})}});
+onAuthStateChanged(auth,async user=>{if(!user){location.replace('login.html');return}await loadPage(1)});
 </script></body></html>
