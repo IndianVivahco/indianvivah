@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | Indian Vivah Matrimony</title>
+    <title>Login | SHYAM SANGAM PARICHAY LLP</title>
 
     <meta name="theme-color" content="#790021">
 
@@ -512,7 +512,7 @@
         </div>
 
         <h2>
-            Indian Vivah
+            Shyam Sangam Parichay LLP
             <span>Matrimony</span>
         </h2>
 
@@ -539,19 +539,19 @@
 
             <h1>
                 Welcome Back to
-                <span>Indian Vivah</span>
+                <span>Shyam Sangam Parichay LLP</span>
             </h1>
 
             <p>
-                अपने registered account में login करके
-                अपनी matrimonial journey जारी रखें।
+                Sign in to your registered account to
+                continue your matrimonial journey.
             </p>
 
             <div class="feature-list">
 
                 <div class="feature">
                     <b>✓</b>
-                    Same Indian Vivah account
+                    Same Shyam Sangam Parichay LLP account
                 </div>
 
                 <div class="feature">
@@ -561,7 +561,7 @@
 
                 <div class="feature">
                     <b>✓</b>
-                    Website और App के लिए एक ही account
+                    One account for both the website and the app
                 </div>
 
             </div>
@@ -575,7 +575,7 @@
             </h2>
 
             <p class="subtitle">
-                अपना registered Email और Password डालें।
+                Enter your registered email address and password.
             </p>
 
             <form id="loginForm">
@@ -631,7 +631,7 @@
                     id="loginBtn"
                     class="login-btn"
                 >
-                    LOGIN TO INDIAN VIVAH
+                    LOGIN TO SHYAM SANGAM PARICHAY LLP
                 </button>
 
                 <div
@@ -643,7 +643,7 @@
 
             <div class="register-link">
 
-                अभी account नहीं है?
+                Do not have an account yet?
 
                 <a href="register.html">
                     Register Free
@@ -652,8 +652,8 @@
             </div>
 
             <div class="security">
-                🔒 आपका Password profile database में
-                store नहीं किया जाता।
+                🔒 Your password is not stored
+                in the matrimonial profile database.
             </div>
 
         </section>
@@ -814,7 +814,7 @@
 
                 showMessage(
                     "success",
-                    "✅ Login successful. आपका Indian Vivah account खुल गया है।"
+                    "✅ Login successful. Welcome to your Shyam Sangam Parichay LLP account."
                 );
 
                 loginBtn.textContent =
@@ -838,7 +838,7 @@
                 );
 
                 let errorText =
-                    "❌ Login नहीं हो पाया। Email और Password दोबारा check करें।";
+                    "❌ Unable to log in. Please check your email address and password.";
 
 
                 if (
@@ -847,7 +847,7 @@
                 ) {
 
                     errorText =
-                        "❌ Email या Password सही नहीं है।";
+                        "❌ Incorrect email address or password.";
 
                 } else if (
                     error.code ===
@@ -855,7 +855,7 @@
                 ) {
 
                     errorText =
-                        "❌ सही Email ID दर्ज करें।";
+                        "❌ Please enter a valid email address.";
 
                 } else if (
                     error.code ===
@@ -863,7 +863,7 @@
                 ) {
 
                     errorText =
-                        "❌ बहुत अधिक login attempts हुए हैं। थोड़ी देर बाद फिर कोशिश करें।";
+                        "❌ Too many login attempts. Please try again later.";
 
                 } else if (
                     error.code ===
@@ -871,7 +871,7 @@
                 ) {
 
                     errorText =
-                        "❌ Internet connection check करें और फिर कोशिश करें।";
+                        "❌ Please check your internet connection and try again.";
                 }
 
 
@@ -883,7 +883,7 @@
                 loginBtn.disabled = false;
 
                 loginBtn.textContent =
-                    "LOGIN TO INDIAN VIVAH";
+                    "LOGIN TO SHYAM SANGAM PARICHAY LLP";
             }
 
         }
