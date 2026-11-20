@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Secure Payment | Indian Vivah Matrimony</title>
+  <title>Secure Payment | SHYAM SANGAM PARICHAY LLP</title>
   <style>
     :root{
       --wine:#7a0022;
@@ -59,6 +59,17 @@
     }
     .summary .label{color:var(--muted);font-size:12px;font-weight:700}
     .summary .value{font-weight:900;color:var(--wine);text-align:right}
+    .plan-details{
+      padding:14px 15px;
+      border:1px solid #f0dfe5;
+      border-radius:16px;
+      background:#fffdfd;
+      margin-bottom:20px;
+      font-size:13px;
+      line-height:1.65;
+    }
+    .plan-details strong{color:var(--wine)}
+    .plan-details p{margin:5px 0 0}
     .section-title{
       font-size:13px;
       font-weight:900;
@@ -148,9 +159,9 @@
     <section class="card">
       <div class="topbar"></div>
       <div class="inner">
-        <div class="brand">Indian Vivah Matrimony</div>
+        <div class="brand">SHYAM SANGAM PARICHAY LLP</div>
         <h1>Membership Payment</h1>
-        <p class="sub">नीचे दिए गए verified payment details से payment करें। भुगतान के बाद screenshot WhatsApp पर भेजें।</p>
+        <p class="sub">Use the payment details below. After completing your payment, send the transaction screenshot to our team on WhatsApp for verification.</p>
 
         <div class="summary">
           <div class="label">Selected Plan</div>
@@ -159,19 +170,26 @@
           <div class="value" id="amountText">₹0</div>
         </div>
 
+        <div class="plan-details" id="planDetails" hidden>
+          <strong id="planBenefit"></strong>
+          <p id="planValidity"></p>
+          <p>Our matchmaking team assists you by phone and coordinates with prospective matches and families. Profile and contact details are shared only as permitted by the individuals concerned.</p>
+          <p><strong>Service completion:</strong> The matchmaking service ends when the specified number of matrimonial proposals has been provided or the membership validity period expires, whichever occurs first. Proposals may be shared earlier, subject to availability and consent. Marriage is not guaranteed.</p>
+        </div>
+
         <div class="section-title">Scan QR to Pay</div>
         <div class="qrbox">
-          <img src="images/phonepe-qr.png" alt="Indian Vivah Matrimony Payment QR" />
-          <div>Official UPI ID</div>
+          <img src="images/phonepe-qr.png" alt="Payment QR code — verify recipient details before paying" />
+          <div>UPI ID</div>
           <div class="upi">indianvivah77@oksbi</div>
-          <p class="note">Payment करने से पहले receiver name, UPI ID और payable amount स्वयं verify करें।</p>
+          <p class="note">Before paying, independently verify the recipient's name, UPI ID and amount displayed in your payment app. Do not proceed if the recipient details are unexpected.</p>
         </div>
 
         <a id="upiBtn" class="btn primary" href="#">📱 Open UPI App</a>
         <a id="waBtn" class="btn secondary" href="#" target="_blank" rel="noopener">💬 Send Payment Screenshot on WhatsApp</a>
 
         <div class="warning">
-          Card / Net Banking payment इस page पर उपलब्ध नहीं है। किसी भी card number, CVV, OTP या internet-banking password को इस website पर दर्ज न करें।
+          Card and net banking payments are not available on this page. Never enter your card number, CVV, OTP or internet banking password on this website. Membership is activated only after payment verification.
         </div>
 
         <div class="back"><a href="index.html#plans">← Back to Membership Plans</a></div>
@@ -189,6 +207,22 @@
     document.getElementById("amountText").textContent =
       "₹" + Number(safeAmount).toLocaleString("en-IN");
 
+    // Display the agreed matchmaking entitlements without changing payment processing.
+    const planBenefits = {
+      silver: {proposals:12, months:3},
+      gold: {proposals:25, months:6},
+      platinum: {proposals:50, months:12}
+    };
+    const selectedPlan = planBenefits[String(plan).trim().toLowerCase()];
+    if (selectedPlan) {
+      document.getElementById("planBenefit").textContent =
+        `Up to ${selectedPlan.proposals} matrimonial proposals`;
+      document.getElementById("planValidity").textContent =
+        `Maximum service validity: ${selectedPlan.months} months.`;
+      document.getElementById("planDetails").hidden = false;
+    }
+
+    // Preserve the existing UPI recipient identifier and payee name until verified.
     const upi = "indianvivah77@oksbi";
     const name = "Indian Vivah Matrimony";
     const note = `${plan} Membership`;
@@ -201,7 +235,7 @@
     document.getElementById("upiBtn").href = upiLink;
 
     const waText =
-      `Namaste, maine Indian Vivah Matrimony ka ${plan} Membership plan (₹${Number(safeAmount).toLocaleString("en-IN")}) select kiya hai. Payment screenshot bhej raha/rahi hoon.`;
+      `Hello, I have selected the ${plan} Membership plan with SHYAM SANGAM PARICHAY LLP (₹${Number(safeAmount).toLocaleString("en-IN")}). I am sharing my payment screenshot for verification.`;
     document.getElementById("waBtn").href =
       `https://wa.me/918982523577?text=${encodeURIComponent(waText)}`;
   </script>
