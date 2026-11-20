@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Profile | Indian Vivah Matrimony</title>
+<title>My Profile | SHYAM SANGAM PARICHAY LLP</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(145deg,#fffaf7,#fff1f4);color:#332027;min-height:100vh}
 header{display:flex;justify-content:space-between;align-items:center;padding:12px 5%;background:linear-gradient(135deg,#650019,#8d1538,#70001d);color:#fff;box-shadow:0 6px 24px rgba(85,0,25,.18)}
@@ -246,14 +246,14 @@ header{
 </head>
 <body>
 <header>
-  <div class="brand">Indian Vivah <span>Matrimony</span></div>
+  <div class="brand">SHYAM SANGAM <span>PARICHAY LLP</span></div>
   <div class="actions">
     <a class="btn" href="index.html">Home</a>
     <a class="btn gold" href="edit-profile.html" id="editBtn">Edit Profile</a>
   </div>
 </header>
 <main>
-  <div class="title"><h1>My Profile</h1><p>आपकी Indian Vivah matrimonial profile</p></div>
+  <div class="title"><h1>My Profile</h1><p>Your matrimonial profile with SHYAM SANGAM PARICHAY LLP</p></div>
   <div id="loading" class="state">Profile loading...</div>
   <div id="empty" class="state" style="display:none"></div>
   <div id="profile" class="card profile">
@@ -349,7 +349,7 @@ async function load(user){
  try{
    let data=null;
 
-   // 1) पहले private profile पढ़ने की कोशिश
+   // 1) First, try reading the private profile.
    try {
      const privateSnap = await getDoc(doc(db,"profiles",user.uid));
      if (privateSnap.exists()) {
@@ -359,7 +359,7 @@ async function load(user){
      console.warn("Private profile read blocked/unavailable:", privateError);
    }
 
-   // 2) private profile न मिले या rules से blocked हो तो public profile देखें
+   // 2) If the private profile is missing or access is blocked, try the public profile.
    if (!data) {
      try {
        const publicSnap = await getDoc(doc(db,"public_profiles",user.uid));
@@ -371,7 +371,7 @@ async function load(user){
      }
    }
 
-   if(!data) return showEmpty("इस account की profile अभी उपलब्ध नहीं मिली। Edit/Complete Profile से profile details जोड़ें।");
+   if(!data) return showEmpty("No profile was found for this account. Select Edit/Complete Profile to add your details.");
    set("name",data.fullName); set("gender",data.gender); set("maritalStatus",data.maritalStatus); set("status",data.profileStatus||data.status||"approved");
    ids.forEach(id=>set(id,id==="email"?(data.email||user.email):data[id]));
     setPrivacyChoice(data.photoPrivacy);
@@ -380,7 +380,7 @@ async function load(user){
    const photos=Array.isArray(data.photoUrls)?data.photoUrls:[];
    if(photos[0]) document.getElementById("photo").innerHTML=`<img src="${photos[0]}" alt="Profile Photo">`;
    document.getElementById("loading").style.display="none";document.getElementById("profile").style.display="block";
- }catch(e){console.error(e);showEmpty("Profile load नहीं हो सकी। Console में Firebase error देखें।");}
+ }catch(e){console.error(e);showEmpty("Unable to load your profile. Check the browser console for Firebase errors.");}
 }
 onAuthStateChanged(auth,u=>{currentUser=u;if(!u)location.href="login.html";else load(u);});
 </script>
