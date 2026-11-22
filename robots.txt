@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /shyam-sangam-parichay-llp/
+
+Sitemap: https://shyamsangamparichayllp.github.io/shyam-sangam-parichay-llp/sitemap.xml
