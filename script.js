@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!allowedSlides.length) return;
 
-            // Sabhi slides se active hatao
+            // Remove the active class from all slides
             document.querySelectorAll(selector)
                 .forEach(function (slide) {
                     slide.classList.remove(activeClass);
@@ -96,17 +96,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // Pehli image random
+        // Choose the first image randomly
         showSlide(true);
 
 
-        // Har 4 second slide change
+        // Change slides every 4 seconds
         setInterval(function () {
             showSlide(false);
         }, 4000);
 
 
-        // Login / Logout hone par turant naya slider set
+        // Reset the slider immediately after login or logout
         const observer =
             new MutationObserver(function () {
 
@@ -298,8 +298,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // अभी कोई server/backend endpoint इस form से जुड़ा नहीं है.
-    // इसलिए false "submitted successfully" message नहीं दिखाया जाता.
+    // No server/backend endpoint is currently connected to this form.
+    // Do not display a false "submitted successfully" message.
     sammelanForm?.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -309,8 +309,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         alert(
-            "प्रपत्र पूरा भर गया है। ऑनलाइन submission अभी server से connect नहीं है। " +
-            "कृपया Indian Vivah support से संपर्क करके पंजीयन आगे बढ़ाएँ।"
+            "The form is complete. Online submission is not currently connected to the server. " +
+            "Please contact SHYAM SANGAM PARICHAY LLP support to proceed with registration."
         );
     });
 
@@ -487,12 +487,12 @@ function handleFormSubmit(event) {
         document.getElementById("userMessage")?.value.trim() || "";
 
     if (!name || !type || !message) {
-        alert("कृपया सभी आवश्यक जानकारी भरें।");
+        alert("Please complete all required fields.");
         return;
     }
 
     const whatsappText =
-        `Namaste Indian Vivah,%0A%0A` +
+        `Hello SHYAM SANGAM PARICHAY LLP,%0A%0A` +
         `Name: ${encodeURIComponent(name)}%0A` +
         `Type: ${encodeURIComponent(type)}%0A%0A` +
         `${encodeURIComponent(message)}`;
